@@ -41,26 +41,33 @@ type StatusDB struct {
 
 var DB StatusDB
 
-func Newnode_zz(num_weidu int) Node { //带指针的
+// func Newnode_zz(num_weidu int) Node { //带指针的
+// 	var newnode Node
+// 	for i := 0; i < num_weidu; i++ {
+// 		newnode.Data = append(newnode.Data, 10*rand.Float64()) //在这里用图片的向量
+// 	}
+
+// 	return newnode
+// }
+func Newnode(num_weidu int, index int) Node { //带指针的
 	var newnode Node
 	for i := 0; i < num_weidu; i++ {
-		newnode.Data = append(newnode.Data, 10*rand.Float64()) //在这里用图片的向量
+		newnode.Data = append(newnode.Data, float64(index)+rand.Float64()) //在这里用图片的向量
 	}
 
 	return newnode
 }
-func Newnode(num_weidu int) Node { //带指针的
-	var newnode Node
-	for i := 0; i < num_weidu; i++ {
-		newnode.Data = append(newnode.Data, 10*rand.Float64()) //在这里用图片的向量
-	}
-
-	return newnode
-}
-func Newnode_first(num_weidu int) Node_first {
+func Newnode_first(num_weidu int, val float64) Node_first {
 	var newnode_first Node_first
 	for i := 0; i < num_weidu; i++ {
-		newnode_first.Data = append(newnode_first.Data, 10*rand.Float64()) //在这里用图片的向量
+		newnode_first.Data = append(newnode_first.Data, val+0.5) //在这里用图片的向量
+	}
+	return newnode_first
+}
+func Newnode_first_result(num_weidu int) Node_first {
+	var newnode_first Node_first
+	for i := 0; i < num_weidu; i++ {
+		newnode_first.Data = append(newnode_first.Data, 0) //在这里用图片的向量
 	}
 	return newnode_first
 }
@@ -87,7 +94,7 @@ func result_init(topk int, numofxl int, num_weidu int) Node_first {
 				if i == 0 {
 					continue
 				}
-				var newnodefirst = Newnode_first(num_weidu)
+				var newnodefirst = Newnode_first_result(num_weidu)
 				index_nodefirst.Next_first = &newnodefirst
 				index_nodefirst = &newnodefirst
 			} else {
@@ -102,7 +109,7 @@ func result_init(topk int, numofxl int, num_weidu int) Node_first {
 					}
 					continue
 				}
-				var newnodefirst = Newnode_first(num_weidu)
+				var newnodefirst = Newnode_first_result(num_weidu)
 				index_nodefirst.Next_first = &newnodefirst
 				index_nodefirst = &newnodefirst
 				var index_newnode Node
@@ -119,6 +126,38 @@ func result_init(topk int, numofxl int, num_weidu int) Node_first {
 		return head_nodefirst
 	}
 }
+func Display_DBbydistence() {
+	for indexi := DB.Head; indexi != nil; indexi = indexi.Next_first {
+		fmt.Print(indexi.Distence, "->")
+		for indexj := indexi.Next; indexj != nil; indexj = indexj.Next {
+
+			if indexj.Next == nil {
+				fmt.Print(indexj.Distence)
+				fmt.Println()
+			} else {
+				fmt.Print(indexj.Distence, "->")
+			}
+		}
+	}
+}
+func Display_DBbydata() {
+	for indexi := DB.Head; indexi != nil; indexi = indexi.Next_first {
+		fmt.Print(indexi.Data, "->")
+		for indexj := indexi.Next; indexj != nil; indexj = indexj.Next {
+			if indexj.Next == nil {
+				fmt.Print(indexj.Data)
+				fmt.Println()
+			} else {
+				fmt.Print(indexj.Data, "->")
+			}
+		}
+	}
+}
+func Display_allfirst() {
+	for indexi := DB.Head; indexi != nil; indexi = indexi.Next_first {
+		fmt.Print(indexi.Data)
+	}
+}
 func findmin_index(start *Node_first, node *Node) *Node_first { //找到给定的一个node距离给出的nodefirst以及之后的距离他最近的nodefirst\
 	var min float64
 	var index int
@@ -127,12 +166,14 @@ func findmin_index(start *Node_first, node *Node) *Node_first { //找到给定�
 		if start_fb == start {
 			//fmt.Print(newnode.Data, index_nodefirst.Data, 1)
 			min = distence(start_fb.Data, node.Data)
+			j++
+			index = j
 			continue
 		} else {
 			//fmt.Print(newnode.Data, index_nodefirst.Data, 2)
 			if min > distence(start_fb.Data, node.Data) {
 				min = distence(start_fb.Data, node.Data)
-				index = j
+				index = j + 1
 			}
 		}
 		j++
@@ -236,20 +277,17 @@ func Dbinit_train() {
 func Lib_worker_DBinit(num_node int, num_nodefirst int, num_weidu int) StatusDB {
 	var newnodefirst Node_first
 	head_nodefirst := &newnodefirst
-	for i := 0; i < num_weidu; i++ {
-		head_nodefirst.Data = append(head_nodefirst.Data, 10*rand.Float64()) //在这里用图片的向量
-
+	var i float64
+	for ; int(i) < num_weidu; i++ {
+		head_nodefirst.Data = append(head_nodefirst.Data, 0.5) //在这里用图片的向量
 	}
-
 	//第一个，不能调用new函数
 	var index_nodefirst *Node_first
 	index_nodefirst = head_nodefirst
-
 	for i := 0; i < num_nodefirst-1; i++ {
-		newnode_first := Newnode_first(num_weidu)
+		newnode_first := Newnode_first(num_weidu, float64(i+1)) //按1间隔，初始0.5
 		index_nodefirst.Next_first = &newnode_first
 		index_nodefirst = &newnode_first
-
 	} //构建first
 	// for i := 0; i < num_nodefirst-1; i++ {这里报错了，第三个first为nil
 	// 	newnode_first := Newnode_first(num_weidu, index_nodefirst)
@@ -261,14 +299,22 @@ func Lib_worker_DBinit(num_node int, num_nodefirst int, num_weidu int) StatusDB 
 	// for ; index_nodefirst != nil; index_nodefirst = index_nodefirst.Next_first {
 
 	// }
-
+	fmt.Print(num_node)
 	for i := 0; i < num_node; i++ {
-		var newnode = Newnode(num_weidu)
+		var newnode = Newnode(num_weidu, i*num_nodefirst/num_node)
 		index_nodefirst = findmin_index(head_nodefirst, &newnode)
+		// fmt.Print(nodefirst_location(head_nodefirst, index_nodefirst))
+		// fmt.Println(i*num_nodefirst/num_node + 1)
 		index_nodefirst.add(&newnode)
 	}
-
 	return StatusDB{Head: head_nodefirst}
+}
+func nodefirst_location(start *Node_first, end *Node_first) int {
+	var i int
+	for index := start; index != end; index = index.Next_first {
+		i++
+	}
+	return i + 1
 }
 func distence(a []float64, b []float64) float64 { //欧式
 	if len(a) != len(b) {
@@ -429,9 +475,7 @@ func (start *Node_first) add_s(distence float64, data []float64) { //??这里引
 				} else {
 					continue
 				}
-
 			}
-
 		}
 	}
 }
@@ -453,8 +497,8 @@ func (start *Node_first) add_s(distence float64, data []float64) { //??这里引
 // 训练 递归结束条件 ：
 // 计算平均值，找到最近的node，交换node和nodefirst的值，这个时候只剩下nodefist了，用train改变DB的排序
 func Delete(req Request) string {
-	var nodefirst = DB.Head.find_nodefirst(int(req.J_delete))
-	return nodefirst.delete_node(int(req.I_delete))
+	var nodefirst = DB.Head.find_nodefirst(int(req.I_delete))
+	return nodefirst.delete_node(int(req.J_delete))
 }
 func (start *Node_first) delete_node(i int) string { //找到第i个节点,中间末尾都分为上一个是first还是node，
 	if i == 0 {
@@ -462,7 +506,12 @@ func (start *Node_first) delete_node(i int) string { //找到第i个节点,中�
 		return st
 	} else {
 		if i == 1 {
-			start.Next = start.Next.Next //可以是nil
+			if start.Next.Next == nil {
+				start.Next = nil
+			} else {
+				start.Next = start.Next.Next
+			}
+			//可以是nil
 			var st string = "删除成功"
 			return st
 		}
@@ -477,7 +526,11 @@ func (start *Node_first) delete_node(i int) string { //找到第i个节点,中�
 			j++
 			preindex = index
 		}
-		preindex.Next = preindex.Next.Next
+		if preindex.Next.Next == nil {
+			preindex.Next = nil
+		} else {
+			preindex.Next = preindex.Next.Next
+		}
 	}
 	var st string = "删除成功"
 	return st
@@ -490,14 +543,16 @@ func Add(req Request) string {
 		for indexi := DB.Head; indexi != nil; indexi = indexi.Next_first { //对每个向量遍历所有数据库
 			if indexi == DB.Head { //初始化
 				distence1 = distence(indexi.Data, req.Xlzu.Xl[i])
+				j++
+				min_index = j
 				continue
 			} else if distence(req.Xlzu.Xl[i], indexi.Data) < distence1 {
 				distence1 = distence(req.Xlzu.Xl[i], indexi.Data)
-				min_index = j
+				min_index = j + 1
 			}
 			j++
 		}
-		var nodefirst = DB.Head.find_nodefirst(min_index + 1)
+		var nodefirst = DB.Head.find_nodefirst(min_index)
 		var node Node
 		node.Data = req.Xlzu.Xl[i]
 		node.Distence = distence1
@@ -505,6 +560,13 @@ func Add(req Request) string {
 	}
 	var st string = "添加成功"
 	return st
+}
+func Length_first() {
+	var i int
+	for index := DB.Head; index != nil; index = index.Next_first {
+		i++
+		fmt.Println("第", i, "个nodefirst的长度为：", index.length())
+	}
 }
 func Search(req Request) Result { //第几个分片
 	var result Result
@@ -544,14 +606,16 @@ func Search(req Request) Result { //第几个分片
 			for indexi := DB.Head; indexi != nil; indexi = indexi.Next_first { //对每个向量遍历所有数据库
 				if indexi == DB.Head { //初始化
 					distence1 = distence(indexi.Data, req.Xlzu.Xl[i])
+					j++
+					min_index = j
 					continue
 				} else if distence(req.Xlzu.Xl[i], indexi.Data) < distence1 {
 					distence1 = distence(req.Xlzu.Xl[i], indexi.Data)
-					min_index = j
+					min_index = j + 1
 				}
 				j++
 			}
-			var index_nf = DB.Head.find_nodefirst(min_index + 1)
+			var index_nf = DB.Head.find_nodefirst(min_index)
 			start_fb.add_s(distence(index_nf.Data, req.Xlzu.Xl[i]), index_nf.Data)
 			for index_node := index_nf.Next; index_node != nil; index_node = index_node.Next {
 				start_fb.add_s(distence(index_node.Data, req.Xlzu.Xl[i]), index_node.Data)

@@ -60,6 +60,7 @@ func handle_req(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		fmt.Fprintln(w, lw.Delete(req))
+		lw.Display_DBbydistence()
 		return
 	} else if int_arr[length-1] == 4 { //添加
 		if (length-1)%4 != 0 {
@@ -71,6 +72,7 @@ func handle_req(w http.ResponseWriter, r *http.Request) {
 			req.Xlzu.Xl = append(req.Xlzu.Xl, int_arr[4*i:4*i+4]) //可以设置不同维度的
 		}
 		fmt.Fprintln(w, lw.Add(req))
+		lw.Display_DBbydistence()
 		return
 	} else if int_arr[length-1] == 1 || int_arr[length-1] == 2 {
 		if (length-2)%4 != 0 {
@@ -96,8 +98,9 @@ func handle_req(w http.ResponseWriter, r *http.Request) {
 // }
 func Server_init() {
 	// Set up a connection to the server.
-	lw.DB = lw.Lib_worker_DBinit(100, 5, 4)
-	//fmt.Print(lw.DB.Head.Data)
+	lw.DB = lw.Lib_worker_DBinit(100, 10, 4)
+	//lw.Display_allfirst()
+	//lw.Display_DBbydistence()
 	lw.Dbinit_train()
 
 	http.HandleFunc("/search", handle_req)
