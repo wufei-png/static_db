@@ -299,7 +299,7 @@ func Lib_worker_DBinit(num_node int, num_nodefirst int, num_weidu int) StatusDB 
 	// for ; index_nodefirst != nil; index_nodefirst = index_nodefirst.Next_first {
 
 	// }
-	fmt.Print(num_node)
+	//fmt.Print(num_node)
 	for i := 0; i < num_node; i++ {
 		var newnode = Newnode(num_weidu, i*num_nodefirst/num_node)
 		index_nodefirst = findmin_index(head_nodefirst, &newnode)
