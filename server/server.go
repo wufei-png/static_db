@@ -37,7 +37,6 @@ const (
 func handle_req(w http.ResponseWriter, r *http.Request) {
 	var req lw.Request
 	p, _ := ioutil.ReadAll(r.Body)
-	fmt.Print(p)
 	//wufei := []string{string(p)}
 	res := strings.TrimSpace(string(p))
 	//把字符串以空格分割成字符串数组
@@ -100,7 +99,7 @@ func handle_req(w http.ResponseWriter, r *http.Request) {
 // }
 func Server_init() {
 	// Set up a connection to the server.
-	lw.DB = lw.Lib_worker_DBinit(1000, 10, 4)
+	lw.DB = lw.Lib_worker_DBinit(10000, 100, 4)
 	//lw.Display_allfirst()
 	//lw.Display_DBbydistence()
 	lw.Dbinit_train()

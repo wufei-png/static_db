@@ -7,33 +7,33 @@ import (
 )
 
 type Request struct {
-	Xlzu         Xiangliang
+	Xlzu         Vectors //向量组
 	Topk         int
 	Request_type int
 	I_delete     float64
 	J_delete     float64
 }
-type Xiangliang struct {
-	Xl       [][]float64
+type Vectors struct {
+	Xl       [][]float64 //向量
 	Distence []float64
 }
 type Result struct {
-	Distence_topk [][]float64
-	Group         [][][]float64
+	TopkDistence [][]float64
+	VectorGroup  [][][]float64
 }
 
 type Node struct {
 	Data     []float64
 	Next     *Node
 	Distence float64
-	index    int
+	index    bool //是否被访问过了
 }
 type Node_first struct {
 	Data       []float64
 	Next       *Node
 	Next_first *Node_first
 	Distence   float64
-	index      int
+	index      bool
 }
 type StatusDB struct {
 	Head *Node_first
@@ -426,10 +426,10 @@ func swap(a *float64, b *float64) {
 }
 
 func (start *Node_first) add_s(distence float64, data []float64) { //??这里引用改变原来的没，在某个分片里加
-	if start.index == 0 { //对某个first第一次调用
+	if start.index == false { //对某个first第一次调用
 		start.Distence = distence
 		//fmt.Println("startdis添加:", start.Distence)
-		start.index = 1 //以后都是1
+		start.index = true //以后都是1
 		start.Data = data
 		// fmt.Print("startdta:")
 		// fmt.Print(start.Data)
@@ -451,13 +451,13 @@ func (start *Node_first) add_s(distence float64, data []float64) { //??这里引
 
 		for ; index != nil; index = index.Next {
 
-			if index.index == 0 { //节点没满
+			if index.index == false { //节点没满
 
 				index.Distence = distence
 				//fmt.Println("indexdistence添加:", index.Distence)
 				// fmt.Print("indexdta:")
 				// fmt.Print(index.Data)
-				index.index = 1
+				index.index = true
 				index.Data = data
 				return
 			} else {
@@ -502,7 +502,7 @@ func Delete(req Request) string {
 }
 func (start *Node_first) delete_node(i int) string { //找到第i个节点,中间末尾都分为上一个是first还是node，
 	if i == 0 {
-		var st string = "大哥你要的是nodefirst诶"
+		var st string = "你要的是nodefirst诶"
 		return st
 	} else {
 		if i == 1 {
@@ -589,8 +589,8 @@ func Search(req Request) Result { //第几个分片
 				}
 				// if distence(req.Xlzu.Xl[i], indexi.Data) > max {
 				// 	max = distence(req.Xlzu.Xl[i], indexi.Data)
-				// 	result.Group[i][j] = indexi.Data //第一个数据特殊处理
-				// 	result.Distence_topk[i]
+				// 	result.VectorGroup[i][j] = indexi.Data //第一个数据特殊处理
+				// 	result.TopkDistence[i]
 				// }
 				// for indexj := indexi.Next; indexj.Next != nil; indexj = indexj.Next {
 				// 	//distence(req.Xlzu.Xl[i],
@@ -666,9 +666,9 @@ func ResuToint(start *Node_first, result *Result) {
 			group2 = nil
 			j++
 		}
-		result.Distence_topk = append(result.Distence_topk, topk_ls)
+		result.TopkDistence = append(result.TopkDistence, topk_ls)
 		topk_ls = nil
-		result.Group = append(result.Group, group1)
+		result.VectorGroup = append(result.VectorGroup, group1)
 		group1 = nil
 	}
 
