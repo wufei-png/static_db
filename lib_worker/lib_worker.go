@@ -7,33 +7,31 @@ import (
 )
 
 type Request struct {
-	Xlzu         Vectors //向量组
+	Vectors      Vectors //向量组
 	Topk         int
 	Request_type int
 	I_delete     float64
 	J_delete     float64
 }
 type Vectors struct {
-	Xl       [][]float64 //向量
-	Distence []float64
+	Vector   [][]float64 //向量
+	Distance []float64
 }
 type Result struct {
-	TopkDistence [][]float64
+	TopkDistance [][]float64
 	VectorGroup  [][][]float64
 }
 
 type Node struct {
 	Data     []float64
 	Next     *Node
-	Distence float64
-	index    bool //是否被访问过了
+	Distance float64
 }
 type Node_first struct {
 	Data       []float64
 	Next       *Node
 	Next_first *Node_first
-	Distence   float64
-	index      bool
+	Distance   float64
 }
 type StatusDB struct {
 	Head *Node_first
@@ -41,41 +39,41 @@ type StatusDB struct {
 
 var DB StatusDB
 
-// func Newnode_zz(num_weidu int) Node { //带指针的
+// func Newnode_zz(dimension int) Node { //带指针的
 // 	var newnode Node
-// 	for i := 0; i < num_weidu; i++ {
+// 	for i := 0; i < dimension; i++ {
 // 		newnode.Data = append(newnode.Data, 10*rand.Float64()) //在这里用图片的向量
 // 	}
 
 // 	return newnode
 // }
-func Newnode(num_weidu int, index int) Node { //带指针的
+func Newnode(dimension int, index int) Node { //带指针的
 	var newnode Node
-	for i := 0; i < num_weidu; i++ {
+	for i := 0; i < dimension; i++ {
 		newnode.Data = append(newnode.Data, float64(index)+rand.Float64()) //在这里用图片的向量
 	}
 
 	return newnode
 }
-func Newnode_first(num_weidu int, val float64) Node_first {
+func Newnode_first(dimension int, value float64) Node_first {
 	var newnode_first Node_first
-	for i := 0; i < num_weidu; i++ {
-		newnode_first.Data = append(newnode_first.Data, val+0.5) //在这里用图片的向量
+	for i := 0; i < dimension; i++ {
+		newnode_first.Data = append(newnode_first.Data, value+0.5) //在这里用图片的向量
 	}
 	return newnode_first
 }
-func Newnode_first_result(num_weidu int) Node_first {
+func Newnode_first_result(dimension int) Node_first {
 	var newnode_first Node_first
-	for i := 0; i < num_weidu; i++ {
+	for i := 0; i < dimension; i++ {
 		newnode_first.Data = append(newnode_first.Data, 0) //在这里用图片的向量
 	}
 	return newnode_first
 }
-func result_init(topk int, numofxl int, num_weidu int) Node_first {
+func result_init(topk int, numOfVector int, dimension int) Node_first {
 	var head_nodefirst Node_first
 	var index_nodefirst *Node_first
 	index_nodefirst = &head_nodefirst
-	if numofxl == 1 {
+	if numOfVector == 1 {
 		if topk == 1 {
 			return head_nodefirst
 		}
@@ -89,12 +87,12 @@ func result_init(topk int, numofxl int, num_weidu int) Node_first {
 		}
 		return head_nodefirst
 	} else {
-		for i := 0; i < numofxl; i++ {
+		for i := 0; i < numOfVector; i++ {
 			if topk == 1 {
 				if i == 0 {
 					continue
 				}
-				var newnodefirst = Newnode_first_result(num_weidu)
+				var newnodefirst = Newnode_first_result(dimension)
 				index_nodefirst.Next_first = &newnodefirst
 				index_nodefirst = &newnodefirst
 			} else {
@@ -109,7 +107,7 @@ func result_init(topk int, numofxl int, num_weidu int) Node_first {
 					}
 					continue
 				}
-				var newnodefirst = Newnode_first_result(num_weidu)
+				var newnodefirst = Newnode_first_result(dimension)
 				index_nodefirst.Next_first = &newnodefirst
 				index_nodefirst = &newnodefirst
 				var index_newnode Node
@@ -126,16 +124,16 @@ func result_init(topk int, numofxl int, num_weidu int) Node_first {
 		return head_nodefirst
 	}
 }
-func Display_DBbydistence() {
+func Display_DBbyDistance() {
 	for indexi := DB.Head; indexi != nil; indexi = indexi.Next_first {
-		fmt.Print(indexi.Distence, "->")
+		fmt.Print(indexi.Distance, "->")
 		for indexj := indexi.Next; indexj != nil; indexj = indexj.Next {
 
 			if indexj.Next == nil {
-				fmt.Print(indexj.Distence)
+				fmt.Print(indexj.Distance)
 				fmt.Println()
 			} else {
-				fmt.Print(indexj.Distence, "->")
+				fmt.Print(indexj.Distance, "->")
 			}
 		}
 	}
@@ -162,23 +160,23 @@ func findmin_index(start *Node_first, node *Node) *Node_first { //找到给定�
 	var min float64
 	var index int
 	var j int
-	for start_fb := start; start_fb != nil; start_fb = start_fb.Next_first {
-		if start_fb == start {
+	for start_copy := start; start_copy != nil; start_copy = start_copy.Next_first {
+		if start_copy == start {
 			//fmt.Print(newnode.Data, index_nodefirst.Data, 1)
-			min = distence(start_fb.Data, node.Data)
+			min = Distance(start_copy.Data, node.Data)
 			j++
 			index = j
 			continue
 		} else {
 			//fmt.Print(newnode.Data, index_nodefirst.Data, 2)
-			if min > distence(start_fb.Data, node.Data) {
-				min = distence(start_fb.Data, node.Data)
+			if min > Distance(start_copy.Data, node.Data) {
+				min = Distance(start_copy.Data, node.Data)
 				index = j + 1
 			}
 		}
 		j++
 	}
-	node.Distence = min
+	node.Distance = min
 	return start.find_nodefirst(index)
 }
 func dbinit_train(i int) bool { //终止条件聚类中心不再改变
@@ -209,12 +207,12 @@ func dbinit_train(i int) bool { //终止条件聚类中心不再改变
 		for j := 0; j < index_first.length(); j++ {
 			if j == 0 {
 				//fmt.Print(newnode.Data, index_nodefirst.Data, 1)
-				min = distence(sum, index_first.Data)
+				min = Distance(sum, index_first.Data)
 				continue
 			} else {
 				//fmt.Print(newnode.Data, index_nodefirst.Data, 2)
-				if min > distence(sum, index_node.Data) {
-					min = distence(sum, index_node.Data)
+				if min > Distance(sum, index_node.Data) {
+					min = Distance(sum, index_node.Data)
 					index = j
 				}
 			}
@@ -231,35 +229,35 @@ func dbinit_train(i int) bool { //终止条件聚类中心不再改变
 			node = node.Next
 		}
 		for i := 0; i < len(index_first.Data); i++ {
-			swap(&index_first.Data[i], &node.Data[i])
-		} //交换向量，接下来distence将重置，所以不需要交换distence
+			index_first.Data[i], node.Data[i] = node.Data[i], index_first.Data[i]
+		} //交换向量，接下来Distance将重置，所以不需要交换Distance
 	}
 
-	var db_fb StatusDB
+	var db_copy StatusDB
 	var start Node_first
-	db_fb.Head = &start
+	db_copy.Head = &start
 	start.Data = DB.Head.Data
-	var zhizhen *Node_first = &start
+	var pointer *Node_first = &start
 
 	for index_first := DB.Head.Next_first; index_first != nil; index_first = index_first.Next_first {
 		var newnode_first Node_first
 		newnode_first.Data = index_first.Data
-		zhizhen.Next_first = &newnode_first
-		zhizhen = &newnode_first
+		pointer.Next_first = &newnode_first
+		pointer = &newnode_first
 	} //复制first
 
 	for index_first := DB.Head; index_first != nil; index_first = index_first.Next_first {
 
 		for index_node := index_first.Next; index_node != nil; index_node = index_node.Next { //遍历所有node
 			//fmt.Print(1)
-			var firstnode = findmin_index(db_fb.Head, index_node) //firstnode是dbdb的
+			var firstnode = findmin_index(db_copy.Head, index_node) //firstnode是dbdb的
 			//fmt.Print(2)
 			firstnode.add_tr(index_node)
 			//fmt.Println(3)
 		}
 	}
 
-	DB.Head = db_fb.Head //更新完毕
+	DB.Head = db_copy.Head //更新完毕
 	if stop {
 		fmt.Println("迭代结束")
 	}
@@ -274,23 +272,23 @@ func Dbinit_train() {
 		i++
 	}
 }
-func Lib_worker_DBinit(num_node int, num_nodefirst int, num_weidu int) StatusDB {
+func Lib_worker_DBinit(num_node int, num_nodefirst int, dimension int) StatusDB {
 	var newnodefirst Node_first
 	head_nodefirst := &newnodefirst
 	var i float64
-	for ; int(i) < num_weidu; i++ {
+	for ; int(i) < dimension; i++ {
 		head_nodefirst.Data = append(head_nodefirst.Data, 0.5) //在这里用图片的向量
 	}
 	//第一个，不能调用new函数
 	var index_nodefirst *Node_first
 	index_nodefirst = head_nodefirst
 	for i := 0; i < num_nodefirst-1; i++ {
-		newnode_first := Newnode_first(num_weidu, float64(i+1)) //按1间隔，初始0.5
+		newnode_first := Newnode_first(dimension, float64(i+1)) //按1间隔，初始0.5
 		index_nodefirst.Next_first = &newnode_first
 		index_nodefirst = &newnode_first
 	} //构建first
 	// for i := 0; i < num_nodefirst-1; i++ {这里报错了，第三个first为nil
-	// 	newnode_first := Newnode_first(num_weidu, index_nodefirst)
+	// 	newnode_first := Newnode_first(dimension, index_nodefirst)
 	// 	index_nodefirst = &newnode_first
 
 	// } //构建first
@@ -301,7 +299,7 @@ func Lib_worker_DBinit(num_node int, num_nodefirst int, num_weidu int) StatusDB 
 	// }
 	//fmt.Print(num_node)
 	for i := 0; i < num_node; i++ {
-		var newnode = Newnode(num_weidu, i*num_nodefirst/num_node)
+		var newnode = Newnode(dimension, i*num_nodefirst/num_node)
 		index_nodefirst = findmin_index(head_nodefirst, &newnode)
 		// fmt.Print(nodefirst_location(head_nodefirst, index_nodefirst))
 		// fmt.Println(i*num_nodefirst/num_node + 1)
@@ -309,14 +307,15 @@ func Lib_worker_DBinit(num_node int, num_nodefirst int, num_weidu int) StatusDB 
 	}
 	return StatusDB{Head: head_nodefirst}
 }
-func nodefirst_location(start *Node_first, end *Node_first) int {
-	var i int
-	for index := start; index != end; index = index.Next_first {
-		i++
-	}
-	return i + 1
-}
-func distence(a []float64, b []float64) float64 { //欧式
+
+// func nodefirst_location(start *Node_first, end *Node_first) int {
+// 	var i int
+// 	for index := start; index != end; index = index.Next_first {
+// 		i++
+// 	}
+// 	return i + 1
+// }
+func Distance(a []float64, b []float64) float64 { //欧式
 	if len(a) != len(b) {
 		panic(fmt.Errorf("比较向量长度不等"))
 	}
@@ -349,50 +348,18 @@ func (nodefirst *Node_first) length() int {
 func (nodefirst *Node_first) add_tr(newnode *Node) { //??这里引用改变原来的没，在某个分片里加
 	var node Node
 	node.Data = newnode.Data
-	node.Distence = distence(newnode.Data, nodefirst.Data)
-	if nodefirst.Next == nil {
-		nodefirst.Next = &node
-		return
-	} else {
-		var index *Node = nodefirst.Next
-		if node.Distence < index.Distence { //第一个node
-			nodefirst.Next = &node
-			node.Next = index
-			//fmt.Print(315, "结束")
-			return
-		} else {
-			var preindex = index
-			index = index.Next
-			for index != nil {
-				if node.Distence < index.Distence {
-					preindex.Next = &node
-					node.Next = index
-					//fmt.Print(324, "结束")
-					return
-				} else {
-					preindex = index
-					index = index.Next
-					//fmt.Print(index.Data)
-				}
-
-			}
-			preindex.Next = &node
-			//fmt.Print(332, "结束")
-			return
-		}
-	}
+	nodefirst.add(&node)
 }
 
 func (nodefirst *Node_first) add(newnode *Node) { //??这里引用改变原来的没，在某个分片里加
 
-	newnode.Distence = distence(newnode.Data, nodefirst.Data)
+	newnode.Distance = Distance(newnode.Data, nodefirst.Data)
 	if nodefirst.Next == nil {
 		nodefirst.Next = newnode
-
 		return
 	} else {
 		var index *Node = nodefirst.Next
-		if newnode.Distence < index.Distence { //第一个node
+		if newnode.Distance < index.Distance { //第一个node
 			nodefirst.Next = newnode
 			newnode.Next = index
 
@@ -401,7 +368,7 @@ func (nodefirst *Node_first) add(newnode *Node) { //??这里引用改变原来�
 			var preindex = index
 			index = index.Next
 			for index != nil {
-				if newnode.Distence < index.Distence {
+				if newnode.Distance < index.Distance {
 					preindex.Next = newnode
 					newnode.Next = index
 
@@ -419,58 +386,58 @@ func (nodefirst *Node_first) add(newnode *Node) { //??这里引用改变原来�
 		}
 	}
 }
-func swap(a *float64, b *float64) {
-	buf := *a
-	*a = *b
-	*b = buf
-}
 
-func (start *Node_first) add_s(distence float64, data []float64) { //??这里引用改变原来的没，在某个分片里加
-	if start.index == false { //对某个first第一次调用
-		start.Distence = distence
-		//fmt.Println("startdis添加:", start.Distence)
-		start.index = true //以后都是1
+// func swap(a *float64, b *float64) {
+// 	buf := *a
+// 	*a = *b
+// 	*b = buf
+// }
+
+func (start *Node_first) add_s(blank []bool, Distance float64, data []float64) { //??这里引用改变原来的没，在某个分片里加
+	if blank[0] == false { //对某个first第一次调用
+		start.Distance = Distance
+		//fmt.Println("startdis添加:", start.Distance)
+		blank[0] = true //以后都是1
 		start.Data = data
 		// fmt.Print("startdta:")
 		// fmt.Print(start.Data)
 		return
 	} else {
-		if distence < start.Distence { //小于头节点
-			var buf1 = start.Distence
+		if Distance < start.Distance { //小于头节点
+			var buf1 = start.Distance
 			var buf2 = start.Data
-			//fmt.Println("startdistence更换:", start.Distence, "->", distence)
-			start.Distence = distence
+			//fmt.Println("startDistance更换:", start.Distance, "->", Distance)
+			start.Distance = Distance
 
 			start.Data = data
 			// fmt.Print("startdta:")
 			// fmt.Print(start.Data)
-			start.add_s(buf1, buf2) //递归
+			start.add_s(blank, buf1, buf2) //递归
 			return
 		}
 		var index *Node = start.Next
-
+		var i = 0
 		for ; index != nil; index = index.Next {
-
-			if index.index == false { //节点没满
-
-				index.Distence = distence
-				//fmt.Println("indexdistence添加:", index.Distence)
+			i++
+			if blank[i] == false { //节点没满
+				index.Distance = Distance
+				//fmt.Println("indexDistance添加:", index.Distance)
 				// fmt.Print("indexdta:")
 				// fmt.Print(index.Data)
-				index.index = true
+				blank[i] = true
 				index.Data = data
 				return
 			} else {
-				if distence < index.Distence {
-					var buf1 = index.Distence
+				if Distance < index.Distance {
+					var buf1 = index.Distance
 					var buf2 = index.Data
-					//fmt.Println("indexdistence更换:", index.Distence, "->", distence)
-					index.Distence = distence
+					//fmt.Println("indexDistance更换:", index.Distance, "->", Distance)
+					index.Distance = Distance
 
 					index.Data = data
 					// fmt.Print("indexdta:")
 					// fmt.Print(index.Data)
-					start.add_s(buf1, buf2)
+					start.add_s(blank, buf1, buf2)
 					return
 				} else {
 					continue
@@ -485,8 +452,8 @@ func (start *Node_first) add_s(distence float64, data []float64) { //??这里引
 // 创建结果空数组
 // 遍历每个向量
 // 	暴力或者faiss:
-// 		遍历每个数据库向量，通过distence都用nodefirst.add一次（这里把distence覆盖了，
-// 		因为之前distence代表距离类中心距离，现在我查询后不需要这个，
+// 		遍历每个数据库向量，通过Distance都用nodefirst.add一次（这里把Distance覆盖了，
+// 		因为之前Distance代表距离类中心距离，现在我查询后不需要这个，
 // 		就让他等于我第n个向量和db的距离然后用这个距离比较实现add核心（没满，满了）
 // 	faiss:
 // 	v1:对每个要找的向量，搜索最近的nodefirst,记录下index，通过根节点find找到这个first,start add所有的
@@ -536,26 +503,26 @@ func (start *Node_first) delete_node(i int) string { //找到第i个节点,中�
 	return st
 }
 func Add(req Request) string {
-	for i := 0; i < len(req.Xlzu.Xl); i++ {
+	for i := 0; i < len(req.Vectors.Vector); i++ {
 		var min_index int
-		var distence1 float64
+		var Distance1 float64
 		var j int
 		for indexi := DB.Head; indexi != nil; indexi = indexi.Next_first { //对每个向量遍历所有数据库
 			if indexi == DB.Head { //初始化
-				distence1 = distence(indexi.Data, req.Xlzu.Xl[i])
+				Distance1 = Distance(indexi.Data, req.Vectors.Vector[i])
 				j++
 				min_index = j
 				continue
-			} else if distence(req.Xlzu.Xl[i], indexi.Data) < distence1 {
-				distence1 = distence(req.Xlzu.Xl[i], indexi.Data)
+			} else if Distance(req.Vectors.Vector[i], indexi.Data) < Distance1 {
+				Distance1 = Distance(req.Vectors.Vector[i], indexi.Data)
 				min_index = j + 1
 			}
 			j++
 		}
 		var nodefirst = DB.Head.find_nodefirst(min_index)
 		var node Node
-		node.Data = req.Xlzu.Xl[i]
-		node.Distence = distence1
+		node.Data = req.Vectors.Vector[i]
+		node.Distance = Distance1
 		nodefirst.add(&node)
 	}
 	var st string = "添加成功"
@@ -568,32 +535,35 @@ func Length_first() {
 		fmt.Println("第", i, "个nodefirst的长度为：", index.length())
 	}
 }
+
 func Search(req Request) Result { //第几个分片
 	var result Result
-	var start Node_first = result_init(req.Topk, len(req.Xlzu.Xl), len(req.Xlzu.Xl[0])) //创建结果
-	var start_fb = &start
-	var distence1 float64
-	// for index6 := start_fb; index6 != nil; index6 = index6.Next_first {
+	var start Node_first = result_init(req.Topk, len(req.Vectors.Vector), len(req.Vectors.Vector[0])) //创建结果
+	var start_copy = &start
+	var Distance1 float64
+
+	// for index6 := start_copy; index6 != nil; index6 = index6.Next_first {
 	// 	fmt.Print(1)
 	// }
-	for i := 0; i < len(req.Xlzu.Xl); i++ { //遍历每个向量
+	for i := 0; i < len(req.Vectors.Vector); i++ { //遍历每个向量
+		var blank = make([]bool, start.length())
 		if req.Request_type == 1 { //暴力
 
 			for indexi := DB.Head; indexi != nil; indexi = indexi.Next_first { //对每个向量遍历所有数据库
-				//fmt.Print(distence(req.Xlzu.Xl[i], indexi.Data))
-				start_fb.add_s(distence(req.Xlzu.Xl[i], indexi.Data), indexi.Data)
+				//fmt.Print(Distance(req.Vectors.Vector[i], indexi.Data))
+				start_copy.add_s(blank, Distance(req.Vectors.Vector[i], indexi.Data), indexi.Data)
 				for indexj := indexi.Next; indexj != nil; indexj = indexj.Next {
-					distence1 = distence(req.Xlzu.Xl[i], indexj.Data)
-					//fmt.Print(distence1)
-					start_fb.add_s(distence1, indexj.Data)
+					Distance1 = Distance(req.Vectors.Vector[i], indexj.Data)
+					//fmt.Print(Distance1)
+					start_copy.add_s(blank, Distance1, indexj.Data)
 				}
-				// if distence(req.Xlzu.Xl[i], indexi.Data) > max {
-				// 	max = distence(req.Xlzu.Xl[i], indexi.Data)
+				// if Distance(req.Vectors.Vector[i], indexi.Data) > max {
+				// 	max = Distance(req.Vectors.Vector[i], indexi.Data)
 				// 	result.VectorGroup[i][j] = indexi.Data //第一个数据特殊处理
-				// 	result.TopkDistence[i]
+				// 	result.TopkDistance[i]
 				// }
 				// for indexj := indexi.Next; indexj.Next != nil; indexj = indexj.Next {
-				// 	//distence(req.Xlzu.Xl[i],
+				// 	//Distance(req.Vectors.Vector[i],
 
 				// }
 			}
@@ -601,34 +571,34 @@ func Search(req Request) Result { //第几个分片
 		} else if req.Request_type == 2 { //用kmean// 	v1:对每个要找的向量，
 			//搜索最近的nodefirst,记录下index，通过根节点find找到这个first,start add所有的
 			var min_index int
-			var distence1 float64
+			var Distance1 float64
 			var j int
 			for indexi := DB.Head; indexi != nil; indexi = indexi.Next_first { //对每个向量遍历所有数据库
 				if indexi == DB.Head { //初始化
-					distence1 = distence(indexi.Data, req.Xlzu.Xl[i])
+					Distance1 = Distance(indexi.Data, req.Vectors.Vector[i])
 					j++
 					min_index = j
 					continue
-				} else if distence(req.Xlzu.Xl[i], indexi.Data) < distence1 {
-					distence1 = distence(req.Xlzu.Xl[i], indexi.Data)
+				} else if Distance(req.Vectors.Vector[i], indexi.Data) < Distance1 {
+					Distance1 = Distance(req.Vectors.Vector[i], indexi.Data)
 					min_index = j + 1
 				}
 				j++
 			}
 			var index_nf = DB.Head.find_nodefirst(min_index)
-			start_fb.add_s(distence(index_nf.Data, req.Xlzu.Xl[i]), index_nf.Data)
+			start_copy.add_s(blank, Distance(index_nf.Data, req.Vectors.Vector[i]), index_nf.Data)
 			for index_node := index_nf.Next; index_node != nil; index_node = index_node.Next {
-				start_fb.add_s(distence(index_node.Data, req.Xlzu.Xl[i]), index_node.Data)
+				start_copy.add_s(blank[:], Distance(index_node.Data, req.Vectors.Vector[i]), index_node.Data)
 			}
 
 		}
-		start_fb = start_fb.Next_first
+		start_copy = start_copy.Next_first
 	}
 
 	// for indexi := &start; indexi != nil; indexi = indexi.Next_first {
-	// 	fmt.Print(indexi.Distence)
+	// 	fmt.Print(indexi.Distance)
 	// 	for indexj := indexi.Next; indexj != nil; indexj = indexj.Next {
-	// 		fmt.Print(indexj.Distence)
+	// 		fmt.Print(indexj.Distance)
 	// 	}
 	// }
 	ResuToint(&start, &result) //结果返回整形
@@ -639,13 +609,13 @@ func ResuToint(start *Node_first, result *Result) {
 	var i int //第i+1个向量,行
 	var j int = 1
 	for indexi := start; indexi != nil; indexi = indexi.Next_first {
-		//fmt.Print(indexi.Distence)
+		//fmt.Print(indexi.Distance)
 		//fmt.Print("一列")
 		j = 1
 		var topk_ls []float64
 		var group1 [][]float64
 		var group2 []float64
-		topk_ls = append(topk_ls, indexi.Distence) //first特殊处理
+		topk_ls = append(topk_ls, indexi.Distance) //first特殊处理
 		for k := 0; k < len(indexi.Data); k++ {
 			group2 = append(group2, indexi.Data[k])
 		}
@@ -656,9 +626,9 @@ func ResuToint(start *Node_first, result *Result) {
 		i++
 
 		for indexj := indexi.Next; indexj != nil; indexj = indexj.Next {
-			//fmt.Print(indexj.Distence)
+			//fmt.Print(indexj.Distance)
 			// fmt.Print("一行")
-			topk_ls = append(topk_ls, indexj.Distence)
+			topk_ls = append(topk_ls, indexj.Distance)
 			for k := 0; k < len(indexj.Data); k++ {
 				group2 = append(group2, indexj.Data[k])
 			}
@@ -666,7 +636,7 @@ func ResuToint(start *Node_first, result *Result) {
 			group2 = nil
 			j++
 		}
-		result.TopkDistence = append(result.TopkDistence, topk_ls)
+		result.TopkDistance = append(result.TopkDistance, topk_ls)
 		topk_ls = nil
 		result.VectorGroup = append(result.VectorGroup, group1)
 		group1 = nil
@@ -676,14 +646,14 @@ func ResuToint(start *Node_first, result *Result) {
 
 // for i := 0; nodefirst_fuben.Next_first != nil; i++ {
 // 	var min int = 10000 //一个较大的值，否则需要一个bool每次都得判断
-// 	if min > distence(nodefirst.Data, a) {
-// 		min = distence(nodefirst.Data, a)
+// 	if min > Distance(nodefirst.Data, a) {
+// 		min = Distance(nodefirst.Data, a)
 // 		lie = i
 // 	}
 // 	nodefirst_fuben = nodefirst_fuben.Next_first
 // } //可以考虑在这一列附近的列，但是可能要保存列之间的距离
 // index_nodefirst = head_nodefirst.find_nodefirst(index + 1)
-// newnode.Distence = min
+// newnode.Distance = min
 // index_nodefirst.add(newnode)
 
 // start_fuben = *start_fuben.Next_first
@@ -734,13 +704,13 @@ func ResuToint(start *Node_first, result *Result) {
 
 // }
 
-func transpose(A [][]int) [][]int {
-	B := make([][]int, len(A[0]))
-	for i := 0; i < len(A[0]); i++ {
-		B[i] = make([]int, len(A))
-		for j := 0; j < len(A); j++ {
-			B[i][j] = A[j][i]
-		}
-	}
-	return B
-}
+// func transpose(A [][]int) [][]int {
+// 	B := make([][]int, len(A[0]))
+// 	for i := 0; i < len(A[0]); i++ {
+// 		B[i] = make([]int, len(A))
+// 		for j := 0; j < len(A); j++ {
+// 			B[i][j] = A[j][i]
+// 		}
+// 	}
+// 	return B
+// }

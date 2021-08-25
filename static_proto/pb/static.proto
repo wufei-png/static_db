@@ -1,0 +1,35 @@
+
+syntax = "proto3";
+
+option go_package = "./;pb";
+
+
+package static_proto;
+
+// The greeting service definition.
+service Search {
+  // Sends a greeting
+  rpc SearchInDB (SearchRequest) returns (SearchReply) {}
+}
+
+// The request message containing the user's name.
+message SearchRequest {
+  int32 search_type = 1;
+  Vectors vectors=2;
+  int32 topk =3;
+}
+message SearchReply {
+  VectorsGroup vectorsgroup = 1;
+  Vectors distancetopk = 2;
+}
+message Vector{
+  repeated double vector=1;
+}
+message Vectors{
+  repeated Vector vectors=1;
+}
+message VectorsGroup{
+repeated Vectors vectorgroup=1;
+} 
+// The response message containing the greetings
+
