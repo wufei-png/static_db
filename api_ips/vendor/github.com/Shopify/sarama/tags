@@ -1,0 +1,1333 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AddBlock	fetch_request.go	/^func (r *FetchRequest) AddBlock(topic string, partitionID int32, fetchOffset int64, maxBytes int32) {$/;"	f
+AddBlock	offset_commit_request.go	/^func (r *OffsetCommitRequest) AddBlock(topic string, partitionID int32, offset int64, timestamp int64, metadata string) {$/;"	f
+AddBlock	offset_fetch_response.go	/^func (r *OffsetFetchResponse) AddBlock(topic string, partition int32, block *OffsetFetchResponseBlock) {$/;"	f
+AddBlock	offset_request.go	/^func (r *OffsetRequest) AddBlock(topic string, partitionID int32, time int64, maxOffsets int32) {$/;"	f
+AddBroker	metadata_response.go	/^func (r *MetadataResponse) AddBroker(addr string, id int32) {$/;"	f
+AddError	fetch_response.go	/^func (r *FetchResponse) AddError(topic string, partition int32, err KError) {$/;"	f
+AddError	offset_commit_response.go	/^func (r *OffsetCommitResponse) AddError(topic string, partition int32, kerror KError) {$/;"	f
+AddGroup	describe_groups_request.go	/^func (r *DescribeGroupsRequest) AddGroup(group string) {$/;"	f
+AddGroupAssignment	sync_group_request.go	/^func (r *SyncGroupRequest) AddGroupAssignment(memberId string, memberAssignment []byte) {$/;"	f
+AddGroupAssignmentMember	sync_group_request.go	/^func (r *SyncGroupRequest) AddGroupAssignmentMember(memberId string, memberAssignment *ConsumerGroupMemberAssignment) error {$/;"	f
+AddGroupProtocol	join_group_request.go	/^func (r *JoinGroupRequest) AddGroupProtocol(name string, metadata []byte) {$/;"	f
+AddGroupProtocolMetadata	join_group_request.go	/^func (r *JoinGroupRequest) AddGroupProtocolMetadata(name string, metadata *ConsumerGroupMemberMetadata) error {$/;"	f
+AddMessage	fetch_response.go	/^func (r *FetchResponse) AddMessage(topic string, partition int32, key, value Encoder, offset int64) {$/;"	f
+AddMessage	produce_request.go	/^func (r *ProduceRequest) AddMessage(topic string, partition int32, msg *Message) {$/;"	f
+AddPartition	offset_fetch_request.go	/^func (r *OffsetFetchRequest) AddPartition(topic string, partitionID int32) {$/;"	f
+AddSet	produce_request.go	/^func (r *ProduceRequest) AddSet(topic string, partition int32, set *MessageSet) {$/;"	f
+AddTopic	metadata_response.go	/^func (r *MetadataResponse) AddTopic(topic string, err KError) *TopicMetadata {$/;"	f
+AddTopicPartition	metadata_response.go	/^func (r *MetadataResponse) AddTopicPartition(topic string, partition, brokerID int32, replicas, isr []int32, err KError) {$/;"	f
+AddTopicPartition	offset_response.go	/^func (r *OffsetResponse) AddTopicPartition(topic string, partition int32, offset int64) {$/;"	f
+AddTopicPartition	produce_response.go	/^func (r *ProduceResponse) AddTopicPartition(topic string, partition int32, err KError) {$/;"	f
+Addr	broker.go	/^func (b *Broker) Addr() string {$/;"	f
+Addr	mockbroker.go	/^func (b *MockBroker) Addr() string {$/;"	f
+AnyOffset	mocks/mocks.go	/^const AnyOffset int64 = -1000$/;"	c
+ApiVersions	broker.go	/^func (b *Broker) ApiVersions(request *ApiVersionsRequest) (*ApiVersionsResponse, error) {$/;"	f
+ApiVersionsRequest	api_versions_request.go	/^type ApiVersionsRequest struct {$/;"	t
+ApiVersionsResponse	api_versions_response.go	/^type ApiVersionsResponse struct {$/;"	t
+ApiVersionsResponseBlock	api_versions_response.go	/^type ApiVersionsResponseBlock struct {$/;"	t
+AsyncClose	async_producer.go	/^func (p *asyncProducer) AsyncClose() {$/;"	f
+AsyncClose	consumer.go	/^func (child *partitionConsumer) AsyncClose() {$/;"	f
+AsyncClose	mocks/async_producer.go	/^func (mp *AsyncProducer) AsyncClose() {$/;"	f
+AsyncClose	mocks/consumer.go	/^func (pc *PartitionConsumer) AsyncClose() {$/;"	f
+AsyncClose	offset_manager.go	/^func (pom *partitionOffsetManager) AsyncClose() {$/;"	f
+AsyncProducer	async_producer.go	/^type AsyncProducer interface {$/;"	t
+AsyncProducer	mocks/async_producer.go	/^type AsyncProducer struct {$/;"	t
+BenchmarkProducerLarge	functional_producer_test.go	/^func BenchmarkProducerLarge(b *testing.B) {$/;"	f
+BenchmarkProducerMedium	functional_producer_test.go	/^func BenchmarkProducerMedium(b *testing.B) {$/;"	f
+BenchmarkProducerMediumSnappy	functional_producer_test.go	/^func BenchmarkProducerMediumSnappy(b *testing.B) {$/;"	f
+BenchmarkProducerSmall	functional_producer_test.go	/^func BenchmarkProducerSmall(b *testing.B) {$/;"	f
+BenchmarkProducerSmallSinglePartition	functional_producer_test.go	/^func BenchmarkProducerSmallSinglePartition(b *testing.B) {$/;"	f
+Broker	broker.go	/^type Broker struct {$/;"	t
+BrokerID	mockbroker.go	/^func (b *MockBroker) BrokerID() int32 {$/;"	f
+Brokers	client.go	/^func (client *client) Brokers() []*Broker {$/;"	f
+ByteEncoder	utils.go	/^type ByteEncoder []byte$/;"	t
+Client	client.go	/^type Client interface {$/;"	t
+Close	async_producer.go	/^func (p *asyncProducer) Close() error {$/;"	f
+Close	broker.go	/^func (b *Broker) Close() error {$/;"	f
+Close	client.go	/^func (client *client) Close() error {$/;"	f
+Close	consumer.go	/^func (c *consumer) Close() error {$/;"	f
+Close	consumer.go	/^func (child *partitionConsumer) Close() error {$/;"	f
+Close	examples/http_server/http_server.go	/^func (s *Server) Close() error {$/;"	f
+Close	mockbroker.go	/^func (b *MockBroker) Close() {$/;"	f
+Close	mocks/async_producer.go	/^func (mp *AsyncProducer) Close() error {$/;"	f
+Close	mocks/consumer.go	/^func (c *Consumer) Close() error {$/;"	f
+Close	mocks/consumer.go	/^func (pc *PartitionConsumer) Close() error {$/;"	f
+Close	mocks/sync_producer.go	/^func (sp *SyncProducer) Close() error {$/;"	f
+Close	offset_manager.go	/^func (om *offsetManager) Close() error {$/;"	f
+Close	offset_manager.go	/^func (pom *partitionOffsetManager) Close() error {$/;"	f
+Close	sync_producer.go	/^func (sp *syncProducer) Close() error {$/;"	f
+Closed	client.go	/^func (client *client) Closed() bool {$/;"	f
+CommitOffset	broker.go	/^func (b *Broker) CommitOffset(request *OffsetCommitRequest) (*OffsetCommitResponse, error) {$/;"	f
+CompressionCodec	message.go	/^type CompressionCodec int8$/;"	t
+CompressionGZIP	message.go	/^	CompressionNone   CompressionCodec = 0$/;"	c
+CompressionLZ4	message.go	/^	CompressionSnappy CompressionCodec = 2$/;"	c
+CompressionNone	message.go	/^const ($/;"	c
+CompressionSnappy	message.go	/^	CompressionGZIP   CompressionCodec = 1$/;"	c
+Config	client.go	/^func (client *client) Config() *Config {$/;"	f
+Config	config.go	/^type Config struct {$/;"	t
+ConfigurationError	errors.go	/^type ConfigurationError string$/;"	t
+Connected	broker.go	/^func (b *Broker) Connected() (bool, error) {$/;"	f
+ConsumePartition	consumer.go	/^func (c *consumer) ConsumePartition(topic string, partition int32, offset int64) (PartitionConsumer, error) {$/;"	f
+ConsumePartition	mocks/consumer.go	/^func (c *Consumer) ConsumePartition(topic string, partition int32, offset int64) (sarama.PartitionConsumer, error) {$/;"	f
+Consumer	consumer.go	/^type Consumer interface {$/;"	t
+Consumer	mocks/consumer.go	/^type Consumer struct {$/;"	t
+ConsumerError	consumer.go	/^type ConsumerError struct {$/;"	t
+ConsumerErrors	consumer.go	/^type ConsumerErrors []*ConsumerError$/;"	t
+ConsumerGroupMemberAssignment	consumer_group_members.go	/^type ConsumerGroupMemberAssignment struct {$/;"	t
+ConsumerGroupMemberMetadata	consumer_group_members.go	/^type ConsumerGroupMemberMetadata struct {$/;"	t
+ConsumerMessage	consumer.go	/^type ConsumerMessage struct {$/;"	t
+ConsumerMetadataRequest	consumer_metadata_request.go	/^type ConsumerMetadataRequest struct {$/;"	t
+ConsumerMetadataResponse	consumer_metadata_response.go	/^type ConsumerMetadataResponse struct {$/;"	t
+Coordinator	client.go	/^func (client *client) Coordinator(consumerGroup string) (*Broker, error) {$/;"	f
+DescribeGroups	broker.go	/^func (b *Broker) DescribeGroups(request *DescribeGroupsRequest) (*DescribeGroupsResponse, error) {$/;"	f
+DescribeGroupsRequest	describe_groups_request.go	/^type DescribeGroupsRequest struct {$/;"	t
+DescribeGroupsResponse	describe_groups_response.go	/^type DescribeGroupsResponse struct {$/;"	t
+Encode	async_producer_test.go	/^func (f flakyEncoder) Encode() ([]byte, error) {$/;"	f
+Encode	examples/http_server/http_server.go	/^func (ale *accessLogEntry) Encode() ([]byte, error) {$/;"	f
+Encode	utils.go	/^func (b ByteEncoder) Encode() ([]byte, error) {$/;"	f
+Encode	utils.go	/^func (s StringEncoder) Encode() ([]byte, error) {$/;"	f
+Encoder	utils.go	/^type Encoder interface {$/;"	t
+ErrAlreadyConnected	errors.go	/^var ErrAlreadyConnected = errors.New("kafka: broker connection already initiated")$/;"	v
+ErrBrokerNotAvailable	errors.go	/^	ErrRequestTimedOut                 KError = 7$/;"	c
+ErrClosedClient	errors.go	/^var ErrClosedClient = errors.New("kafka: tried to use a client that was closed")$/;"	v
+ErrClusterAuthorizationFailed	errors.go	/^	ErrGroupAuthorizationFailed        KError = 30$/;"	c
+ErrConsumerCoordinatorNotAvailable	errors.go	/^	ErrOffsetsLoadInProgress           KError = 14$/;"	c
+ErrGroupAuthorizationFailed	errors.go	/^	ErrTopicAuthorizationFailed        KError = 29$/;"	c
+ErrIllegalGeneration	errors.go	/^	ErrInvalidRequiredAcks             KError = 21$/;"	c
+ErrIllegalSASLState	errors.go	/^	ErrUnsupportedSASLMechanism        KError = 33$/;"	c
+ErrIncompleteResponse	errors.go	/^var ErrIncompleteResponse = errors.New("kafka: response did not contain all the expected topic\/partition blocks")$/;"	v
+ErrInconsistentGroupProtocol	errors.go	/^	ErrIllegalGeneration               KError = 22$/;"	c
+ErrInsufficientData	errors.go	/^var ErrInsufficientData = errors.New("kafka: insufficient data to decode packet, more bytes expected")$/;"	v
+ErrInvalidCommitOffsetSize	errors.go	/^	ErrRebalanceInProgress             KError = 27$/;"	c
+ErrInvalidConfig	errors.go	/^	ErrInvalidReplicaAssignment        KError = 39$/;"	c
+ErrInvalidGroupId	errors.go	/^	ErrInconsistentGroupProtocol       KError = 23$/;"	c
+ErrInvalidMessage	errors.go	/^	ErrOffsetOutOfRange                KError = 1$/;"	c
+ErrInvalidMessageSize	errors.go	/^	ErrUnknownTopicOrPartition         KError = 3$/;"	c
+ErrInvalidPartition	errors.go	/^var ErrInvalidPartition = errors.New("kafka: partitioner returned an invalid partition index")$/;"	v
+ErrInvalidPartitions	errors.go	/^	ErrTopicAlreadyExists              KError = 36$/;"	c
+ErrInvalidReplicaAssignment	errors.go	/^	ErrInvalidReplicationFactor        KError = 38$/;"	c
+ErrInvalidReplicationFactor	errors.go	/^	ErrInvalidPartitions               KError = 37$/;"	c
+ErrInvalidRequest	errors.go	/^	ErrNotController                   KError = 41$/;"	c
+ErrInvalidRequiredAcks	errors.go	/^	ErrNotEnoughReplicasAfterAppend    KError = 20$/;"	c
+ErrInvalidSessionTimeout	errors.go	/^	ErrUnknownMemberId                 KError = 25$/;"	c
+ErrInvalidTimestamp	errors.go	/^	ErrClusterAuthorizationFailed      KError = 31$/;"	c
+ErrInvalidTopic	errors.go	/^	ErrNotCoordinatorForConsumer       KError = 16$/;"	c
+ErrLeaderNotAvailable	errors.go	/^	ErrInvalidMessageSize              KError = 4$/;"	c
+ErrMessageSetSizeTooLarge	errors.go	/^	ErrInvalidTopic                    KError = 17$/;"	c
+ErrMessageSizeTooLarge	errors.go	/^	ErrReplicaNotAvailable             KError = 9$/;"	c
+ErrMessageTooLarge	errors.go	/^var ErrMessageTooLarge = errors.New("kafka: message is larger than Consumer.Fetch.Max")$/;"	v
+ErrNetworkException	errors.go	/^	ErrOffsetMetadataTooLarge          KError = 12$/;"	c
+ErrNoError	errors.go	/^const ($/;"	c
+ErrNotConnected	errors.go	/^var ErrNotConnected = errors.New("kafka: broker not connected")$/;"	v
+ErrNotController	errors.go	/^	ErrInvalidConfig                   KError = 40$/;"	c
+ErrNotCoordinatorForConsumer	errors.go	/^	ErrConsumerCoordinatorNotAvailable KError = 15$/;"	c
+ErrNotEnoughReplicas	errors.go	/^	ErrMessageSetSizeTooLarge          KError = 18$/;"	c
+ErrNotEnoughReplicasAfterAppend	errors.go	/^	ErrNotEnoughReplicas               KError = 19$/;"	c
+ErrNotLeaderForPartition	errors.go	/^	ErrLeaderNotAvailable              KError = 5$/;"	c
+ErrOffsetMetadataTooLarge	errors.go	/^	ErrStaleControllerEpochCode        KError = 11$/;"	c
+ErrOffsetOutOfRange	errors.go	/^	ErrUnknown                         KError = -1$/;"	c
+ErrOffsetsLoadInProgress	errors.go	/^	ErrNetworkException                KError = 13$/;"	c
+ErrOutOfBrokers	errors.go	/^var ErrOutOfBrokers = errors.New("kafka: client has run out of available brokers to talk to (Is your cluster reachable?)")$/;"	v
+ErrPolicyViolation	errors.go	/^	ErrUnsupportedForMessageFormat     KError = 43$/;"	c
+ErrRebalanceInProgress	errors.go	/^	ErrInvalidSessionTimeout           KError = 26$/;"	c
+ErrReplicaNotAvailable	errors.go	/^	ErrBrokerNotAvailable              KError = 8$/;"	c
+ErrRequestTimedOut	errors.go	/^	ErrNotLeaderForPartition           KError = 6$/;"	c
+ErrShuttingDown	errors.go	/^var ErrShuttingDown = errors.New("kafka: message received by producer in process of shutting down")$/;"	v
+ErrStaleControllerEpochCode	errors.go	/^	ErrMessageSizeTooLarge             KError = 10$/;"	c
+ErrTopicAlreadyExists	errors.go	/^	ErrUnsupportedVersion              KError = 35$/;"	c
+ErrTopicAuthorizationFailed	errors.go	/^	ErrInvalidCommitOffsetSize         KError = 28$/;"	c
+ErrUnknown	errors.go	/^	ErrNoError                         KError = 0$/;"	c
+ErrUnknownMemberId	errors.go	/^	ErrInvalidGroupId                  KError = 24$/;"	c
+ErrUnknownTopicOrPartition	errors.go	/^	ErrInvalidMessage                  KError = 2$/;"	c
+ErrUnsupportedForMessageFormat	errors.go	/^	ErrInvalidRequest                  KError = 42$/;"	c
+ErrUnsupportedSASLMechanism	errors.go	/^	ErrInvalidTimestamp                KError = 32$/;"	c
+ErrUnsupportedVersion	errors.go	/^	ErrIllegalSASLState                KError = 34$/;"	c
+Error	async_producer.go	/^func (pe ProducerError) Error() string {$/;"	f
+Error	async_producer.go	/^func (pe ProducerErrors) Error() string {$/;"	f
+Error	consumer.go	/^func (ce ConsumerError) Error() string {$/;"	f
+Error	consumer.go	/^func (ce ConsumerErrors) Error() string {$/;"	f
+Error	errors.go	/^func (err ConfigurationError) Error() string {$/;"	f
+Error	errors.go	/^func (err KError) Error() string {$/;"	f
+Error	errors.go	/^func (err PacketDecodingError) Error() string {$/;"	f
+Error	errors.go	/^func (err PacketEncodingError) Error() string {$/;"	f
+ErrorReporter	mocks/mocks.go	/^type ErrorReporter interface {$/;"	t
+Errorf	mocks/async_producer_test.go	/^func (trm *testReporterMock) Errorf(format string, args ...interface{}) {$/;"	f
+Errors	async_producer.go	/^func (p *asyncProducer) Errors() <-chan *ProducerError {$/;"	f
+Errors	consumer.go	/^func (child *partitionConsumer) Errors() <-chan *ConsumerError {$/;"	f
+Errors	mocks/async_producer.go	/^func (mp *AsyncProducer) Errors() <-chan *sarama.ProducerError {$/;"	f
+Errors	mocks/consumer.go	/^func (pc *PartitionConsumer) Errors() <-chan *sarama.ConsumerError {$/;"	f
+Errors	offset_manager.go	/^func (pom *partitionOffsetManager) Errors() <-chan *ConsumerError {$/;"	f
+ExampleAsyncProducer_goroutines	async_producer_test.go	/^func ExampleAsyncProducer_goroutines() {$/;"	f
+ExampleAsyncProducer_select	async_producer_test.go	/^func ExampleAsyncProducer_select() {$/;"	f
+ExampleBroker	broker_test.go	/^func ExampleBroker() {$/;"	f
+ExampleConfig_metrics	config_test.go	/^func ExampleConfig_metrics() {$/;"	f
+ExampleConsumer	consumer_test.go	/^func ExampleConsumer() {$/;"	f
+ExamplePartitioner_manual	partitioner_test.go	/^func ExamplePartitioner_manual() {$/;"	f
+ExamplePartitioner_per_topic	partitioner_test.go	/^func ExamplePartitioner_per_topic() {$/;"	f
+ExamplePartitioner_random	partitioner_test.go	/^func ExamplePartitioner_random() {$/;"	f
+ExampleSyncProducer	sync_producer_test.go	/^func ExampleSyncProducer() {$/;"	f
+ExpectConsumePartition	mocks/consumer.go	/^func (c *Consumer) ExpectConsumePartition(topic string, partition int32, offset int64) *PartitionConsumer {$/;"	f
+ExpectErrorsDrainedOnClose	mocks/consumer.go	/^func (pc *PartitionConsumer) ExpectErrorsDrainedOnClose() {$/;"	f
+ExpectInputAndFail	mocks/async_producer.go	/^func (mp *AsyncProducer) ExpectInputAndFail(err error) {$/;"	f
+ExpectInputAndSucceed	mocks/async_producer.go	/^func (mp *AsyncProducer) ExpectInputAndSucceed() {$/;"	f
+ExpectInputWithCheckerFunctionAndFail	mocks/async_producer.go	/^func (mp *AsyncProducer) ExpectInputWithCheckerFunctionAndFail(cf ValueChecker, err error) {$/;"	f
+ExpectInputWithCheckerFunctionAndSucceed	mocks/async_producer.go	/^func (mp *AsyncProducer) ExpectInputWithCheckerFunctionAndSucceed(cf ValueChecker) {$/;"	f
+ExpectMessagesDrainedOnClose	mocks/consumer.go	/^func (pc *PartitionConsumer) ExpectMessagesDrainedOnClose() {$/;"	f
+ExpectSendMessageAndFail	mocks/sync_producer.go	/^func (sp *SyncProducer) ExpectSendMessageAndFail(err error) {$/;"	f
+ExpectSendMessageAndSucceed	mocks/sync_producer.go	/^func (sp *SyncProducer) ExpectSendMessageAndSucceed() {$/;"	f
+ExpectSendMessageWithCheckerFunctionAndFail	mocks/sync_producer.go	/^func (sp *SyncProducer) ExpectSendMessageWithCheckerFunctionAndFail(cf ValueChecker, err error) {$/;"	f
+ExpectSendMessageWithCheckerFunctionAndSucceed	mocks/sync_producer.go	/^func (sp *SyncProducer) ExpectSendMessageWithCheckerFunctionAndSucceed(cf ValueChecker) {$/;"	f
+Fetch	broker.go	/^func (b *Broker) Fetch(request *FetchRequest) (*FetchResponse, error) {$/;"	f
+FetchOffset	broker.go	/^func (b *Broker) FetchOffset(request *OffsetFetchRequest) (*OffsetFetchResponse, error) {$/;"	f
+FetchRequest	fetch_request.go	/^type FetchRequest struct {$/;"	t
+FetchResponse	fetch_response.go	/^type FetchResponse struct {$/;"	t
+FetchResponseBlock	fetch_response.go	/^type FetchResponseBlock struct {$/;"	t
+For	mockresponses.go	/^func (mc *MockSequence) For(reqBody versionedDecoder) (res encoder) {$/;"	f
+For	mockresponses.go	/^func (mfr *MockFetchResponse) For(reqBody versionedDecoder) encoder {$/;"	f
+For	mockresponses.go	/^func (mmr *MockMetadataResponse) For(reqBody versionedDecoder) encoder {$/;"	f
+For	mockresponses.go	/^func (mor *MockOffsetResponse) For(reqBody versionedDecoder) encoder {$/;"	f
+For	mockresponses.go	/^func (mr *MockConsumerMetadataResponse) For(reqBody versionedDecoder) encoder {$/;"	f
+For	mockresponses.go	/^func (mr *MockOffsetCommitResponse) For(reqBody versionedDecoder) encoder {$/;"	f
+For	mockresponses.go	/^func (mr *MockOffsetFetchResponse) For(reqBody versionedDecoder) encoder {$/;"	f
+For	mockresponses.go	/^func (mr *MockProduceResponse) For(reqBody versionedDecoder) encoder {$/;"	f
+For	mockresponses.go	/^func (mw *MockWrapper) For(reqBody versionedDecoder) (res encoder) {$/;"	f
+GetAvailableOffsets	broker.go	/^func (b *Broker) GetAvailableOffsets(request *OffsetRequest) (*OffsetResponse, error) {$/;"	f
+GetBlock	fetch_response.go	/^func (r *FetchResponse) GetBlock(topic string, partition int32) *FetchResponseBlock {$/;"	f
+GetBlock	offset_fetch_response.go	/^func (r *OffsetFetchResponse) GetBlock(topic string, partition int32) *OffsetFetchResponseBlock {$/;"	f
+GetBlock	offset_response.go	/^func (r *OffsetResponse) GetBlock(topic string, partition int32) *OffsetResponseBlock {$/;"	f
+GetBlock	produce_response.go	/^func (r *ProduceResponse) GetBlock(topic string, partition int32) *ProduceResponseBlock {$/;"	f
+GetConsumerMetadata	broker.go	/^func (b *Broker) GetConsumerMetadata(request *ConsumerMetadataRequest) (*ConsumerMetadataResponse, error) {$/;"	f
+GetMemberAssignment	describe_groups_response.go	/^func (gmd *GroupMemberDescription) GetMemberAssignment() (*ConsumerGroupMemberAssignment, error) {$/;"	f
+GetMemberAssignment	sync_group_response.go	/^func (r *SyncGroupResponse) GetMemberAssignment() (*ConsumerGroupMemberAssignment, error) {$/;"	f
+GetMemberMetadata	describe_groups_response.go	/^func (gmd *GroupMemberDescription) GetMemberMetadata() (*ConsumerGroupMemberMetadata, error) {$/;"	f
+GetMembers	join_group_response.go	/^func (r *JoinGroupResponse) GetMembers() (map[string]ConsumerGroupMemberMetadata, error) {$/;"	f
+GetMetadata	broker.go	/^func (b *Broker) GetMetadata(request *MetadataRequest) (*MetadataResponse, error) {$/;"	f
+GetOffset	client.go	/^func (client *client) GetOffset(topic string, partitionID int32, time int64) (int64, error) {$/;"	f
+GroupDescription	describe_groups_response.go	/^type GroupDescription struct {$/;"	t
+GroupGenerationUndefined	offset_commit_request.go	/^const GroupGenerationUndefined = -1$/;"	c
+GroupMemberDescription	describe_groups_response.go	/^type GroupMemberDescription struct {$/;"	t
+GroupProtocol	join_group_request.go	/^type GroupProtocol struct {$/;"	t
+Handler	examples/http_server/http_server.go	/^func (s *Server) Handler() http.Handler {$/;"	f
+Heartbeat	broker.go	/^func (b *Broker) Heartbeat(request *HeartbeatRequest) (*HeartbeatResponse, error) {$/;"	f
+HeartbeatRequest	heartbeat_request.go	/^type HeartbeatRequest struct {$/;"	t
+HeartbeatResponse	heartbeat_response.go	/^type HeartbeatResponse struct {$/;"	t
+HighWaterMarkOffset	consumer.go	/^func (child *partitionConsumer) HighWaterMarkOffset() int64 {$/;"	f
+HighWaterMarkOffset	mocks/consumer.go	/^func (pc *PartitionConsumer) HighWaterMarkOffset() int64 {$/;"	f
+HighWaterMarks	consumer.go	/^func (c *consumer) HighWaterMarks() map[string]map[int32]int64 {$/;"	f
+HighWaterMarks	mocks/consumer.go	/^func (c *Consumer) HighWaterMarks() map[string]map[int32]int64 {$/;"	f
+History	mockbroker.go	/^func (b *MockBroker) History() []RequestResponse {$/;"	f
+ID	broker.go	/^func (b *Broker) ID() int32 {$/;"	f
+InSyncReplicas	client.go	/^func (client *client) InSyncReplicas(topic string, partitionID int32) ([]int32, error) {$/;"	f
+Input	async_producer.go	/^func (p *asyncProducer) Input() chan<- *ProducerMessage {$/;"	f
+Input	mocks/async_producer.go	/^func (mp *AsyncProducer) Input() chan<- *sarama.ProducerMessage {$/;"	f
+IsAtLeast	utils.go	/^func (v KafkaVersion) IsAtLeast(other KafkaVersion) bool {$/;"	f
+JoinGroup	broker.go	/^func (b *Broker) JoinGroup(request *JoinGroupRequest) (*JoinGroupResponse, error) {$/;"	f
+JoinGroupRequest	join_group_request.go	/^type JoinGroupRequest struct {$/;"	t
+JoinGroupResponse	join_group_response.go	/^type JoinGroupResponse struct {$/;"	t
+KError	errors.go	/^type KError int16$/;"	t
+KafkaProxies	functional_test.go	/^	ZKProxies    = []string{"zk1", "zk2", "zk3", "zk4", "zk5"}$/;"	v
+KafkaVersion	utils.go	/^type KafkaVersion struct {$/;"	t
+Leader	client.go	/^func (client *client) Leader(topic string, partitionID int32) (*Broker, error) {$/;"	f
+LeaveGroup	broker.go	/^func (b *Broker) LeaveGroup(request *LeaveGroupRequest) (*LeaveGroupResponse, error) {$/;"	f
+LeaveGroupRequest	leave_group_request.go	/^type LeaveGroupRequest struct {$/;"	t
+LeaveGroupResponse	leave_group_response.go	/^type LeaveGroupResponse struct {$/;"	t
+Len	utils.go	/^func (slice int32Slice) Len() int {$/;"	f
+Length	async_producer_test.go	/^func (f flakyEncoder) Length() int {$/;"	f
+Length	examples/http_server/http_server.go	/^func (ale *accessLogEntry) Length() int {$/;"	f
+Length	utils.go	/^func (b ByteEncoder) Length() int {$/;"	f
+Length	utils.go	/^func (s StringEncoder) Length() int {$/;"	f
+Less	utils.go	/^func (slice int32Slice) Less(i, j int) bool {$/;"	f
+ListGroups	broker.go	/^func (b *Broker) ListGroups(request *ListGroupsRequest) (*ListGroupsResponse, error) {$/;"	f
+ListGroupsRequest	list_groups_request.go	/^type ListGroupsRequest struct {$/;"	t
+ListGroupsResponse	list_groups_response.go	/^type ListGroupsResponse struct {$/;"	t
+Logger	sarama.go	/^var Logger StdLogger = log.New(ioutil.Discard, "[Sarama] ", log.LstdFlags)$/;"	v
+ManagePartition	offset_manager.go	/^func (om *offsetManager) ManagePartition(topic string, partition int32) (PartitionOffsetManager, error) {$/;"	f
+MarkOffset	offset_manager.go	/^func (pom *partitionOffsetManager) MarkOffset(offset int64, metadata string) {$/;"	f
+MaxRequestSize	sarama.go	/^var MaxRequestSize int32 = 100 * 1024 * 1024$/;"	v
+MaxResponseSize	sarama.go	/^var MaxResponseSize int32 = 100 * 1024 * 1024$/;"	v
+Message	message.go	/^type Message struct {$/;"	t
+MessageBlock	message_set.go	/^type MessageBlock struct {$/;"	t
+MessageSet	message_set.go	/^type MessageSet struct {$/;"	t
+Messages	consumer.go	/^func (child *partitionConsumer) Messages() <-chan *ConsumerMessage {$/;"	f
+Messages	message_set.go	/^func (msb *MessageBlock) Messages() []*MessageBlock {$/;"	f
+Messages	mocks/consumer.go	/^func (pc *PartitionConsumer) Messages() <-chan *sarama.ConsumerMessage {$/;"	f
+MetadataRequest	metadata_request.go	/^type MetadataRequest struct {$/;"	t
+MetadataResponse	metadata_response.go	/^type MetadataResponse struct {$/;"	t
+MockBroker	mockbroker.go	/^type MockBroker struct {$/;"	t
+MockConsumerMetadataResponse	mockresponses.go	/^type MockConsumerMetadataResponse struct {$/;"	t
+MockFetchResponse	mockresponses.go	/^type MockFetchResponse struct {$/;"	t
+MockMetadataResponse	mockresponses.go	/^type MockMetadataResponse struct {$/;"	t
+MockOffsetCommitResponse	mockresponses.go	/^type MockOffsetCommitResponse struct {$/;"	t
+MockOffsetFetchResponse	mockresponses.go	/^type MockOffsetFetchResponse struct {$/;"	t
+MockOffsetResponse	mockresponses.go	/^type MockOffsetResponse struct {$/;"	t
+MockProduceResponse	mockresponses.go	/^type MockProduceResponse struct {$/;"	t
+MockResponse	mockresponses.go	/^type MockResponse interface {$/;"	t
+MockSequence	mockresponses.go	/^type MockSequence struct {$/;"	t
+MockWrapper	mockresponses.go	/^type MockWrapper struct {$/;"	t
+NewAsyncProducer	async_producer.go	/^func NewAsyncProducer(addrs []string, conf *Config) (AsyncProducer, error) {$/;"	f
+NewAsyncProducer	mocks/async_producer.go	/^func NewAsyncProducer(t ErrorReporter, config *sarama.Config) *AsyncProducer {$/;"	f
+NewAsyncProducerFromClient	async_producer.go	/^func NewAsyncProducerFromClient(client Client) (AsyncProducer, error) {$/;"	f
+NewBroker	broker.go	/^func NewBroker(addr string) *Broker {$/;"	f
+NewClient	client.go	/^func NewClient(addrs []string, conf *Config) (Client, error) {$/;"	f
+NewConfig	config.go	/^func NewConfig() *Config {$/;"	f
+NewConsumer	consumer.go	/^func NewConsumer(addrs []string, config *Config) (Consumer, error) {$/;"	f
+NewConsumer	mocks/consumer.go	/^func NewConsumer(t ErrorReporter, config *sarama.Config) *Consumer {$/;"	f
+NewConsumerFromClient	consumer.go	/^func NewConsumerFromClient(client Client) (Consumer, error) {$/;"	f
+NewCustomHashPartitioner	partitioner.go	/^func NewCustomHashPartitioner(hasher func() hash.Hash32) PartitionerConstructor {$/;"	f
+NewHashPartitioner	partitioner.go	/^func NewHashPartitioner(topic string) Partitioner {$/;"	f
+NewManualPartitioner	partitioner.go	/^func NewManualPartitioner(topic string) Partitioner {$/;"	f
+NewMockBroker	mockbroker.go	/^func NewMockBroker(t TestReporter, brokerID int32) *MockBroker {$/;"	f
+NewMockBrokerAddr	mockbroker.go	/^func NewMockBrokerAddr(t TestReporter, brokerID int32, addr string) *MockBroker {$/;"	f
+NewMockConsumerMetadataResponse	mockresponses.go	/^func NewMockConsumerMetadataResponse(t TestReporter) *MockConsumerMetadataResponse {$/;"	f
+NewMockFetchResponse	mockresponses.go	/^func NewMockFetchResponse(t TestReporter, batchSize int) *MockFetchResponse {$/;"	f
+NewMockMetadataResponse	mockresponses.go	/^func NewMockMetadataResponse(t TestReporter) *MockMetadataResponse {$/;"	f
+NewMockOffsetCommitResponse	mockresponses.go	/^func NewMockOffsetCommitResponse(t TestReporter) *MockOffsetCommitResponse {$/;"	f
+NewMockOffsetFetchResponse	mockresponses.go	/^func NewMockOffsetFetchResponse(t TestReporter) *MockOffsetFetchResponse {$/;"	f
+NewMockOffsetResponse	mockresponses.go	/^func NewMockOffsetResponse(t TestReporter) *MockOffsetResponse {$/;"	f
+NewMockProduceResponse	mockresponses.go	/^func NewMockProduceResponse(t TestReporter) *MockProduceResponse {$/;"	f
+NewMockSequence	mockresponses.go	/^func NewMockSequence(responses ...interface{}) *MockSequence {$/;"	f
+NewMockWrapper	mockresponses.go	/^func NewMockWrapper(res encoder) *MockWrapper {$/;"	f
+NewOffsetManagerFromClient	offset_manager.go	/^func NewOffsetManagerFromClient(group string, client Client) (OffsetManager, error) {$/;"	f
+NewRandomPartitioner	partitioner.go	/^func NewRandomPartitioner(topic string) Partitioner {$/;"	f
+NewRoundRobinPartitioner	partitioner.go	/^func NewRoundRobinPartitioner(topic string) Partitioner {$/;"	f
+NewSyncProducer	mocks/sync_producer.go	/^func NewSyncProducer(t ErrorReporter, config *sarama.Config) *SyncProducer {$/;"	f
+NewSyncProducer	sync_producer.go	/^func NewSyncProducer(addrs []string, config *Config) (SyncProducer, error) {$/;"	f
+NewSyncProducerFromClient	sync_producer.go	/^func NewSyncProducerFromClient(client Client) (SyncProducer, error) {$/;"	f
+NextOffset	offset_manager.go	/^func (pom *partitionOffsetManager) NextOffset() (int64, string) {$/;"	f
+NoResponse	produce_request.go	/^const ($/;"	c
+OffsetCommitRequest	offset_commit_request.go	/^type OffsetCommitRequest struct {$/;"	t
+OffsetCommitResponse	offset_commit_response.go	/^type OffsetCommitResponse struct {$/;"	t
+OffsetFetchRequest	offset_fetch_request.go	/^type OffsetFetchRequest struct {$/;"	t
+OffsetFetchResponse	offset_fetch_response.go	/^type OffsetFetchResponse struct {$/;"	t
+OffsetFetchResponseBlock	offset_fetch_response.go	/^type OffsetFetchResponseBlock struct {$/;"	t
+OffsetManager	offset_manager.go	/^type OffsetManager interface {$/;"	t
+OffsetNewest	client.go	/^const ($/;"	c
+OffsetOldest	client.go	/^	OffsetNewest int64 = -1$/;"	c
+OffsetRequest	offset_request.go	/^type OffsetRequest struct {$/;"	t
+OffsetResponse	offset_response.go	/^type OffsetResponse struct {$/;"	t
+OffsetResponseBlock	offset_response.go	/^type OffsetResponseBlock struct {$/;"	t
+Open	broker.go	/^func (b *Broker) Open(conf *Config) error {$/;"	f
+PacketDecodingError	errors.go	/^type PacketDecodingError struct {$/;"	t
+PacketEncodingError	errors.go	/^type PacketEncodingError struct {$/;"	t
+PanicHandler	sarama.go	/^var PanicHandler func(interface{})$/;"	v
+Partition	async_producer_test.go	/^func (p testPartitioner) Partition(msg *ProducerMessage, numPartitions int32) (int32, error) {$/;"	f
+Partition	partitioner.go	/^func (p *hashPartitioner) Partition(message *ProducerMessage, numPartitions int32) (int32, error) {$/;"	f
+Partition	partitioner.go	/^func (p *manualPartitioner) Partition(message *ProducerMessage, numPartitions int32) (int32, error) {$/;"	f
+Partition	partitioner.go	/^func (p *randomPartitioner) Partition(message *ProducerMessage, numPartitions int32) (int32, error) {$/;"	f
+Partition	partitioner.go	/^func (p *roundRobinPartitioner) Partition(message *ProducerMessage, numPartitions int32) (int32, error) {$/;"	f
+PartitionConsumer	consumer.go	/^type PartitionConsumer interface {$/;"	t
+PartitionConsumer	mocks/consumer.go	/^type PartitionConsumer struct {$/;"	t
+PartitionMetadata	metadata_response.go	/^type PartitionMetadata struct {$/;"	t
+PartitionOffsetManager	offset_manager.go	/^type PartitionOffsetManager interface {$/;"	t
+Partitioner	partitioner.go	/^type Partitioner interface {$/;"	t
+PartitionerConstructor	partitioner.go	/^type PartitionerConstructor func(topic string) Partitioner$/;"	t
+Partitions	client.go	/^func (client *client) Partitions(topic string) ([]int32, error) {$/;"	f
+Partitions	consumer.go	/^func (c *consumer) Partitions(topic string) ([]int32, error) {$/;"	f
+Partitions	mocks/consumer.go	/^func (c *Consumer) Partitions(topic string) ([]int32, error) {$/;"	f
+Port	mockbroker.go	/^func (b *MockBroker) Port() int32 {$/;"	f
+Produce	broker.go	/^func (b *Broker) Produce(request *ProduceRequest) (*ProduceResponse, error) {$/;"	f
+ProduceRequest	produce_request.go	/^type ProduceRequest struct {$/;"	t
+ProduceResponse	produce_response.go	/^type ProduceResponse struct {$/;"	t
+ProduceResponseBlock	produce_response.go	/^type ProduceResponseBlock struct {$/;"	t
+ProducerError	async_producer.go	/^type ProducerError struct {$/;"	t
+ProducerErrors	async_producer.go	/^type ProducerErrors []*ProducerError$/;"	t
+ProducerMessage	async_producer.go	/^type ProducerMessage struct {$/;"	t
+Proxies	functional_test.go	/^	proxyClient  *toxiproxy.Client$/;"	v
+Read	utils.go	/^func (bc *bufConn) Read(b []byte) (n int, err error) {$/;"	f
+ReceiveTime	offset_commit_request.go	/^const ReceiveTime int64 = -1$/;"	c
+RefreshCoordinator	client.go	/^func (client *client) RefreshCoordinator(consumerGroup string) error {$/;"	f
+RefreshMetadata	client.go	/^func (client *client) RefreshMetadata(topics ...string) error {$/;"	f
+Replicas	client.go	/^func (client *client) Replicas(topic string, partitionID int32) ([]int32, error) {$/;"	f
+RequestNotifierFunc	mockbroker.go	/^type RequestNotifierFunc func(bytesRead, bytesWritten int)$/;"	t
+RequestResponse	mockbroker.go	/^type RequestResponse struct {$/;"	t
+RequiredAcks	produce_request.go	/^type RequiredAcks int16$/;"	t
+RequiresConsistency	async_producer_test.go	/^func (p testPartitioner) RequiresConsistency() bool {$/;"	f
+RequiresConsistency	partitioner.go	/^func (p *hashPartitioner) RequiresConsistency() bool {$/;"	f
+RequiresConsistency	partitioner.go	/^func (p *manualPartitioner) RequiresConsistency() bool {$/;"	f
+RequiresConsistency	partitioner.go	/^func (p *randomPartitioner) RequiresConsistency() bool {$/;"	f
+RequiresConsistency	partitioner.go	/^func (p *roundRobinPartitioner) RequiresConsistency() bool {$/;"	f
+ResetOffset	offset_manager.go	/^func (pom *partitionOffsetManager) ResetOffset(offset int64, metadata string) {$/;"	f
+Returns	mockbroker.go	/^func (b *MockBroker) Returns(e encoder) {$/;"	f
+Run	examples/http_server/http_server.go	/^func (s *Server) Run(addr string) error {$/;"	f
+SaslHandshakeRequest	sasl_handshake_request.go	/^type SaslHandshakeRequest struct {$/;"	t
+SaslHandshakeResponse	sasl_handshake_response.go	/^type SaslHandshakeResponse struct {$/;"	t
+SaveProxy	functional_test.go	/^func SaveProxy(t *testing.T, px string) {$/;"	f
+SendMessage	mocks/sync_producer.go	/^func (sp *SyncProducer) SendMessage(msg *sarama.ProducerMessage) (partition int32, offset int64, err error) {$/;"	f
+SendMessage	sync_producer.go	/^func (sp *syncProducer) SendMessage(msg *ProducerMessage) (partition int32, offset int64, err error) {$/;"	f
+SendMessages	mocks/sync_producer.go	/^func (sp *SyncProducer) SendMessages(msgs []*sarama.ProducerMessage) error {$/;"	f
+SendMessages	sync_producer.go	/^func (sp *syncProducer) SendMessages(msgs []*ProducerMessage) error {$/;"	f
+Server	examples/http_server/http_server.go	/^type Server struct {$/;"	t
+SetBroker	mockresponses.go	/^func (mmr *MockMetadataResponse) SetBroker(addr string, brokerID int32) *MockMetadataResponse {$/;"	f
+SetCoordinator	mockresponses.go	/^func (mr *MockConsumerMetadataResponse) SetCoordinator(group string, broker *MockBroker) *MockConsumerMetadataResponse {$/;"	f
+SetError	mockresponses.go	/^func (mr *MockConsumerMetadataResponse) SetError(group string, kerror KError) *MockConsumerMetadataResponse {$/;"	f
+SetError	mockresponses.go	/^func (mr *MockOffsetCommitResponse) SetError(group, topic string, partition int32, kerror KError) *MockOffsetCommitResponse {$/;"	f
+SetError	mockresponses.go	/^func (mr *MockProduceResponse) SetError(topic string, partition int32, kerror KError) *MockProduceResponse {$/;"	f
+SetHandlerByMap	mockbroker.go	/^func (b *MockBroker) SetHandlerByMap(handlerMap map[string]MockResponse) {$/;"	f
+SetHighWaterMark	mockresponses.go	/^func (mfr *MockFetchResponse) SetHighWaterMark(topic string, partition int32, offset int64) *MockFetchResponse {$/;"	f
+SetLatency	mockbroker.go	/^func (b *MockBroker) SetLatency(latency time.Duration) {$/;"	f
+SetLeader	mockresponses.go	/^func (mmr *MockMetadataResponse) SetLeader(topic string, partition, brokerID int32) *MockMetadataResponse {$/;"	f
+SetMessage	mockresponses.go	/^func (mfr *MockFetchResponse) SetMessage(topic string, partition int32, offset int64, msg Encoder) *MockFetchResponse {$/;"	f
+SetNotifier	mockbroker.go	/^func (b *MockBroker) SetNotifier(notifier RequestNotifierFunc) {$/;"	f
+SetOffset	mockresponses.go	/^func (mor *MockOffsetResponse) SetOffset(topic string, partition int32, time, offset int64) *MockOffsetResponse {$/;"	f
+SetOffset	mockresponses.go	/^func (mr *MockOffsetFetchResponse) SetOffset(group, topic string, partition int32, offset int64, metadata string, kerror KError) *MockOffsetFetchResponse {$/;"	f
+SetTopicMetadata	mocks/consumer.go	/^func (c *Consumer) SetTopicMetadata(metadata map[string][]int32) {$/;"	f
+SetVersion	mockresponses.go	/^func (mfr *MockFetchResponse) SetVersion(version int16) *MockFetchResponse {$/;"	f
+StdLogger	sarama.go	/^type StdLogger interface {$/;"	t
+StringEncoder	utils.go	/^type StringEncoder string$/;"	t
+Successes	async_producer.go	/^func (p *asyncProducer) Successes() <-chan *ProducerMessage {$/;"	f
+Successes	mocks/async_producer.go	/^func (mp *AsyncProducer) Successes() <-chan *sarama.ProducerMessage {$/;"	f
+Swap	utils.go	/^func (slice int32Slice) Swap(i, j int) {$/;"	f
+SyncGroup	broker.go	/^func (b *Broker) SyncGroup(request *SyncGroupRequest) (*SyncGroupResponse, error) {$/;"	f
+SyncGroupRequest	sync_group_request.go	/^type SyncGroupRequest struct {$/;"	t
+SyncGroupResponse	sync_group_response.go	/^type SyncGroupResponse struct {$/;"	t
+SyncProducer	mocks/sync_producer.go	/^type SyncProducer struct {$/;"	t
+SyncProducer	sync_producer.go	/^type SyncProducer interface {$/;"	t
+TestAbortPartitionOffsetManager	offset_manager_test.go	/^func TestAbortPartitionOffsetManager(t *testing.T) {$/;"	f
+TestApiVersionsRequest	api_versions_request_test.go	/^func TestApiVersionsRequest(t *testing.T) {$/;"	f
+TestApiVersionsResponse	api_versions_response_test.go	/^func TestApiVersionsResponse(t *testing.T) {$/;"	f
+TestAsyncProducer	async_producer_test.go	/^func TestAsyncProducer(t *testing.T) {$/;"	f
+TestAsyncProducerBrokerBounce	async_producer_test.go	/^func TestAsyncProducerBrokerBounce(t *testing.T) {$/;"	f
+TestAsyncProducerBrokerBounceWithStaleMetadata	async_producer_test.go	/^func TestAsyncProducerBrokerBounceWithStaleMetadata(t *testing.T) {$/;"	f
+TestAsyncProducerCustomPartitioner	async_producer_test.go	/^func TestAsyncProducerCustomPartitioner(t *testing.T) {$/;"	f
+TestAsyncProducerEncoderFailures	async_producer_test.go	/^func TestAsyncProducerEncoderFailures(t *testing.T) {$/;"	f
+TestAsyncProducerFailureRetry	async_producer_test.go	/^func TestAsyncProducerFailureRetry(t *testing.T) {$/;"	f
+TestAsyncProducerFlusherRetryCondition	async_producer_test.go	/^func TestAsyncProducerFlusherRetryCondition(t *testing.T) {$/;"	f
+TestAsyncProducerMultipleBrokers	async_producer_test.go	/^func TestAsyncProducerMultipleBrokers(t *testing.T) {$/;"	f
+TestAsyncProducerMultipleFlushes	async_producer_test.go	/^func TestAsyncProducerMultipleFlushes(t *testing.T) {$/;"	f
+TestAsyncProducerMultipleRetries	async_producer_test.go	/^func TestAsyncProducerMultipleRetries(t *testing.T) {$/;"	f
+TestAsyncProducerNoReturns	async_producer_test.go	/^func TestAsyncProducerNoReturns(t *testing.T) {$/;"	f
+TestAsyncProducerOutOfRetries	async_producer_test.go	/^func TestAsyncProducerOutOfRetries(t *testing.T) {$/;"	f
+TestAsyncProducerRetryShutdown	async_producer_test.go	/^func TestAsyncProducerRetryShutdown(t *testing.T) {$/;"	f
+TestAsyncProducerRetryWithReferenceOpen	async_producer_test.go	/^func TestAsyncProducerRetryWithReferenceOpen(t *testing.T) {$/;"	f
+TestBatchSize	functional_producer_test.go	/^const TestBatchSize = 1000$/;"	c
+TestBrokerAccessors	broker_test.go	/^func TestBrokerAccessors(t *testing.T) {$/;"	f
+TestCachedPartitions	client_test.go	/^func TestCachedPartitions(t *testing.T) {$/;"	f
+TestClientAutorefreshShutdownRace	client_test.go	/^func TestClientAutorefreshShutdownRace(t *testing.T) {$/;"	f
+TestClientCoordinatorWithConsumerOffsetsTopic	client_test.go	/^func TestClientCoordinatorWithConsumerOffsetsTopic(t *testing.T) {$/;"	f
+TestClientCoordinatorWithoutConsumerOffsetsTopic	client_test.go	/^func TestClientCoordinatorWithoutConsumerOffsetsTopic(t *testing.T) {$/;"	f
+TestClientDoesntCachePartitionsForTopicsWithErrors	client_test.go	/^func TestClientDoesntCachePartitionsForTopicsWithErrors(t *testing.T) {$/;"	f
+TestClientGetOffset	client_test.go	/^func TestClientGetOffset(t *testing.T) {$/;"	f
+TestClientMetadata	client_test.go	/^func TestClientMetadata(t *testing.T) {$/;"	f
+TestClientReceivingPartialMetadata	client_test.go	/^func TestClientReceivingPartialMetadata(t *testing.T) {$/;"	f
+TestClientReceivingUnknownTopic	client_test.go	/^func TestClientReceivingUnknownTopic(t *testing.T) {$/;"	f
+TestClientRefreshBehaviour	client_test.go	/^func TestClientRefreshBehaviour(t *testing.T) {$/;"	f
+TestClientResurrectDeadSeeds	client_test.go	/^func TestClientResurrectDeadSeeds(t *testing.T) {$/;"	f
+TestClientSeedBrokers	client_test.go	/^func TestClientSeedBrokers(t *testing.T) {$/;"	f
+TestCollectSuccessfully	examples/http_server/http_server_test.go	/^func TestCollectSuccessfully(t *testing.T) {$/;"	f
+TestCollectionFailure	examples/http_server/http_server_test.go	/^func TestCollectionFailure(t *testing.T) {$/;"	f
+TestConcurrentSyncProducer	sync_producer_test.go	/^func TestConcurrentSyncProducer(t *testing.T) {$/;"	f
+TestConsumerBounceWithReferenceOpen	consumer_test.go	/^func TestConsumerBounceWithReferenceOpen(t *testing.T) {$/;"	f
+TestConsumerClosePartitionWithoutLeader	consumer_test.go	/^func TestConsumerClosePartitionWithoutLeader(t *testing.T) {$/;"	f
+TestConsumerDuplicate	consumer_test.go	/^func TestConsumerDuplicate(t *testing.T) {$/;"	f
+TestConsumerExpiryTicker	consumer_test.go	/^func TestConsumerExpiryTicker(t *testing.T) {$/;"	f
+TestConsumerExtraOffsets	consumer_test.go	/^func TestConsumerExtraOffsets(t *testing.T) {$/;"	f
+TestConsumerGroupMemberAssignment	consumer_group_members_test.go	/^func TestConsumerGroupMemberAssignment(t *testing.T) {$/;"	f
+TestConsumerGroupMemberMetadata	consumer_group_members_test.go	/^func TestConsumerGroupMemberMetadata(t *testing.T) {$/;"	f
+TestConsumerHandlesExpectations	mocks/consumer_test.go	/^func TestConsumerHandlesExpectations(t *testing.T) {$/;"	f
+TestConsumerHighWaterMarkOffset	functional_consumer_test.go	/^func TestConsumerHighWaterMarkOffset(t *testing.T) {$/;"	f
+TestConsumerInterleavedClose	consumer_test.go	/^func TestConsumerInterleavedClose(t *testing.T) {$/;"	f
+TestConsumerInvalidTopic	consumer_test.go	/^func TestConsumerInvalidTopic(t *testing.T) {$/;"	f
+TestConsumerLeaderRefreshError	consumer_test.go	/^func TestConsumerLeaderRefreshError(t *testing.T) {$/;"	f
+TestConsumerMeetsErrorsDrainedExpectation	mocks/consumer_test.go	/^func TestConsumerMeetsErrorsDrainedExpectation(t *testing.T) {$/;"	f
+TestConsumerMetadataRequest	consumer_metadata_request_test.go	/^func TestConsumerMetadataRequest(t *testing.T) {$/;"	f
+TestConsumerMetadataResponseError	consumer_metadata_response_test.go	/^func TestConsumerMetadataResponseError(t *testing.T) {$/;"	f
+TestConsumerMetadataResponseSuccess	consumer_metadata_response_test.go	/^func TestConsumerMetadataResponseSuccess(t *testing.T) {$/;"	f
+TestConsumerNonSequentialOffsets	consumer_test.go	/^func TestConsumerNonSequentialOffsets(t *testing.T) {$/;"	f
+TestConsumerOffsetManual	consumer_test.go	/^func TestConsumerOffsetManual(t *testing.T) {$/;"	f
+TestConsumerOffsetNewest	consumer_test.go	/^func TestConsumerOffsetNewest(t *testing.T) {$/;"	f
+TestConsumerOffsetOutOfRange	consumer_test.go	/^func TestConsumerOffsetOutOfRange(t *testing.T) {$/;"	f
+TestConsumerRebalancingMultiplePartitions	consumer_test.go	/^func TestConsumerRebalancingMultiplePartitions(t *testing.T) {$/;"	f
+TestConsumerRecreate	consumer_test.go	/^func TestConsumerRecreate(t *testing.T) {$/;"	f
+TestConsumerReturnsNonconsumedErrorsOnClose	mocks/consumer_test.go	/^func TestConsumerReturnsNonconsumedErrorsOnClose(t *testing.T) {$/;"	f
+TestConsumerShutsDownOutOfRange	consumer_test.go	/^func TestConsumerShutsDownOutOfRange(t *testing.T) {$/;"	f
+TestConsumerTopicMetadata	mocks/consumer_test.go	/^func TestConsumerTopicMetadata(t *testing.T) {$/;"	f
+TestConsumerUnexpectedTopicMetadata	mocks/consumer_test.go	/^func TestConsumerUnexpectedTopicMetadata(t *testing.T) {$/;"	f
+TestConsumerViolatesMessagesDrainedExpectation	mocks/consumer_test.go	/^func TestConsumerViolatesMessagesDrainedExpectation(t *testing.T) {$/;"	f
+TestConsumerWithExpectationsOnUnconsumedPartition	mocks/consumer_test.go	/^func TestConsumerWithExpectationsOnUnconsumedPartition(t *testing.T) {$/;"	f
+TestConsumerWithWrongOffsetExpectation	mocks/consumer_test.go	/^func TestConsumerWithWrongOffsetExpectation(t *testing.T) {$/;"	f
+TestConsumerWithoutExpectationsOnPartition	mocks/consumer_test.go	/^func TestConsumerWithoutExpectationsOnPartition(t *testing.T) {$/;"	f
+TestDefaultConfigValidates	config_test.go	/^func TestDefaultConfigValidates(t *testing.T) {$/;"	f
+TestDescribeGroupsRequest	describe_groups_request_test.go	/^func TestDescribeGroupsRequest(t *testing.T) {$/;"	f
+TestDescribeGroupsResponse	describe_groups_response_test.go	/^func TestDescribeGroupsResponse(t *testing.T) {$/;"	f
+TestEmptyClientIDConfigValidates	config_test.go	/^func TestEmptyClientIDConfigValidates(t *testing.T) {$/;"	f
+TestEmptyFetchResponse	fetch_response_test.go	/^func TestEmptyFetchResponse(t *testing.T) {$/;"	f
+TestEmptyMetadataResponse	metadata_response_test.go	/^func TestEmptyMetadataResponse(t *testing.T) {$/;"	f
+TestEmptyOffsetCommitResponse	offset_commit_response_test.go	/^func TestEmptyOffsetCommitResponse(t *testing.T) {$/;"	f
+TestEmptyOffsetFetchResponse	offset_fetch_response_test.go	/^func TestEmptyOffsetFetchResponse(t *testing.T) {$/;"	f
+TestEmptyOffsetResponse	offset_response_test.go	/^func TestEmptyOffsetResponse(t *testing.T) {$/;"	f
+TestFetchRequest	fetch_request_test.go	/^func TestFetchRequest(t *testing.T) {$/;"	f
+TestFuncClientCoordinator	functional_client_test.go	/^func TestFuncClientCoordinator(t *testing.T) {$/;"	f
+TestFuncClientMetadata	functional_client_test.go	/^func TestFuncClientMetadata(t *testing.T) {$/;"	f
+TestFuncConnectionFailure	functional_client_test.go	/^func TestFuncConnectionFailure(t *testing.T) {$/;"	f
+TestFuncConsumerOffsetOutOfRange	functional_consumer_test.go	/^func TestFuncConsumerOffsetOutOfRange(t *testing.T) {$/;"	f
+TestFuncMultiPartitionProduce	functional_producer_test.go	/^func TestFuncMultiPartitionProduce(t *testing.T) {$/;"	f
+TestFuncOffsetManager	functional_offset_manager_test.go	/^func TestFuncOffsetManager(t *testing.T) {$/;"	f
+TestFuncProducing	functional_producer_test.go	/^func TestFuncProducing(t *testing.T) {$/;"	f
+TestFuncProducingFlushing	functional_producer_test.go	/^func TestFuncProducingFlushing(t *testing.T) {$/;"	f
+TestFuncProducingGzip	functional_producer_test.go	/^func TestFuncProducingGzip(t *testing.T) {$/;"	f
+TestFuncProducingNoResponse	functional_producer_test.go	/^func TestFuncProducingNoResponse(t *testing.T) {$/;"	f
+TestFuncProducingSnappy	functional_producer_test.go	/^func TestFuncProducingSnappy(t *testing.T) {$/;"	f
+TestFuncProducingToInvalidTopic	functional_producer_test.go	/^func TestFuncProducingToInvalidTopic(t *testing.T) {$/;"	f
+TestGetMetricNameForBroker	metrics_test.go	/^func TestGetMetricNameForBroker(t *testing.T) {$/;"	f
+TestGetOrRegisterHistogram	metrics_test.go	/^func TestGetOrRegisterHistogram(t *testing.T) {$/;"	f
+TestHashPartitioner	partitioner_test.go	/^func TestHashPartitioner(t *testing.T) {$/;"	f
+TestHashPartitionerMinInt32	partitioner_test.go	/^func TestHashPartitionerMinInt32(t *testing.T) {$/;"	f
+TestHashPartitionerWithHasherMinInt32	partitioner_test.go	/^func TestHashPartitionerWithHasherMinInt32(t *testing.T) {$/;"	f
+TestHeartbeatRequest	heartbeat_request_test.go	/^func TestHeartbeatRequest(t *testing.T) {$/;"	f
+TestHeartbeatResponse	heartbeat_response_test.go	/^func TestHeartbeatResponse(t *testing.T) {$/;"	f
+TestInvalidClientIDConfigValidates	config_test.go	/^func TestInvalidClientIDConfigValidates(t *testing.T) {$/;"	f
+TestJoinGroupRequest	join_group_request_test.go	/^func TestJoinGroupRequest(t *testing.T) {$/;"	f
+TestJoinGroupRequestDeprecatedEncode	join_group_request_test.go	/^func TestJoinGroupRequestDeprecatedEncode(t *testing.T) {$/;"	f
+TestJoinGroupRequestOneProtocol	join_group_request_test.go	/^func TestJoinGroupRequestOneProtocol(t *testing.T) {$/;"	f
+TestJoinGroupResponse	join_group_response_test.go	/^func TestJoinGroupResponse(t *testing.T) {$/;"	f
+TestLZ4ConfigValidation	config_test.go	/^func TestLZ4ConfigValidation(t *testing.T) {$/;"	f
+TestLeaveGroupRequest	leave_group_request_test.go	/^func TestLeaveGroupRequest(t *testing.T) {$/;"	f
+TestLeaveGroupResponse	leave_group_response_test.go	/^func TestLeaveGroupResponse(t *testing.T) {$/;"	f
+TestListGroupsRequest	list_groups_request_test.go	/^func TestListGroupsRequest(t *testing.T) {$/;"	f
+TestListGroupsResponse	list_groups_response_test.go	/^func TestListGroupsResponse(t *testing.T) {$/;"	f
+TestManualPartitioner	partitioner_test.go	/^func TestManualPartitioner(t *testing.T) {$/;"	f
+TestMessage	async_producer_test.go	/^const TestMessage = "ABC THE MESSAGE"$/;"	c
+TestMessageDecoding	message_test.go	/^func TestMessageDecoding(t *testing.T) {$/;"	f
+TestMessageDecodingBulkGzip	message_test.go	/^func TestMessageDecodingBulkGzip(t *testing.T) {$/;"	f
+TestMessageDecodingBulkLZ4	message_test.go	/^func TestMessageDecodingBulkLZ4(t *testing.T) {$/;"	f
+TestMessageDecodingBulkSnappy	message_test.go	/^func TestMessageDecodingBulkSnappy(t *testing.T) {$/;"	f
+TestMessageDecodingUnknownVersions	message_test.go	/^func TestMessageDecodingUnknownVersions(t *testing.T) {$/;"	f
+TestMessageDecodingVersion1	message_test.go	/^func TestMessageDecodingVersion1(t *testing.T) {$/;"	f
+TestMessageEncoding	message_test.go	/^func TestMessageEncoding(t *testing.T) {$/;"	f
+TestMetadataRequest	metadata_request_test.go	/^func TestMetadataRequest(t *testing.T) {$/;"	f
+TestMetadataResponseWithBrokers	metadata_response_test.go	/^func TestMetadataResponseWithBrokers(t *testing.T) {$/;"	f
+TestMetadataResponseWithTopics	metadata_response_test.go	/^func TestMetadataResponseWithTopics(t *testing.T) {$/;"	f
+TestMockAsyncProducerImplementsAsyncProducerInterface	mocks/async_producer_test.go	/^func TestMockAsyncProducerImplementsAsyncProducerInterface(t *testing.T) {$/;"	f
+TestMockConsumerImplementsConsumerInterface	mocks/consumer_test.go	/^func TestMockConsumerImplementsConsumerInterface(t *testing.T) {$/;"	f
+TestMockSyncProducerImplementsSyncProducerInterface	mocks/sync_producer_test.go	/^func TestMockSyncProducerImplementsSyncProducerInterface(t *testing.T) {$/;"	f
+TestNewHashPartitionerWithHasher	partitioner_test.go	/^func TestNewHashPartitionerWithHasher(t *testing.T) {$/;"	f
+TestNewOffsetManager	offset_manager_test.go	/^func TestNewOffsetManager(t *testing.T) {$/;"	f
+TestNormalOffsetCommitResponse	offset_commit_response_test.go	/^func TestNormalOffsetCommitResponse(t *testing.T) {$/;"	f
+TestNormalOffsetFetchResponse	offset_fetch_response_test.go	/^func TestNormalOffsetFetchResponse(t *testing.T) {$/;"	f
+TestNormalOffsetResponse	offset_response_test.go	/^func TestNormalOffsetResponse(t *testing.T) {$/;"	f
+TestNormalOffsetResponseV1	offset_response_test.go	/^func TestNormalOffsetResponseV1(t *testing.T) {$/;"	f
+TestOffsetCommitRequestV0	offset_commit_request_test.go	/^func TestOffsetCommitRequestV0(t *testing.T) {$/;"	f
+TestOffsetCommitRequestV1	offset_commit_request_test.go	/^func TestOffsetCommitRequestV1(t *testing.T) {$/;"	f
+TestOffsetCommitRequestV2	offset_commit_request_test.go	/^func TestOffsetCommitRequestV2(t *testing.T) {$/;"	f
+TestOffsetFetchRequest	offset_fetch_request_test.go	/^func TestOffsetFetchRequest(t *testing.T) {$/;"	f
+TestOffsetManagerFetchInitialFail	offset_manager_test.go	/^func TestOffsetManagerFetchInitialFail(t *testing.T) {$/;"	f
+TestOffsetManagerFetchInitialLoadInProgress	offset_manager_test.go	/^func TestOffsetManagerFetchInitialLoadInProgress(t *testing.T) {$/;"	f
+TestOffsetRequest	offset_request_test.go	/^func TestOffsetRequest(t *testing.T) {$/;"	f
+TestOffsetRequestV1	offset_request_test.go	/^func TestOffsetRequestV1(t *testing.T) {$/;"	f
+TestOneMessageFetchResponse	fetch_response_test.go	/^func TestOneMessageFetchResponse(t *testing.T) {$/;"	f
+TestPartitionOffsetManagerCommitErr	offset_manager_test.go	/^func TestPartitionOffsetManagerCommitErr(t *testing.T) {$/;"	f
+TestPartitionOffsetManagerInitialOffset	offset_manager_test.go	/^func TestPartitionOffsetManagerInitialOffset(t *testing.T) {$/;"	f
+TestPartitionOffsetManagerMarkOffset	offset_manager_test.go	/^func TestPartitionOffsetManagerMarkOffset(t *testing.T) {$/;"	f
+TestPartitionOffsetManagerMarkOffsetWithRetention	offset_manager_test.go	/^func TestPartitionOffsetManagerMarkOffsetWithRetention(t *testing.T) {$/;"	f
+TestPartitionOffsetManagerNextOffset	offset_manager_test.go	/^func TestPartitionOffsetManagerNextOffset(t *testing.T) {$/;"	f
+TestPartitionOffsetManagerResetOffset	offset_manager_test.go	/^func TestPartitionOffsetManagerResetOffset(t *testing.T) {$/;"	f
+TestPartitionOffsetManagerResetOffsetWithRetention	offset_manager_test.go	/^func TestPartitionOffsetManagerResetOffsetWithRetention(t *testing.T) {$/;"	f
+TestProduceRequest	produce_request_test.go	/^func TestProduceRequest(t *testing.T) {$/;"	f
+TestProduceResponse	produce_response_test.go	/^func TestProduceResponse(t *testing.T) {$/;"	f
+TestProduceSetAddingMessages	produce_set_test.go	/^func TestProduceSetAddingMessages(t *testing.T) {$/;"	f
+TestProduceSetCompressedRequestBuilding	produce_set_test.go	/^func TestProduceSetCompressedRequestBuilding(t *testing.T) {$/;"	f
+TestProduceSetInitial	produce_set_test.go	/^func TestProduceSetInitial(t *testing.T) {$/;"	f
+TestProduceSetPartitionTracking	produce_set_test.go	/^func TestProduceSetPartitionTracking(t *testing.T) {$/;"	f
+TestProduceSetRequestBuilding	produce_set_test.go	/^func TestProduceSetRequestBuilding(t *testing.T) {$/;"	f
+TestProducerReturnsExpectationsToChannels	mocks/async_producer_test.go	/^func TestProducerReturnsExpectationsToChannels(t *testing.T) {$/;"	f
+TestProducerWithCheckerFunction	mocks/async_producer_test.go	/^func TestProducerWithCheckerFunction(t *testing.T) {$/;"	f
+TestProducerWithTooFewExpectations	mocks/async_producer_test.go	/^func TestProducerWithTooFewExpectations(t *testing.T) {$/;"	f
+TestProducerWithTooManyExpectations	mocks/async_producer_test.go	/^func TestProducerWithTooManyExpectations(t *testing.T) {$/;"	f
+TestRandomPartitioner	partitioner_test.go	/^func TestRandomPartitioner(t *testing.T) {$/;"	f
+TestReporter	mockresponses.go	/^type TestReporter interface {$/;"	t
+TestResponseHeader	response_header_test.go	/^func TestResponseHeader(t *testing.T) {$/;"	f
+TestRoundRobinPartitioner	partitioner_test.go	/^func TestRoundRobinPartitioner(t *testing.T) {$/;"	f
+TestSaslHandshakeRequest	sasl_handshake_request_test.go	/^func TestSaslHandshakeRequest(t *testing.T) {$/;"	f
+TestSaslHandshakeResponse	sasl_handshake_response_test.go	/^func TestSaslHandshakeResponse(t *testing.T) {$/;"	f
+TestSimpleBrokerCommunication	broker_test.go	/^func TestSimpleBrokerCommunication(t *testing.T) {$/;"	f
+TestSimpleClient	client_test.go	/^func TestSimpleClient(t *testing.T) {$/;"	f
+TestSyncGroupRequest	sync_group_request_test.go	/^func TestSyncGroupRequest(t *testing.T) {$/;"	f
+TestSyncGroupResponse	sync_group_response_test.go	/^func TestSyncGroupResponse(t *testing.T) {$/;"	f
+TestSyncProducer	sync_producer_test.go	/^func TestSyncProducer(t *testing.T) {$/;"	f
+TestSyncProducerBatch	sync_producer_test.go	/^func TestSyncProducerBatch(t *testing.T) {$/;"	f
+TestSyncProducerReturnsExpectationsToSendMessage	mocks/sync_producer_test.go	/^func TestSyncProducerReturnsExpectationsToSendMessage(t *testing.T) {$/;"	f
+TestSyncProducerToNonExistingTopic	sync_producer_test.go	/^func TestSyncProducerToNonExistingTopic(t *testing.T) {$/;"	f
+TestSyncProducerWithCheckerFunction	mocks/sync_producer_test.go	/^func TestSyncProducerWithCheckerFunction(t *testing.T) {$/;"	f
+TestSyncProducerWithTooFewExpectations	mocks/sync_producer_test.go	/^func TestSyncProducerWithTooFewExpectations(t *testing.T) {$/;"	f
+TestSyncProducerWithTooManyExpectations	mocks/sync_producer_test.go	/^func TestSyncProducerWithTooManyExpectations(t *testing.T) {$/;"	f
+TestVersionCompare	utils_test.go	/^func TestVersionCompare(t *testing.T) {$/;"	f
+TestWrongPath	examples/http_server/http_server_test.go	/^func TestWrongPath(t *testing.T) {$/;"	f
+TopicMetadata	metadata_response.go	/^type TopicMetadata struct {$/;"	t
+Topics	client.go	/^func (client *client) Topics() ([]string, error) {$/;"	f
+Topics	consumer.go	/^func (c *consumer) Topics() ([]string, error) {$/;"	f
+Topics	mocks/consumer.go	/^func (c *Consumer) Topics() ([]string, error) {$/;"	f
+V0_10_0_0	utils.go	/^	V0_9_0_1   = newKafkaVersion(0, 9, 0, 1)$/;"	v
+V0_10_0_1	utils.go	/^	V0_10_0_0  = newKafkaVersion(0, 10, 0, 0)$/;"	v
+V0_10_1_0	utils.go	/^	V0_10_0_1  = newKafkaVersion(0, 10, 0, 1)$/;"	v
+V0_10_2_0	utils.go	/^	V0_10_1_0  = newKafkaVersion(0, 10, 1, 0)$/;"	v
+V0_8_2_0	utils.go	/^var ($/;"	v
+V0_8_2_1	utils.go	/^	V0_8_2_0   = newKafkaVersion(0, 8, 2, 0)$/;"	v
+V0_8_2_2	utils.go	/^	V0_8_2_1   = newKafkaVersion(0, 8, 2, 1)$/;"	v
+V0_9_0_0	utils.go	/^	V0_8_2_2   = newKafkaVersion(0, 8, 2, 2)$/;"	v
+V0_9_0_1	utils.go	/^	V0_9_0_0   = newKafkaVersion(0, 9, 0, 0)$/;"	v
+VagrantKafkaPeers	functional_test.go	/^	VagrantToxiproxy      = "http:\/\/192.168.100.67:8474"$/;"	c
+VagrantToxiproxy	functional_test.go	/^const ($/;"	c
+VagrantZookeeperPeers	functional_test.go	/^	VagrantKafkaPeers     = "192.168.100.67:9091,192.168.100.67:9092,192.168.100.67:9093,192.168.100.67:9094,192.168.100.67:9095"$/;"	c
+Validate	config.go	/^func (c *Config) Validate() error {$/;"	f
+ValueChecker	mocks/mocks.go	/^type ValueChecker func(val []byte) error$/;"	t
+WaitForAll	produce_request.go	/^	WaitForLocal RequiredAcks = 1$/;"	c
+WaitForLocal	produce_request.go	/^	NoResponse RequiredAcks = 0$/;"	c
+WritablePartitions	client.go	/^func (client *client) WritablePartitions(topic string) ([]int32, error) {$/;"	f
+YieldError	mocks/consumer.go	/^func (pc *PartitionConsumer) YieldError(err error) {$/;"	f
+YieldMessage	mocks/consumer.go	/^func (pc *PartitionConsumer) YieldMessage(msg *sarama.ConsumerMessage) {$/;"	f
+ZKProxies	functional_test.go	/^	Proxies      map[string]*toxiproxy.Proxy$/;"	v
+abandonBroker	offset_manager.go	/^func (om *offsetManager) abandonBroker(bom *brokerOffsetManager) {$/;"	f
+abandonBrokerConnection	async_producer.go	/^func (p *asyncProducer) abandonBrokerConnection(broker *Broker) {$/;"	f
+abandonBrokerConsumer	consumer.go	/^func (c *consumer) abandonBrokerConsumer(brokerWorker *brokerConsumer) {$/;"	f
+abandonPartitionOffsetManager	offset_manager.go	/^func (om *offsetManager) abandonPartitionOffsetManager(pom *partitionOffsetManager) {$/;"	f
+abort	consumer.go	/^func (bc *brokerConsumer) abort(err error) {$/;"	f
+abort	offset_manager.go	/^func (bom *brokerOffsetManager) abort(err error) {$/;"	f
+accessLogEntry	examples/http_server/http_server.go	/^type accessLogEntry struct {$/;"	t
+add	produce_set.go	/^func (ps *produceSet) add(msg *ProducerMessage) error {$/;"	f
+addChild	consumer.go	/^func (c *consumer) addChild(child *partitionConsumer) error {$/;"	f
+addMessage	message_set.go	/^func (ms *MessageSet) addMessage(msg *Message) {$/;"	f
+addr	examples/http_server/http_server.go	/^var ($/;"	v
+allPartitions	client.go	/^const ($/;"	c
+allocateBody	request.go	/^func allocateBody(key, version int16) protocolBody {$/;"	f
+any	client.go	/^func (client *client) any() *Broker {$/;"	f
+apiVersionRequest	api_versions_request_test.go	/^var ($/;"	v
+apiVersionResponse	api_versions_response_test.go	/^var ($/;"	v
+assertMessageOffset	consumer_test.go	/^func assertMessageOffset(t *testing.T, msg *ConsumerMessage, expectedOffset int64) {$/;"	f
+assertPartitioningConsistent	partitioner_test.go	/^func assertPartitioningConsistent(t *testing.T, partitioner Partitioner, message *ProducerMessage, numPartitions int32) {$/;"	f
+asyncProducer	async_producer.go	/^type asyncProducer struct {$/;"	t
+backgroundMetadataUpdater	client.go	/^func (client *client) backgroundMetadataUpdater() {$/;"	f
+baseSaslRequest	sasl_handshake_request_test.go	/^var ($/;"	v
+basicHeartbeatRequest	heartbeat_request_test.go	/^var ($/;"	v
+basicLeaveGroupRequest	leave_group_request_test.go	/^var ($/;"	v
+benchmarkProducer	functional_producer_test.go	/^func benchmarkProducer(b *testing.B, conf *Config, topic string, value Encoder) {$/;"	f
+brokerConsumer	consumer.go	/^type brokerConsumer struct {$/;"	t
+brokerList	tools/kafka-console-consumer/kafka-console-consumer.go	/^var ($/;"	v
+brokerList	tools/kafka-console-partitionconsumer/kafka-console-partitionconsumer.go	/^var ($/;"	v
+brokerList	tools/kafka-console-producer/kafka-console-producer.go	/^var ($/;"	v
+brokerMetrics	broker_test.go	/^type brokerMetrics struct {$/;"	t
+brokerOffsetManager	offset_manager.go	/^type brokerOffsetManager struct {$/;"	t
+brokerProducer	async_producer.go	/^type brokerProducer struct {$/;"	t
+brokerProducerResponse	async_producer.go	/^type brokerProducerResponse struct {$/;"	t
+brokerTestTable	broker_test.go	/^var brokerTestTable = []struct {$/;"	v
+brokers	examples/http_server/http_server.go	/^	addr      = flag.String("addr", ":8080", "The address to bind to")$/;"	v
+brokersNoTopicsMetadataResponse	metadata_response_test.go	/^		0x00, 0x00, 0x00, 0x00}$/;"	v
+bufConn	utils.go	/^type bufConn struct {$/;"	t
+bufferSize	tools/kafka-console-consumer/kafka-console-consumer.go	/^	verbose    = flag.Bool("verbose", false, "Whether to turn on sarama logging")$/;"	v
+buildRequest	produce_set.go	/^func (ps *produceSet) buildRequest() *ProduceRequest {$/;"	f
+byteSize	async_producer.go	/^func (m *ProducerMessage) byteSize() int {$/;"	f
+caFile	examples/http_server/http_server.go	/^	keyFile   = flag.String("key", "", "The optional key file for client authentication")$/;"	v
+cachedCoordinator	client.go	/^func (client *client) cachedCoordinator(consumerGroup string) *Broker {$/;"	f
+cachedLeader	client.go	/^func (client *client) cachedLeader(topic string, partitionID int32) (*Broker, error) {$/;"	f
+cachedMetadata	client.go	/^func (client *client) cachedMetadata(topic string, partitionID int32) *PartitionMetadata {$/;"	f
+cachedPartitions	client.go	/^func (client *client) cachedPartitions(topic string, partitionSet partitionType) []int32 {$/;"	f
+certFile	examples/http_server/http_server.go	/^	verbose   = flag.Bool("verbose", false, "Turn on Sarama logging")$/;"	v
+check	crc32_field.go	/^func (c *crc32Field) check(curOffset int, buf []byte) error {$/;"	f
+check	length_field.go	/^func (l *lengthField) check(curOffset int, buf []byte) error {$/;"	f
+checkKafkaAvailability	functional_test.go	/^func checkKafkaAvailability(t testing.TB) {$/;"	f
+checkKafkaVersion	functional_test.go	/^func checkKafkaVersion(t testing.TB, requiredVersion string) {$/;"	f
+chooseStartingOffset	consumer.go	/^func (child *partitionConsumer) chooseStartingOffset(offset int64) error {$/;"	f
+clear	async_producer.go	/^func (m *ProducerMessage) clear() {$/;"	f
+client	client.go	/^type client struct {$/;"	t
+closeProducer	async_producer_test.go	/^func closeProducer(t *testing.T, p AsyncProducer) {$/;"	f
+collectQueryStringData	examples/http_server/http_server.go	/^func (s *Server) collectQueryStringData() http.Handler {$/;"	f
+compressionCodecMask	message.go	/^const compressionCodecMask int8 = 0x03$/;"	c
+constructRequest	offset_manager.go	/^func (bom *brokerOffsetManager) constructRequest() *OffsetCommitRequest {$/;"	f
+consumer	consumer.go	/^type consumer struct {$/;"	t
+consumerExpectation	mocks/mocks.go	/^type consumerExpectation struct {$/;"	t
+consumerMetadataRequestEmpty	consumer_metadata_request_test.go	/^var ($/;"	v
+consumerMetadataRequestString	consumer_metadata_request_test.go	/^		0x00, 0x00}$/;"	v
+consumerMetadataResponseError	consumer_metadata_response_test.go	/^var ($/;"	v
+consumerMetadataResponseSuccess	consumer_metadata_response_test.go	/^		0x00, 0x00, 0x00, 0x00}$/;"	v
+countHistogramValidator	metrics_test.go	/^func countHistogramValidator(name string, expectedCount int) *metricValidator {$/;"	f
+countMeterValidator	metrics_test.go	/^func countMeterValidator(name string, expectedCount int) *metricValidator {$/;"	f
+crc32Field	crc32_field.go	/^type crc32Field struct {$/;"	t
+createTlsConfiguration	examples/http_server/http_server.go	/^func createTlsConfiguration() (t *tls.Config) {$/;"	f
+decode	api_versions_request.go	/^func (r *ApiVersionsRequest) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	api_versions_response.go	/^func (b *ApiVersionsResponseBlock) decode(pd packetDecoder) error {$/;"	f
+decode	api_versions_response.go	/^func (r *ApiVersionsResponse) decode(pd packetDecoder, version int16) error {$/;"	f
+decode	broker.go	/^func (b *Broker) decode(pd packetDecoder) (err error) {$/;"	f
+decode	consumer_group_members.go	/^func (m *ConsumerGroupMemberAssignment) decode(pd packetDecoder) (err error) {$/;"	f
+decode	consumer_group_members.go	/^func (m *ConsumerGroupMemberMetadata) decode(pd packetDecoder) (err error) {$/;"	f
+decode	consumer_metadata_request.go	/^func (r *ConsumerMetadataRequest) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	consumer_metadata_response.go	/^func (r *ConsumerMetadataResponse) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	describe_groups_request.go	/^func (r *DescribeGroupsRequest) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	describe_groups_response.go	/^func (gd *GroupDescription) decode(pd packetDecoder) (err error) {$/;"	f
+decode	describe_groups_response.go	/^func (gmd *GroupMemberDescription) decode(pd packetDecoder) (err error) {$/;"	f
+decode	describe_groups_response.go	/^func (r *DescribeGroupsResponse) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	encoder_decoder.go	/^func decode(buf []byte, in decoder) error {$/;"	f
+decode	fetch_request.go	/^func (b *fetchRequestBlock) decode(pd packetDecoder) (err error) {$/;"	f
+decode	fetch_request.go	/^func (r *FetchRequest) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	fetch_response.go	/^func (b *FetchResponseBlock) decode(pd packetDecoder) (err error) {$/;"	f
+decode	fetch_response.go	/^func (r *FetchResponse) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	heartbeat_request.go	/^func (r *HeartbeatRequest) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	heartbeat_response.go	/^func (r *HeartbeatResponse) decode(pd packetDecoder, version int16) error {$/;"	f
+decode	join_group_request.go	/^func (p *GroupProtocol) decode(pd packetDecoder) (err error) {$/;"	f
+decode	join_group_request.go	/^func (r *JoinGroupRequest) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	join_group_response.go	/^func (r *JoinGroupResponse) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	leave_group_request.go	/^func (r *LeaveGroupRequest) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	leave_group_response.go	/^func (r *LeaveGroupResponse) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	list_groups_request.go	/^func (r *ListGroupsRequest) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	list_groups_response.go	/^func (r *ListGroupsResponse) decode(pd packetDecoder, version int16) error {$/;"	f
+decode	message.go	/^func (m *Message) decode(pd packetDecoder) (err error) {$/;"	f
+decode	message_set.go	/^func (ms *MessageSet) decode(pd packetDecoder) (err error) {$/;"	f
+decode	message_set.go	/^func (msb *MessageBlock) decode(pd packetDecoder) (err error) {$/;"	f
+decode	metadata_request.go	/^func (r *MetadataRequest) decode(pd packetDecoder, version int16) error {$/;"	f
+decode	metadata_response.go	/^func (pm *PartitionMetadata) decode(pd packetDecoder) (err error) {$/;"	f
+decode	metadata_response.go	/^func (r *MetadataResponse) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	metadata_response.go	/^func (tm *TopicMetadata) decode(pd packetDecoder) (err error) {$/;"	f
+decode	offset_commit_request.go	/^func (b *offsetCommitRequestBlock) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	offset_commit_request.go	/^func (r *OffsetCommitRequest) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	offset_commit_response.go	/^func (r *OffsetCommitResponse) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	offset_fetch_request.go	/^func (r *OffsetFetchRequest) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	offset_fetch_response.go	/^func (b *OffsetFetchResponseBlock) decode(pd packetDecoder) (err error) {$/;"	f
+decode	offset_fetch_response.go	/^func (r *OffsetFetchResponse) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	offset_request.go	/^func (b *offsetRequestBlock) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	offset_request.go	/^func (r *OffsetRequest) decode(pd packetDecoder, version int16) error {$/;"	f
+decode	offset_response.go	/^func (b *OffsetResponseBlock) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	offset_response.go	/^func (r *OffsetResponse) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	produce_request.go	/^func (r *ProduceRequest) decode(pd packetDecoder, version int16) error {$/;"	f
+decode	produce_response.go	/^func (b *ProduceResponseBlock) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	produce_response.go	/^func (r *ProduceResponse) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	request.go	/^func (r *request) decode(pd packetDecoder) (err error) {$/;"	f
+decode	response_header.go	/^func (r *responseHeader) decode(pd packetDecoder) (err error) {$/;"	f
+decode	sasl_handshake_request.go	/^func (r *SaslHandshakeRequest) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	sasl_handshake_response.go	/^func (r *SaslHandshakeResponse) decode(pd packetDecoder, version int16) error {$/;"	f
+decode	sync_group_request.go	/^func (r *SyncGroupRequest) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decode	sync_group_response.go	/^func (r *SyncGroupResponse) decode(pd packetDecoder, version int16) (err error) {$/;"	f
+decodeRequest	request.go	/^func decodeRequest(r io.Reader) (req *request, bytesRead int, err error) {$/;"	f
+decodeSet	message.go	/^func (m *Message) decodeSet() (err error) {$/;"	f
+decoder	encoder_decoder.go	/^type decoder interface {$/;"	t
+defaultClientID	config.go	/^const defaultClientID = "sarama"$/;"	c
+defaultRequestHandler	mockbroker.go	/^func (b *MockBroker) defaultRequestHandler(req *request) (res encoder) {$/;"	f
+deregisterBroker	client.go	/^func (client *client) deregisterBroker(broker *Broker) {$/;"	f
+describeGroupsResponseEmpty	describe_groups_response_test.go	/^var ($/;"	v
+describeGroupsResponsePopulated	describe_groups_response_test.go	/^	}$/;"	v
+dispatch	async_producer.go	/^func (pp *partitionProducer) dispatch() {$/;"	f
+dispatch	async_producer.go	/^func (tp *topicProducer) dispatch() {$/;"	f
+dispatch	consumer.go	/^func (child *partitionConsumer) dispatch() error {$/;"	f
+dispatcher	async_producer.go	/^func (p *asyncProducer) dispatcher() {$/;"	f
+dispatcher	consumer.go	/^func (child *partitionConsumer) dispatcher() {$/;"	f
+doubleDescribeGroupsRequest	describe_groups_request_test.go	/^	}$/;"	v
+dropPartition	produce_set.go	/^func (ps *produceSet) dropPartition(topic string, partition int32) []*ProducerMessage {$/;"	f
+dupInt32Slice	utils.go	/^func dupInt32Slice(input []int32) []int32 {$/;"	f
+eachPartition	produce_set.go	/^func (ps *produceSet) eachPartition(cb func(topic string, partition int32, msgs []*ProducerMessage)) {$/;"	f
+empty	produce_set.go	/^func (ps *produceSet) empty() bool {$/;"	f
+emptyBulkGzipMessage	message_test.go	/^		0, 0, 0, 22, 52, 0, 0, 25, 1, 16, 14, 227, 138, 104, 118, 25, 15, 13, 1, 8, 1, 0, 0, 62, 26, 0}$/;"	v
+emptyBulkLZ4Message	message_test.go	/^		0, 0, 0, 0, 0, 0, 0, 99, 96, 128, 3, 190, 202, 112, 143, 7, 12, 12, 255, 129, 0, 33, 200, 192, 136, 41, 3, 0, 199, 226, 155, 70, 52, 0, 0, 0}$/;"	v
+emptyBulkSnappyMessage	message_test.go	/^	}$/;"	v
+emptyDescribeGroupsRequest	describe_groups_request_test.go	/^var ($/;"	v
+emptyFetchResponse	fetch_response_test.go	/^var ($/;"	v
+emptyGzipMessage	message_test.go	/^		0xFF, 0xFF, 0xFF, 0xFF} \/\/ value$/;"	v
+emptyGzipMessage18	message_test.go	/^		0, 0, 9, 110, 136, 0, 255, 1, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0}$/;"	v
+emptyLZ4Message	message_test.go	/^		0, 0, 0, 0, 0, 0, 255, 1, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0}$/;"	v
+emptyMessage	message_test.go	/^var ($/;"	v
+emptyMetadataResponse	metadata_response_test.go	/^var ($/;"	v
+emptyOffsetCommitResponse	offset_commit_response_test.go	/^var ($/;"	v
+emptyOffsetFetchResponse	offset_fetch_response_test.go	/^var ($/;"	v
+emptyOffsetResponse	offset_response_test.go	/^var ($/;"	v
+emptySyncGroupRequest	sync_group_request_test.go	/^var ($/;"	v
+emptyV1Message	message_test.go	/^		0xFF, 0xFF, 0xFF, 0xFF} \/\/ value$/;"	v
+emptyV2Message	message_test.go	/^		0xFF, 0xFF, 0xFF, 0xFF} \/\/ value$/;"	v
+encode	api_versions_request.go	/^func (r *ApiVersionsRequest) encode(pe packetEncoder) error {$/;"	f
+encode	api_versions_response.go	/^func (b *ApiVersionsResponseBlock) encode(pe packetEncoder) error {$/;"	f
+encode	api_versions_response.go	/^func (r *ApiVersionsResponse) encode(pe packetEncoder) error {$/;"	f
+encode	broker.go	/^func (b *Broker) encode(pe packetEncoder) (err error) {$/;"	f
+encode	broker_test.go	/^func (m mockEncoder) encode(pe packetEncoder) error {$/;"	f
+encode	consumer_group_members.go	/^func (m *ConsumerGroupMemberAssignment) encode(pe packetEncoder) error {$/;"	f
+encode	consumer_group_members.go	/^func (m *ConsumerGroupMemberMetadata) encode(pe packetEncoder) error {$/;"	f
+encode	consumer_metadata_request.go	/^func (r *ConsumerMetadataRequest) encode(pe packetEncoder) error {$/;"	f
+encode	consumer_metadata_response.go	/^func (r *ConsumerMetadataResponse) encode(pe packetEncoder) error {$/;"	f
+encode	describe_groups_request.go	/^func (r *DescribeGroupsRequest) encode(pe packetEncoder) error {$/;"	f
+encode	describe_groups_response.go	/^func (gd *GroupDescription) encode(pe packetEncoder) error {$/;"	f
+encode	describe_groups_response.go	/^func (gmd *GroupMemberDescription) encode(pe packetEncoder) error {$/;"	f
+encode	describe_groups_response.go	/^func (r *DescribeGroupsResponse) encode(pe packetEncoder) error {$/;"	f
+encode	encoder_decoder.go	/^func encode(e encoder, metricRegistry metrics.Registry) ([]byte, error) {$/;"	f
+encode	fetch_request.go	/^func (b *fetchRequestBlock) encode(pe packetEncoder) error {$/;"	f
+encode	fetch_request.go	/^func (r *FetchRequest) encode(pe packetEncoder) (err error) {$/;"	f
+encode	fetch_response.go	/^func (b *FetchResponseBlock) encode(pe packetEncoder) (err error) {$/;"	f
+encode	fetch_response.go	/^func (r *FetchResponse) encode(pe packetEncoder) (err error) {$/;"	f
+encode	heartbeat_request.go	/^func (r *HeartbeatRequest) encode(pe packetEncoder) error {$/;"	f
+encode	heartbeat_response.go	/^func (r *HeartbeatResponse) encode(pe packetEncoder) error {$/;"	f
+encode	join_group_request.go	/^func (p *GroupProtocol) encode(pe packetEncoder) (err error) {$/;"	f
+encode	join_group_request.go	/^func (r *JoinGroupRequest) encode(pe packetEncoder) error {$/;"	f
+encode	join_group_response.go	/^func (r *JoinGroupResponse) encode(pe packetEncoder) error {$/;"	f
+encode	leave_group_request.go	/^func (r *LeaveGroupRequest) encode(pe packetEncoder) error {$/;"	f
+encode	leave_group_response.go	/^func (r *LeaveGroupResponse) encode(pe packetEncoder) error {$/;"	f
+encode	list_groups_request.go	/^func (r *ListGroupsRequest) encode(pe packetEncoder) error {$/;"	f
+encode	list_groups_response.go	/^func (r *ListGroupsResponse) encode(pe packetEncoder) error {$/;"	f
+encode	message.go	/^func (m *Message) encode(pe packetEncoder) error {$/;"	f
+encode	message_set.go	/^func (ms *MessageSet) encode(pe packetEncoder) error {$/;"	f
+encode	message_set.go	/^func (msb *MessageBlock) encode(pe packetEncoder) error {$/;"	f
+encode	metadata_request.go	/^func (r *MetadataRequest) encode(pe packetEncoder) error {$/;"	f
+encode	metadata_response.go	/^func (pm *PartitionMetadata) encode(pe packetEncoder) (err error) {$/;"	f
+encode	metadata_response.go	/^func (r *MetadataResponse) encode(pe packetEncoder) error {$/;"	f
+encode	metadata_response.go	/^func (tm *TopicMetadata) encode(pe packetEncoder) (err error) {$/;"	f
+encode	offset_commit_request.go	/^func (b *offsetCommitRequestBlock) encode(pe packetEncoder, version int16) error {$/;"	f
+encode	offset_commit_request.go	/^func (r *OffsetCommitRequest) encode(pe packetEncoder) error {$/;"	f
+encode	offset_commit_response.go	/^func (r *OffsetCommitResponse) encode(pe packetEncoder) error {$/;"	f
+encode	offset_fetch_request.go	/^func (r *OffsetFetchRequest) encode(pe packetEncoder) (err error) {$/;"	f
+encode	offset_fetch_response.go	/^func (b *OffsetFetchResponseBlock) encode(pe packetEncoder) (err error) {$/;"	f
+encode	offset_fetch_response.go	/^func (r *OffsetFetchResponse) encode(pe packetEncoder) error {$/;"	f
+encode	offset_request.go	/^func (b *offsetRequestBlock) encode(pe packetEncoder, version int16) error {$/;"	f
+encode	offset_request.go	/^func (r *OffsetRequest) encode(pe packetEncoder) error {$/;"	f
+encode	offset_response.go	/^func (b *OffsetResponseBlock) encode(pe packetEncoder, version int16) (err error) {$/;"	f
+encode	offset_response.go	/^func (r *OffsetResponse) encode(pe packetEncoder) (err error) {$/;"	f
+encode	produce_request.go	/^func (r *ProduceRequest) encode(pe packetEncoder) error {$/;"	f
+encode	produce_response.go	/^func (r *ProduceResponse) encode(pe packetEncoder) error {$/;"	f
+encode	request.go	/^func (r *request) encode(pe packetEncoder) (err error) {$/;"	f
+encode	request_test.go	/^func (s *testRequestBody) encode(pe packetEncoder) error {$/;"	f
+encode	sasl_handshake_request.go	/^func (r *SaslHandshakeRequest) encode(pe packetEncoder) error {$/;"	f
+encode	sasl_handshake_response.go	/^func (r *SaslHandshakeResponse) encode(pe packetEncoder) error {$/;"	f
+encode	sync_group_request.go	/^func (r *SyncGroupRequest) encode(pe packetEncoder) error {$/;"	f
+encode	sync_group_response.go	/^func (r *SyncGroupResponse) encode(pe packetEncoder) error {$/;"	f
+encoder	encoder_decoder.go	/^type encoder interface {$/;"	t
+ensureEncoded	examples/http_server/http_server.go	/^func (ale *accessLogEntry) ensureEncoded() {$/;"	f
+errInvalidArrayLength	real_decoder.go	/^var errInvalidArrayLength = PacketDecodingError{"invalid array length"}$/;"	v
+errInvalidByteSliceLength	real_decoder.go	/^var errInvalidByteSliceLength = PacketDecodingError{"invalid byteslice length"}$/;"	v
+errInvalidStringLength	real_decoder.go	/^var errInvalidStringLength = PacketDecodingError{"invalid string length"}$/;"	v
+errInvalidSubsetSize	real_decoder.go	/^var errInvalidSubsetSize = PacketDecodingError{"invalid subset size"}$/;"	v
+errOutOfExpectations	mocks/mocks.go	/^	errProduceSuccess              error = nil$/;"	v
+errPartitionConsumerNotStarted	mocks/mocks.go	/^	errOutOfExpectations                 = errors.New("No more expectations set on mock")$/;"	v
+errProduceSuccess	mocks/mocks.go	/^var ($/;"	v
+errTimedOut	consumer.go	/^var errTimedOut = errors.New("timed out feeding messages to the user") \/\/ not user-facing$/;"	v
+expectResults	async_producer_test.go	/^func expectResults(t *testing.T, p AsyncProducer, successes, errors int) {$/;"	f
+expectationTimeout	mockbroker.go	/^const ($/;"	c
+feed	async_producer_test.go	/^func (p testPartitioner) feed(partition int32) {$/;"	f
+fetchInitialOffset	offset_manager.go	/^func (pom *partitionOffsetManager) fetchInitialOffset(retries int) error {$/;"	f
+fetchNewMessages	consumer.go	/^func (bc *brokerConsumer) fetchNewMessages() (*FetchResponse, error) {$/;"	f
+fetchProxies	functional_test.go	/^func fetchProxies(t testing.TB) {$/;"	f
+fetchRequestBlock	fetch_request.go	/^type fetchRequestBlock struct {$/;"	t
+fetchRequestNoBlocks	fetch_request_test.go	/^var ($/;"	v
+fetchRequestOneBlock	fetch_request_test.go	/^		0x00, 0x00, 0x00, 0x00}$/;"	v
+fetchRequestWithProperties	fetch_request_test.go	/^		0x00, 0x00, 0x00, 0x00}$/;"	v
+fin	async_producer.go	/^	syn      flagSet = 1 << iota \/\/ first message from partitionProducer to brokerProducer$/;"	c
+flagSet	async_producer.go	/^type flagSet int8$/;"	t
+flakyEncoder	async_producer_test.go	/^type flakyEncoder bool$/;"	t
+flushRetryBuffers	async_producer.go	/^func (pp *partitionProducer) flushRetryBuffers() {$/;"	f
+flushToBroker	offset_manager.go	/^func (bom *brokerOffsetManager) flushToBroker() {$/;"	f
+generateRegexpChecker	mocks/async_producer_test.go	/^func generateRegexpChecker(re string) func([]byte) error {$/;"	f
+getArrayLength	real_decoder.go	/^func (rd *realDecoder) getArrayLength() (int, error) {$/;"	f
+getBrokerProducer	async_producer.go	/^func (p *asyncProducer) getBrokerProducer(broker *Broker) chan<- *ProducerMessage {$/;"	f
+getBytes	real_decoder.go	/^func (rd *realDecoder) getBytes() ([]byte, error) {$/;"	f
+getConsumerMetadata	client.go	/^func (client *client) getConsumerMetadata(consumerGroup string, attemptsRemaining int) (*ConsumerMetadataResponse, error) {$/;"	f
+getError	mockresponses.go	/^func (mr *MockOffsetCommitResponse) getError(group, topic string, partition int32) KError {$/;"	f
+getError	mockresponses.go	/^func (mr *MockProduceResponse) getError(topic string, partition int32) KError {$/;"	f
+getHighWaterMark	mockresponses.go	/^func (mfr *MockFetchResponse) getHighWaterMark(topic string, partition int32) int64 {$/;"	f
+getInt16	real_decoder.go	/^func (rd *realDecoder) getInt16() (int16, error) {$/;"	f
+getInt32	real_decoder.go	/^func (rd *realDecoder) getInt32() (int32, error) {$/;"	f
+getInt32Array	real_decoder.go	/^func (rd *realDecoder) getInt32Array() ([]int32, error) {$/;"	f
+getInt64	real_decoder.go	/^func (rd *realDecoder) getInt64() (int64, error) {$/;"	f
+getInt64Array	real_decoder.go	/^func (rd *realDecoder) getInt64Array() ([]int64, error) {$/;"	f
+getInt8	real_decoder.go	/^func (rd *realDecoder) getInt8() (int8, error) {$/;"	f
+getMessage	mockresponses.go	/^func (mfr *MockFetchResponse) getMessage(topic string, partition int32, offset int64) Encoder {$/;"	f
+getMessageCount	mockresponses.go	/^func (mfr *MockFetchResponse) getMessageCount(topic string, partition int32) int {$/;"	f
+getMetricNameForBroker	metrics.go	/^func getMetricNameForBroker(name string, broker *Broker) string {$/;"	f
+getMetricNameForTopic	metrics.go	/^func getMetricNameForTopic(name string, topic string) string {$/;"	f
+getOffset	client.go	/^func (client *client) getOffset(topic string, partitionID int32, time int64) (int64, error) {$/;"	f
+getOffset	mockresponses.go	/^func (mor *MockOffsetResponse) getOffset(topic string, partition int32, time int64) int64 {$/;"	f
+getOrRegisterBrokerHistogram	metrics.go	/^func getOrRegisterBrokerHistogram(name string, broker *Broker, r metrics.Registry) metrics.Histogram {$/;"	f
+getOrRegisterBrokerMeter	metrics.go	/^func getOrRegisterBrokerMeter(name string, broker *Broker, r metrics.Registry) metrics.Meter {$/;"	f
+getOrRegisterHistogram	metrics.go	/^func getOrRegisterHistogram(name string, r metrics.Registry) metrics.Histogram {$/;"	f
+getOrRegisterTopicHistogram	metrics.go	/^func getOrRegisterTopicHistogram(name string, topic string, r metrics.Registry) metrics.Histogram {$/;"	f
+getOrRegisterTopicMeter	metrics.go	/^func getOrRegisterTopicMeter(name string, topic string, r metrics.Registry) metrics.Meter {$/;"	f
+getPartitions	tools/kafka-console-consumer/kafka-console-consumer.go	/^func getPartitions(c sarama.Consumer) ([]int32, error) {$/;"	f
+getString	real_decoder.go	/^func (rd *realDecoder) getString() (string, error) {$/;"	f
+getStringArray	real_decoder.go	/^func (rd *realDecoder) getStringArray() ([]string, error) {$/;"	f
+getSubset	real_decoder.go	/^func (rd *realDecoder) getSubset(length int) (packetDecoder, error) {$/;"	f
+groupMemberAssignment	consumer_group_members_test.go	/^	}$/;"	v
+groupMemberMetadata	consumer_group_members_test.go	/^var ($/;"	v
+handleError	async_producer.go	/^func (bp *brokerProducer) handleError(sent *produceSet, err error) {$/;"	f
+handleError	offset_manager.go	/^func (pom *partitionOffsetManager) handleError(err error) {$/;"	f
+handleErrors	sync_producer.go	/^func (sp *syncProducer) handleErrors() {$/;"	f
+handleRequests	mockbroker.go	/^func (b *MockBroker) handleRequests(conn net.Conn, idx int, wg *sync.WaitGroup) {$/;"	f
+handleResponse	async_producer.go	/^func (bp *brokerProducer) handleResponse(response *brokerProducerResponse) {$/;"	f
+handleResponses	consumer.go	/^func (bc *brokerConsumer) handleResponses() {$/;"	f
+handleSuccess	async_producer.go	/^func (bp *brokerProducer) handleSuccess(sent *produceSet, response *ProduceResponse) {$/;"	f
+handleSuccesses	sync_producer.go	/^func (sp *syncProducer) handleSuccesses() {$/;"	f
+hashPartitioner	partitioner.go	/^type hashPartitioner struct {$/;"	t
+heartbeatResponseNoError	heartbeat_response_test.go	/^var ($/;"	v
+histogramValidator	metrics_test.go	/^func histogramValidator(name string, extraValidator func(*testing.T, metrics.Histogram)) *metricValidator {$/;"	f
+init	functional_test.go	/^func init() {$/;"	f
+initOffsetManager	offset_manager_test.go	/^func initOffsetManager(t *testing.T) (om OffsetManager,$/;"	f
+initPartitionOffsetManager	offset_manager_test.go	/^func initPartitionOffsetManager(t *testing.T, om OffsetManager,$/;"	f
+int32Slice	utils.go	/^type int32Slice []int32$/;"	t
+joinGroupRequestNoProtocols	join_group_request_test.go	/^var ($/;"	v
+joinGroupRequestOneProtocol	join_group_request_test.go	/^	}$/;"	v
+joinGroupResponseLeader	join_group_response_test.go	/^	}$/;"	v
+joinGroupResponseNoError	join_group_response_test.go	/^var ($/;"	v
+joinGroupResponseWithError	join_group_response_test.go	/^	}$/;"	v
+kafkaAvailable	functional_test.go	/^var ($/;"	v
+kafkaBrokers	functional_test.go	/^	kafkaAvailable, kafkaRequired bool$/;"	v
+kafkaRequired	functional_test.go	/^	kafkaAvailable, kafkaRequired bool$/;"	v
+kafkaVersion	functional_test.go	/^type kafkaVersion []int$/;"	t
+key	api_versions_request.go	/^func (r *ApiVersionsRequest) key() int16 {$/;"	f
+key	api_versions_response.go	/^func (r *ApiVersionsResponse) key() int16 {$/;"	f
+key	consumer_metadata_request.go	/^func (r *ConsumerMetadataRequest) key() int16 {$/;"	f
+key	consumer_metadata_response.go	/^func (r *ConsumerMetadataResponse) key() int16 {$/;"	f
+key	describe_groups_request.go	/^func (r *DescribeGroupsRequest) key() int16 {$/;"	f
+key	describe_groups_response.go	/^func (r *DescribeGroupsResponse) key() int16 {$/;"	f
+key	fetch_request.go	/^func (r *FetchRequest) key() int16 {$/;"	f
+key	fetch_response.go	/^func (r *FetchResponse) key() int16 {$/;"	f
+key	heartbeat_request.go	/^func (r *HeartbeatRequest) key() int16 {$/;"	f
+key	heartbeat_response.go	/^func (r *HeartbeatResponse) key() int16 {$/;"	f
+key	join_group_request.go	/^func (r *JoinGroupRequest) key() int16 {$/;"	f
+key	join_group_response.go	/^func (r *JoinGroupResponse) key() int16 {$/;"	f
+key	leave_group_request.go	/^func (r *LeaveGroupRequest) key() int16 {$/;"	f
+key	leave_group_response.go	/^func (r *LeaveGroupResponse) key() int16 {$/;"	f
+key	list_groups_request.go	/^func (r *ListGroupsRequest) key() int16 {$/;"	f
+key	list_groups_response.go	/^func (r *ListGroupsResponse) key() int16 {$/;"	f
+key	metadata_request.go	/^func (r *MetadataRequest) key() int16 {$/;"	f
+key	metadata_response.go	/^func (r *MetadataResponse) key() int16 {$/;"	f
+key	offset_commit_request.go	/^func (r *OffsetCommitRequest) key() int16 {$/;"	f
+key	offset_commit_response.go	/^func (r *OffsetCommitResponse) key() int16 {$/;"	f
+key	offset_fetch_request.go	/^func (r *OffsetFetchRequest) key() int16 {$/;"	f
+key	offset_fetch_response.go	/^func (r *OffsetFetchResponse) key() int16 {$/;"	f
+key	offset_request.go	/^func (r *OffsetRequest) key() int16 {$/;"	f
+key	offset_response.go	/^func (r *OffsetResponse) key() int16 {$/;"	f
+key	produce_request.go	/^func (r *ProduceRequest) key() int16 {$/;"	f
+key	produce_response.go	/^func (r *ProduceResponse) key() int16 {$/;"	f
+key	request_test.go	/^func (s *testRequestBody) key() int16 {$/;"	f
+key	sasl_handshake_request.go	/^func (r *SaslHandshakeRequest) key() int16 {$/;"	f
+key	sasl_handshake_response.go	/^func (r *SaslHandshakeResponse) key() int16 {$/;"	f
+key	sync_group_request.go	/^func (r *SyncGroupRequest) key() int16 {$/;"	f
+key	sync_group_response.go	/^func (r *SyncGroupResponse) key() int16 {$/;"	f
+key	tools/kafka-console-producer/kafka-console-producer.go	/^	topic       = flag.String("topic", "", "REQUIRED: the topic to produce to")$/;"	v
+keyFile	examples/http_server/http_server.go	/^	certFile  = flag.String("certificate", "", "The optional certificate file for client authentication")$/;"	v
+leaveGroupResponseNoError	leave_group_response_test.go	/^var ($/;"	v
+leaveGroupResponseWithError	leave_group_response_test.go	/^	leaveGroupResponseNoError   = []byte{0x00, 0x00}$/;"	v
+lengthField	length_field.go	/^type lengthField struct {$/;"	t
+listGroupsResponseEmpty	list_groups_response_test.go	/^var ($/;"	v
+listGroupsResponseError	list_groups_response_test.go	/^	}$/;"	v
+listGroupsResponseWithConsumer	list_groups_response_test.go	/^	}$/;"	v
+logger	tools/kafka-console-consumer/kafka-console-consumer.go	/^	bufferSize = flag.Int("buffer-size", 256, "The buffer size of the message channel.")$/;"	v
+logger	tools/kafka-console-partitionconsumer/kafka-console-partitionconsumer.go	/^	verbose    = flag.Bool("verbose", false, "Whether to turn on sarama logging")$/;"	v
+logger	tools/kafka-console-producer/kafka-console-producer.go	/^	silent      = flag.Bool("silent", false, "Turn off printing the message's topic, partition, and offset to stdout")$/;"	v
+main	examples/http_server/http_server.go	/^func main() {$/;"	f
+main	examples/http_server/http_server.go	/^package main$/;"	p
+main	examples/http_server/http_server_test.go	/^package main$/;"	p
+main	tools/kafka-console-consumer/kafka-console-consumer.go	/^func main() {$/;"	f
+main	tools/kafka-console-consumer/kafka-console-consumer.go	/^package main$/;"	p
+main	tools/kafka-console-partitionconsumer/kafka-console-partitionconsumer.go	/^func main() {$/;"	f
+main	tools/kafka-console-partitionconsumer/kafka-console-partitionconsumer.go	/^package main$/;"	p
+main	tools/kafka-console-producer/kafka-console-producer.go	/^func main() {$/;"	f
+main	tools/kafka-console-producer/kafka-console-producer.go	/^package main$/;"	p
+mainLoop	offset_manager.go	/^func (bom *brokerOffsetManager) mainLoop() {$/;"	f
+mainLoop	offset_manager.go	/^func (pom *partitionOffsetManager) mainLoop() {$/;"	f
+makeProduceSet	produce_set_test.go	/^func makeProduceSet() (*asyncProducer, *produceSet) {$/;"	f
+manualPartitioner	partitioner.go	/^type manualPartitioner struct{}$/;"	t
+maxPartitionIndex	client.go	/^	writablePartitions$/;"	c
+maxValHistogramValidator	metrics_test.go	/^func maxValHistogramValidator(name string, maxMax int) *metricValidator {$/;"	f
+metadataRequestNoTopics	metadata_request_test.go	/^var ($/;"	v
+metadataRequestOneTopic	metadata_request_test.go	/^		0x00, 0x00, 0x00, 0x00}$/;"	v
+metadataRequestThreeTopics	metadata_request_test.go	/^		0x00, 0x06, 't', 'o', 'p', 'i', 'c', '1'}$/;"	v
+meterValidator	metrics_test.go	/^func meterValidator(name string, extraValidator func(*testing.T, metrics.Meter)) *metricValidator {$/;"	f
+metricRegistry	prep_encoder.go	/^func (pe *prepEncoder) metricRegistry() metrics.Registry {$/;"	f
+metricRegistry	real_encoder.go	/^func (re *realEncoder) metricRegistry() metrics.Registry {$/;"	f
+metricValidator	metrics_test.go	/^type metricValidator struct {$/;"	t
+metricValidators	metrics_test.go	/^type metricValidators []*metricValidator$/;"	t
+metricsAlphaFactor	metrics.go	/^	metricsReservoirSize = 1028$/;"	c
+metricsReservoirSize	metrics.go	/^const ($/;"	c
+minCountHistogramValidator	metrics_test.go	/^func minCountHistogramValidator(name string, minCount int) *metricValidator {$/;"	f
+minCountMeterValidator	metrics_test.go	/^func minCountMeterValidator(name string, minCount int) *metricValidator {$/;"	f
+minMaxHistogramValidator	metrics_test.go	/^func minMaxHistogramValidator(name string, expectedMin int, expectedMax int) *metricValidator {$/;"	f
+minValHistogramValidator	metrics_test.go	/^func minValHistogramValidator(name string, minMin int) *metricValidator {$/;"	f
+minVersion	utils.go	/^	V0_10_2_0  = newKafkaVersion(0, 10, 2, 0)$/;"	v
+mockEncoder	broker_test.go	/^type mockEncoder struct {$/;"	t
+mocks	mocks/async_producer.go	/^package mocks$/;"	p
+mocks	mocks/async_producer_test.go	/^package mocks$/;"	p
+mocks	mocks/consumer.go	/^package mocks$/;"	p
+mocks	mocks/consumer_test.go	/^package mocks$/;"	p
+mocks	mocks/mocks.go	/^package mocks$/;"	p
+mocks	mocks/sync_producer.go	/^package mocks$/;"	p
+mocks	mocks/sync_producer_test.go	/^package mocks$/;"	p
+needsRetry	async_producer.go	/^func (bp *brokerProducer) needsRetry(msg *ProducerMessage) error {$/;"	f
+newAccessLogProducer	examples/http_server/http_server.go	/^func newAccessLogProducer(brokerList []string) sarama.AsyncProducer {$/;"	f
+newBrokerConsumer	consumer.go	/^func (c *consumer) newBrokerConsumer(broker *Broker) *brokerConsumer {$/;"	f
+newBrokerOffsetManager	offset_manager.go	/^func (om *offsetManager) newBrokerOffsetManager(broker *Broker) *brokerOffsetManager {$/;"	f
+newBrokerProducer	async_producer.go	/^func (p *asyncProducer) newBrokerProducer(broker *Broker) chan<- *ProducerMessage {$/;"	f
+newBufConn	utils.go	/^func newBufConn(conn net.Conn) *bufConn {$/;"	f
+newDataCollector	examples/http_server/http_server.go	/^func newDataCollector(brokerList []string) sarama.SyncProducer {$/;"	f
+newHighWatermark	async_producer.go	/^func (pp *partitionProducer) newHighWatermark(hwm int) {$/;"	f
+newKafkaVersion	utils.go	/^func newKafkaVersion(major, minor, veryMinor, patch uint) KafkaVersion {$/;"	f
+newMetricValidators	metrics_test.go	/^func newMetricValidators() metricValidators {$/;"	f
+newPartitionOffsetManager	offset_manager.go	/^func (om *offsetManager) newPartitionOffsetManager(topic string, partition int32) (*partitionOffsetManager, error) {$/;"	f
+newPartitionProducer	async_producer.go	/^func (p *asyncProducer) newPartitionProducer(topic string, partition int32) chan<- *ProducerMessage {$/;"	f
+newProduceSet	produce_set.go	/^func newProduceSet(parent *asyncProducer) *produceSet {$/;"	f
+newSyncProducerFromAsyncProducer	sync_producer.go	/^func newSyncProducerFromAsyncProducer(p *asyncProducer) *syncProducer {$/;"	f
+newTestReporterMock	mocks/async_producer_test.go	/^func newTestReporterMock() *testReporterMock {$/;"	f
+newTopicProducer	async_producer.go	/^func (p *asyncProducer) newTopicProducer(topic string) chan<- *ProducerMessage {$/;"	f
+none	utils.go	/^type none struct{}$/;"	t
+normalOffsetResponse	offset_response_test.go	/^		0x00, 0x00, 0x00, 0x00}$/;"	v
+normalOffsetResponseV1	offset_response_test.go	/^		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x06}$/;"	v
+offset	prep_encoder.go	/^func (pe *prepEncoder) offset() int {$/;"	f
+offset	real_encoder.go	/^func (re *realEncoder) offset() int {$/;"	f
+offset	tools/kafka-console-consumer/kafka-console-consumer.go	/^	partitions = flag.String("partitions", "all", "The partitions to consume, can be 'all' or comma-separated numbers")$/;"	v
+offset	tools/kafka-console-partitionconsumer/kafka-console-partitionconsumer.go	/^	partition  = flag.Int("partition", -1, "REQUIRED: the partition to consume")$/;"	v
+offsetCommitRequestBlock	offset_commit_request.go	/^type offsetCommitRequestBlock struct {$/;"	t
+offsetCommitRequestNoBlocksV0	offset_commit_request_test.go	/^var ($/;"	v
+offsetCommitRequestNoBlocksV1	offset_commit_request_test.go	/^		0x00, 0x00, 0x00, 0x00}$/;"	v
+offsetCommitRequestNoBlocksV2	offset_commit_request_test.go	/^		0x00, 0x00, 0x00, 0x00}$/;"	v
+offsetCommitRequestOneBlockV0	offset_commit_request_test.go	/^		0x00, 0x00, 0x00, 0x00}$/;"	v
+offsetCommitRequestOneBlockV1	offset_commit_request_test.go	/^		0x00, 0x08, 'm', 'e', 't', 'a', 'd', 'a', 't', 'a'}$/;"	v
+offsetCommitRequestOneBlockV2	offset_commit_request_test.go	/^		0x00, 0x08, 'm', 'e', 't', 'a', 'd', 'a', 't', 'a'}$/;"	v
+offsetFetchRequestNoGroupNoPartitions	offset_fetch_request_test.go	/^var ($/;"	v
+offsetFetchRequestNoPartitions	offset_fetch_request_test.go	/^		0x00, 0x00, 0x00, 0x00}$/;"	v
+offsetFetchRequestOnePartition	offset_fetch_request_test.go	/^		0x00, 0x00, 0x00, 0x00}$/;"	v
+offsetManager	offset_manager.go	/^type offsetManager struct {$/;"	t
+offsetRequestBlock	offset_request.go	/^type offsetRequestBlock struct {$/;"	t
+offsetRequestNoBlocks	offset_request_test.go	/^var ($/;"	v
+offsetRequestOneBlock	offset_request_test.go	/^		0x00, 0x00, 0x00, 0x00}$/;"	v
+offsetRequestOneBlockV1	offset_request_test.go	/^		0x00, 0x00, 0x00, 0x02}$/;"	v
+oneMessageFetchResponse	fetch_response_test.go	/^		0x00, 0x00, 0x00, 0x00}$/;"	v
+packetDecoder	packet_decoder.go	/^type packetDecoder interface {$/;"	t
+packetEncoder	packet_encoder.go	/^type packetEncoder interface {$/;"	t
+parseKafkaVersion	functional_test.go	/^func parseKafkaVersion(version string) kafkaVersion {$/;"	f
+parseResponse	consumer.go	/^func (child *partitionConsumer) parseResponse(response *FetchResponse) ([]*ConsumerMessage, error) {$/;"	f
+partition	tools/kafka-console-partitionconsumer/kafka-console-partitionconsumer.go	/^	topic      = flag.String("topic", "", "REQUIRED: the topic to consume")$/;"	v
+partition	tools/kafka-console-producer/kafka-console-producer.go	/^	partitioner = flag.String("partitioner", "", "The partitioning scheme to use. Can be `hash`, `manual`, or `random`")$/;"	v
+partitionConsumer	consumer.go	/^type partitionConsumer struct {$/;"	t
+partitionMessage	async_producer.go	/^func (tp *topicProducer) partitionMessage(msg *ProducerMessage) error {$/;"	f
+partitionOffsetManager	offset_manager.go	/^type partitionOffsetManager struct {$/;"	t
+partitionProducer	async_producer.go	/^type partitionProducer struct {$/;"	t
+partitionRetryState	async_producer.go	/^type partitionRetryState struct {$/;"	t
+partitionSet	produce_set.go	/^type partitionSet struct {$/;"	t
+partitionType	client.go	/^type partitionType int$/;"	t
+partitioner	tools/kafka-console-producer/kafka-console-producer.go	/^	value       = flag.String("value", "", "REQUIRED: the value of the message to produce. You can also provide the value on stdin.")$/;"	v
+partitions	tools/kafka-console-consumer/kafka-console-consumer.go	/^	topic      = flag.String("topic", "", "REQUIRED: the topic to consume")$/;"	v
+pop	prep_encoder.go	/^func (pe *prepEncoder) pop() error {$/;"	f
+pop	real_decoder.go	/^func (rd *realDecoder) pop() error {$/;"	f
+pop	real_encoder.go	/^func (re *realEncoder) pop() error {$/;"	f
+populatedSyncGroupRequest	sync_group_request_test.go	/^	}$/;"	v
+prepEncoder	prep_encoder.go	/^type prepEncoder struct {$/;"	t
+printErrorAndExit	tools/kafka-console-consumer/kafka-console-consumer.go	/^func printErrorAndExit(code int, format string, values ...interface{}) {$/;"	f
+printErrorAndExit	tools/kafka-console-partitionconsumer/kafka-console-partitionconsumer.go	/^func printErrorAndExit(code int, format string, values ...interface{}) {$/;"	f
+printErrorAndExit	tools/kafka-console-producer/kafka-console-producer.go	/^func printErrorAndExit(code int, format string, values ...interface{}) {$/;"	f
+printUsageErrorAndExit	tools/kafka-console-consumer/kafka-console-consumer.go	/^func printUsageErrorAndExit(format string, values ...interface{}) {$/;"	f
+printUsageErrorAndExit	tools/kafka-console-partitionconsumer/kafka-console-partitionconsumer.go	/^func printUsageErrorAndExit(format string, values ...interface{}) {$/;"	f
+printUsageErrorAndExit	tools/kafka-console-producer/kafka-console-producer.go	/^func printUsageErrorAndExit(message string) {$/;"	f
+produceRequestEmpty	produce_request_test.go	/^var ($/;"	v
+produceRequestHeader	produce_request_test.go	/^		0x00, 0x00, 0x00, 0x00}$/;"	v
+produceRequestOneMessage	produce_request_test.go	/^		0x00, 0x00, 0x00, 0x00}$/;"	v
+produceResponseManyBlocks	produce_response_test.go	/^		0x00, 0x00, 0x00, 0x00}$/;"	v
+produceResponseNoBlocks	produce_response_test.go	/^var ($/;"	v
+produceSet	produce_set.go	/^type produceSet struct {$/;"	t
+producerExpectation	mocks/mocks.go	/^type producerExpectation struct {$/;"	t
+producerMessageOverhead	async_producer.go	/^const producerMessageOverhead = 26 \/\/ the metadata overhead of CRC, flags, etc.$/;"	c
+protocolBody	request.go	/^type protocolBody interface {$/;"	t
+proxyClient	functional_test.go	/^	kafkaBrokers                  []string$/;"	v
+push	prep_encoder.go	/^func (pe *prepEncoder) push(in pushEncoder) {$/;"	f
+push	real_decoder.go	/^func (rd *realDecoder) push(in pushDecoder) error {$/;"	f
+push	real_encoder.go	/^func (re *realEncoder) push(in pushEncoder) {$/;"	f
+pushDecoder	packet_decoder.go	/^type pushDecoder interface {$/;"	t
+pushEncoder	packet_encoder.go	/^type pushEncoder interface {$/;"	t
+putArrayLength	prep_encoder.go	/^func (pe *prepEncoder) putArrayLength(in int) error {$/;"	f
+putArrayLength	real_encoder.go	/^func (re *realEncoder) putArrayLength(in int) error {$/;"	f
+putBytes	prep_encoder.go	/^func (pe *prepEncoder) putBytes(in []byte) error {$/;"	f
+putBytes	real_encoder.go	/^func (re *realEncoder) putBytes(in []byte) error {$/;"	f
+putInt16	prep_encoder.go	/^func (pe *prepEncoder) putInt16(in int16) {$/;"	f
+putInt16	real_encoder.go	/^func (re *realEncoder) putInt16(in int16) {$/;"	f
+putInt32	prep_encoder.go	/^func (pe *prepEncoder) putInt32(in int32) {$/;"	f
+putInt32	real_encoder.go	/^func (re *realEncoder) putInt32(in int32) {$/;"	f
+putInt32Array	prep_encoder.go	/^func (pe *prepEncoder) putInt32Array(in []int32) error {$/;"	f
+putInt32Array	real_encoder.go	/^func (re *realEncoder) putInt32Array(in []int32) error {$/;"	f
+putInt64	prep_encoder.go	/^func (pe *prepEncoder) putInt64(in int64) {$/;"	f
+putInt64	real_encoder.go	/^func (re *realEncoder) putInt64(in int64) {$/;"	f
+putInt64Array	prep_encoder.go	/^func (pe *prepEncoder) putInt64Array(in []int64) error {$/;"	f
+putInt64Array	real_encoder.go	/^func (re *realEncoder) putInt64Array(in []int64) error {$/;"	f
+putInt8	prep_encoder.go	/^func (pe *prepEncoder) putInt8(in int8) {$/;"	f
+putInt8	real_encoder.go	/^func (re *realEncoder) putInt8(in int8) {$/;"	f
+putRawBytes	prep_encoder.go	/^func (pe *prepEncoder) putRawBytes(in []byte) error {$/;"	f
+putRawBytes	real_encoder.go	/^func (re *realEncoder) putRawBytes(in []byte) error {$/;"	f
+putString	prep_encoder.go	/^func (pe *prepEncoder) putString(in string) error {$/;"	f
+putString	real_encoder.go	/^func (re *realEncoder) putString(in string) error {$/;"	f
+putStringArray	prep_encoder.go	/^func (pe *prepEncoder) putStringArray(in []string) error {$/;"	f
+putStringArray	real_encoder.go	/^func (re *realEncoder) putStringArray(in []string) error {$/;"	f
+randomPartitioner	partitioner.go	/^type randomPartitioner struct {$/;"	t
+readyToFlush	produce_set.go	/^func (ps *produceSet) readyToFlush() bool {$/;"	f
+realDecoder	real_decoder.go	/^type realDecoder struct {$/;"	t
+realEncoder	real_encoder.go	/^type realEncoder struct {$/;"	t
+refBrokerConsumer	consumer.go	/^func (c *consumer) refBrokerConsumer(broker *Broker) *brokerConsumer {$/;"	f
+refBrokerOffsetManager	offset_manager.go	/^func (om *offsetManager) refBrokerOffsetManager(broker *Broker) *brokerOffsetManager {$/;"	f
+register	metrics_test.go	/^func (m *metricValidators) register(validator *metricValidator) {$/;"	f
+registerBroker	client.go	/^func (client *client) registerBroker(broker *Broker) {$/;"	f
+registerForAllBrokers	metrics_test.go	/^func (m *metricValidators) registerForAllBrokers(broker *Broker, validator *metricValidator) {$/;"	f
+registerForBroker	metrics_test.go	/^func (m *metricValidators) registerForBroker(broker *Broker, validator *metricValidator) {$/;"	f
+registerForGlobalAndTopic	metrics_test.go	/^func (m *metricValidators) registerForGlobalAndTopic(topic string, validator *metricValidator) {$/;"	f
+remaining	real_decoder.go	/^func (rd *realDecoder) remaining() int {$/;"	f
+removeChild	consumer.go	/^func (c *consumer) removeChild(child *partitionConsumer) {$/;"	f
+request	request.go	/^type request struct {$/;"	t
+requestHandlerFunc	mockbroker.go	/^type requestHandlerFunc func(req *request) (res encoder)$/;"	t
+requiredVersion	api_versions_request.go	/^func (r *ApiVersionsRequest) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	api_versions_response.go	/^func (r *ApiVersionsResponse) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	consumer_metadata_request.go	/^func (r *ConsumerMetadataRequest) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	consumer_metadata_response.go	/^func (r *ConsumerMetadataResponse) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	describe_groups_request.go	/^func (r *DescribeGroupsRequest) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	describe_groups_response.go	/^func (r *DescribeGroupsResponse) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	fetch_request.go	/^func (r *FetchRequest) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	fetch_response.go	/^func (r *FetchResponse) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	heartbeat_request.go	/^func (r *HeartbeatRequest) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	heartbeat_response.go	/^func (r *HeartbeatResponse) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	join_group_request.go	/^func (r *JoinGroupRequest) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	join_group_response.go	/^func (r *JoinGroupResponse) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	leave_group_request.go	/^func (r *LeaveGroupRequest) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	leave_group_response.go	/^func (r *LeaveGroupResponse) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	list_groups_request.go	/^func (r *ListGroupsRequest) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	list_groups_response.go	/^func (r *ListGroupsResponse) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	metadata_request.go	/^func (r *MetadataRequest) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	metadata_response.go	/^func (r *MetadataResponse) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	offset_commit_request.go	/^func (r *OffsetCommitRequest) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	offset_commit_response.go	/^func (r *OffsetCommitResponse) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	offset_fetch_request.go	/^func (r *OffsetFetchRequest) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	offset_fetch_response.go	/^func (r *OffsetFetchResponse) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	offset_request.go	/^func (r *OffsetRequest) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	offset_response.go	/^func (r *OffsetResponse) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	produce_request.go	/^func (r *ProduceRequest) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	produce_response.go	/^func (r *ProduceResponse) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	sasl_handshake_request.go	/^func (r *SaslHandshakeRequest) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	sasl_handshake_response.go	/^func (r *SaslHandshakeResponse) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	sync_group_request.go	/^func (r *SyncGroupRequest) requiredVersion() KafkaVersion {$/;"	f
+requiredVersion	sync_group_response.go	/^func (r *SyncGroupResponse) requiredVersion() KafkaVersion {$/;"	f
+reserveLength	crc32_field.go	/^func (c *crc32Field) reserveLength() int {$/;"	f
+reserveLength	length_field.go	/^func (l *lengthField) reserveLength() int {$/;"	f
+resetProxies	functional_test.go	/^func resetProxies(t testing.TB) {$/;"	f
+responseFeeder	consumer.go	/^func (child *partitionConsumer) responseFeeder() {$/;"	f
+responseHeader	response_header.go	/^type responseHeader struct {$/;"	t
+responseHeaderBytes	response_header_test.go	/^var ($/;"	v
+responsePromise	broker.go	/^type responsePromise struct {$/;"	t
+responseReceiver	broker.go	/^func (b *Broker) responseReceiver() {$/;"	f
+resurrectDeadBrokers	client.go	/^func (client *client) resurrectDeadBrokers() {$/;"	f
+retryHandler	async_producer.go	/^func (p *asyncProducer) retryHandler() {$/;"	f
+retryMessage	async_producer.go	/^func (p *asyncProducer) retryMessage(msg *ProducerMessage, err error) {$/;"	f
+retryMessages	async_producer.go	/^func (p *asyncProducer) retryMessages(batch []*ProducerMessage, err error) {$/;"	f
+returnError	async_producer.go	/^func (p *asyncProducer) returnError(msg *ProducerMessage, err error) {$/;"	f
+returnErrors	async_producer.go	/^func (p *asyncProducer) returnErrors(batch []*ProducerMessage, err error) {$/;"	f
+returnSuccesses	async_producer.go	/^func (p *asyncProducer) returnSuccesses(batch []*ProducerMessage) {$/;"	f
+rollOver	async_producer.go	/^func (bp *brokerProducer) rollOver() {$/;"	f
+roundRobinPartitioner	partitioner.go	/^type roundRobinPartitioner struct {$/;"	t
+run	async_producer.go	/^func (bp *brokerProducer) run() {$/;"	f
+run	crc32_field.go	/^func (c *crc32Field) run(curOffset int, buf []byte) error {$/;"	f
+run	length_field.go	/^func (l *lengthField) run(curOffset int, buf []byte) error {$/;"	f
+run	metrics_test.go	/^func (m metricValidators) run(t *testing.T, r metrics.Registry) {$/;"	f
+safeAddMessage	produce_set_test.go	/^func safeAddMessage(t *testing.T, ps *produceSet, msg *ProducerMessage) {$/;"	f
+safeAsyncClose	utils.go	/^func safeAsyncClose(b *Broker) {$/;"	f
+safeClose	client_test.go	/^func safeClose(t testing.TB, c io.Closer) {$/;"	f
+safeClose	examples/http_server/http_server_test.go	/^func safeClose(t *testing.T, o io.Closer) {$/;"	f
+sarama	api_versions_request.go	/^package sarama$/;"	p
+sarama	api_versions_request_test.go	/^package sarama$/;"	p
+sarama	api_versions_response.go	/^package sarama$/;"	p
+sarama	api_versions_response_test.go	/^package sarama$/;"	p
+sarama	async_producer.go	/^package sarama$/;"	p
+sarama	async_producer_test.go	/^package sarama$/;"	p
+sarama	broker.go	/^package sarama$/;"	p
+sarama	broker_test.go	/^package sarama$/;"	p
+sarama	client.go	/^package sarama$/;"	p
+sarama	client_test.go	/^package sarama$/;"	p
+sarama	config.go	/^package sarama$/;"	p
+sarama	config_test.go	/^package sarama$/;"	p
+sarama	consumer.go	/^package sarama$/;"	p
+sarama	consumer_group_members.go	/^package sarama$/;"	p
+sarama	consumer_group_members_test.go	/^package sarama$/;"	p
+sarama	consumer_metadata_request.go	/^package sarama$/;"	p
+sarama	consumer_metadata_request_test.go	/^package sarama$/;"	p
+sarama	consumer_metadata_response.go	/^package sarama$/;"	p
+sarama	consumer_metadata_response_test.go	/^package sarama$/;"	p
+sarama	consumer_test.go	/^package sarama$/;"	p
+sarama	crc32_field.go	/^package sarama$/;"	p
+sarama	describe_groups_request.go	/^package sarama$/;"	p
+sarama	describe_groups_request_test.go	/^package sarama$/;"	p
+sarama	describe_groups_response.go	/^package sarama$/;"	p
+sarama	describe_groups_response_test.go	/^package sarama$/;"	p
+sarama	encoder_decoder.go	/^package sarama$/;"	p
+sarama	errors.go	/^package sarama$/;"	p
+sarama	fetch_request.go	/^package sarama$/;"	p
+sarama	fetch_request_test.go	/^package sarama$/;"	p
+sarama	fetch_response.go	/^package sarama$/;"	p
+sarama	fetch_response_test.go	/^package sarama$/;"	p
+sarama	functional_client_test.go	/^package sarama$/;"	p
+sarama	functional_consumer_test.go	/^package sarama$/;"	p
+sarama	functional_offset_manager_test.go	/^package sarama$/;"	p
+sarama	functional_producer_test.go	/^package sarama$/;"	p
+sarama	functional_test.go	/^package sarama$/;"	p
+sarama	heartbeat_request.go	/^package sarama$/;"	p
+sarama	heartbeat_request_test.go	/^package sarama$/;"	p
+sarama	heartbeat_response.go	/^package sarama$/;"	p
+sarama	heartbeat_response_test.go	/^package sarama$/;"	p
+sarama	join_group_request.go	/^package sarama$/;"	p
+sarama	join_group_request_test.go	/^package sarama$/;"	p
+sarama	join_group_response.go	/^package sarama$/;"	p
+sarama	join_group_response_test.go	/^package sarama$/;"	p
+sarama	leave_group_request.go	/^package sarama$/;"	p
+sarama	leave_group_request_test.go	/^package sarama$/;"	p
+sarama	leave_group_response.go	/^package sarama$/;"	p
+sarama	leave_group_response_test.go	/^package sarama$/;"	p
+sarama	length_field.go	/^package sarama$/;"	p
+sarama	list_groups_request.go	/^package sarama$/;"	p
+sarama	list_groups_request_test.go	/^package sarama$/;"	p
+sarama	list_groups_response.go	/^package sarama$/;"	p
+sarama	list_groups_response_test.go	/^package sarama$/;"	p
+sarama	message.go	/^package sarama$/;"	p
+sarama	message_set.go	/^package sarama$/;"	p
+sarama	message_test.go	/^package sarama$/;"	p
+sarama	metadata_request.go	/^package sarama$/;"	p
+sarama	metadata_request_test.go	/^package sarama$/;"	p
+sarama	metadata_response.go	/^package sarama$/;"	p
+sarama	metadata_response_test.go	/^package sarama$/;"	p
+sarama	metrics.go	/^package sarama$/;"	p
+sarama	metrics_test.go	/^package sarama$/;"	p
+sarama	mockbroker.go	/^package sarama$/;"	p
+sarama	mockresponses.go	/^package sarama$/;"	p
+sarama	offset_commit_request.go	/^package sarama$/;"	p
+sarama	offset_commit_request_test.go	/^package sarama$/;"	p
+sarama	offset_commit_response.go	/^package sarama$/;"	p
+sarama	offset_commit_response_test.go	/^package sarama$/;"	p
+sarama	offset_fetch_request.go	/^package sarama$/;"	p
+sarama	offset_fetch_request_test.go	/^package sarama$/;"	p
+sarama	offset_fetch_response.go	/^package sarama$/;"	p
+sarama	offset_fetch_response_test.go	/^package sarama$/;"	p
+sarama	offset_manager.go	/^package sarama$/;"	p
+sarama	offset_manager_test.go	/^package sarama$/;"	p
+sarama	offset_request.go	/^package sarama$/;"	p
+sarama	offset_request_test.go	/^package sarama$/;"	p
+sarama	offset_response.go	/^package sarama$/;"	p
+sarama	offset_response_test.go	/^package sarama$/;"	p
+sarama	packet_decoder.go	/^package sarama$/;"	p
+sarama	packet_encoder.go	/^package sarama$/;"	p
+sarama	partitioner.go	/^package sarama$/;"	p
+sarama	partitioner_test.go	/^package sarama$/;"	p
+sarama	prep_encoder.go	/^package sarama$/;"	p
+sarama	produce_request.go	/^package sarama$/;"	p
+sarama	produce_request_test.go	/^package sarama$/;"	p
+sarama	produce_response.go	/^package sarama$/;"	p
+sarama	produce_response_test.go	/^package sarama$/;"	p
+sarama	produce_set.go	/^package sarama$/;"	p
+sarama	produce_set_test.go	/^package sarama$/;"	p
+sarama	real_decoder.go	/^package sarama$/;"	p
+sarama	real_encoder.go	/^package sarama$/;"	p
+sarama	request.go	/^package sarama$/;"	p
+sarama	request_test.go	/^package sarama$/;"	p
+sarama	response_header.go	/^package sarama$/;"	p
+sarama	response_header_test.go	/^package sarama$/;"	p
+sarama	sarama.go	/^package sarama$/;"	p
+sarama	sasl_handshake_request.go	/^package sarama$/;"	p
+sarama	sasl_handshake_request_test.go	/^package sarama$/;"	p
+sarama	sasl_handshake_response.go	/^package sarama$/;"	p
+sarama	sasl_handshake_response_test.go	/^package sarama$/;"	p
+sarama	sync_group_request.go	/^package sarama$/;"	p
+sarama	sync_group_request_test.go	/^package sarama$/;"	p
+sarama	sync_group_response.go	/^package sarama$/;"	p
+sarama	sync_group_response_test.go	/^package sarama$/;"	p
+sarama	sync_producer.go	/^package sarama$/;"	p
+sarama	sync_producer_test.go	/^package sarama$/;"	p
+sarama	utils.go	/^package sarama$/;"	p
+sarama	utils_test.go	/^package sarama$/;"	p
+saslHandshakeResponse	sasl_handshake_response_test.go	/^var ($/;"	v
+satisfies	functional_test.go	/^func (kv kafkaVersion) satisfies(other kafkaVersion) bool {$/;"	f
+saveOffset	crc32_field.go	/^func (c *crc32Field) saveOffset(in int) {$/;"	f
+saveOffset	length_field.go	/^func (l *lengthField) saveOffset(in int) {$/;"	f
+selectBroker	offset_manager.go	/^func (pom *partitionOffsetManager) selectBroker() error {$/;"	f
+send	broker.go	/^func (b *Broker) send(rb protocolBody, promiseResponse bool) (*responsePromise, error) {$/;"	f
+sendAndReceive	broker.go	/^func (b *Broker) sendAndReceive(req protocolBody, res versionedDecoder) error {$/;"	f
+sendAndReceiveSASLPlainAuth	broker.go	/^func (b *Broker) sendAndReceiveSASLPlainAuth() error {$/;"	f
+sendAndReceiveSASLPlainHandshake	broker.go	/^func (b *Broker) sendAndReceiveSASLPlainHandshake() error {$/;"	f
+sendError	consumer.go	/^func (child *partitionConsumer) sendError(err error) {$/;"	f
+serverError	mockbroker.go	/^func (b *MockBroker) serverError(err error) {$/;"	f
+serverLoop	mockbroker.go	/^func (b *MockBroker) serverLoop() {$/;"	f
+setHandler	mockbroker.go	/^func (b *MockBroker) setHandler(handler requestHandlerFunc) {$/;"	f
+setPartitionCache	client.go	/^func (client *client) setPartitionCache(topic string, partitionSet partitionType) []int32 {$/;"	f
+setupFunctionalTest	functional_test.go	/^func setupFunctionalTest(t testing.TB) {$/;"	f
+showMetrics	tools/kafka-console-producer/kafka-console-producer.go	/^	verbose     = flag.Bool("verbose", false, "Turn on sarama logging to stderr")$/;"	v
+shutdown	async_producer.go	/^	fin                          \/\/ final message from partitionProducer to brokerProducer and back$/;"	c
+shutdown	async_producer.go	/^func (bp *brokerProducer) shutdown() {$/;"	f
+shutdown	async_producer.go	/^func (p *asyncProducer) shutdown() {$/;"	f
+silent	tools/kafka-console-producer/kafka-console-producer.go	/^	showMetrics = flag.Bool("metrics", false, "Output metrics on successful publish to stderr")$/;"	v
+singleDescribeGroupsRequest	describe_groups_request_test.go	/^	emptyDescribeGroupsRequest = []byte{0, 0, 0, 0}$/;"	v
+stdinAvailable	tools/kafka-console-producer/kafka-console-producer.go	/^func stdinAvailable() bool {$/;"	f
+subscriptionConsumer	consumer.go	/^func (bc *brokerConsumer) subscriptionConsumer() {$/;"	f
+subscriptionManager	consumer.go	/^func (bc *brokerConsumer) subscriptionManager() {$/;"	f
+syn	async_producer.go	/^const ($/;"	c
+syncGroupResponseNoError	sync_group_response_test.go	/^var ($/;"	v
+syncGroupResponseWithError	sync_group_response_test.go	/^	}$/;"	v
+syncProducer	sync_producer.go	/^type syncProducer struct {$/;"	t
+teardownFunctionalTest	functional_test.go	/^func teardownFunctionalTest(t testing.TB) {$/;"	f
+testDecodable	request_test.go	/^func testDecodable(t *testing.T, name string, out decoder, in []byte) {$/;"	f
+testEncodable	request_test.go	/^func testEncodable(t *testing.T, name string, in encoder, expect []byte) {$/;"	f
+testMsg	consumer_test.go	/^var testMsg = StringEncoder("Foo")$/;"	v
+testPartitioner	async_producer_test.go	/^type testPartitioner chan *int32$/;"	t
+testProducingMessages	functional_producer_test.go	/^func testProducingMessages(t *testing.T, config *Config) {$/;"	f
+testReporterMock	mocks/async_producer_test.go	/^type testReporterMock struct {$/;"	t
+testRequest	request_test.go	/^func testRequest(t *testing.T, name string, rb protocolBody, expected []byte) {$/;"	f
+testRequestBody	request_test.go	/^type testRequestBody struct {$/;"	t
+testRequestDecode	request_test.go	/^func testRequestDecode(t *testing.T, name string, rb protocolBody, packet []byte) {$/;"	f
+testRequestEncode	request_test.go	/^func testRequestEncode(t *testing.T, name string, rb protocolBody, expected []byte) []byte {$/;"	f
+testResponse	request_test.go	/^func testResponse(t *testing.T, name string, res protocolBody, expected []byte) {$/;"	f
+testVersionDecodable	request_test.go	/^func testVersionDecodable(t *testing.T, name string, out versionedDecoder, in []byte, version int16) {$/;"	f
+topic	tools/kafka-console-consumer/kafka-console-consumer.go	/^	brokerList = flag.String("brokers", os.Getenv("KAFKA_PEERS"), "The comma separated list of brokers in the Kafka cluster")$/;"	v
+topic	tools/kafka-console-partitionconsumer/kafka-console-partitionconsumer.go	/^	brokerList = flag.String("brokers", os.Getenv("KAFKA_PEERS"), "The comma separated list of brokers in the Kafka cluster")$/;"	v
+topic	tools/kafka-console-producer/kafka-console-producer.go	/^	brokerList  = flag.String("brokers", os.Getenv("KAFKA_PEERS"), "The comma separated list of brokers in the Kafka cluster. You can also set the KAFKA_PEERS environment variable")$/;"	v
+topicProducer	async_producer.go	/^type topicProducer struct {$/;"	t
+topicsNoBrokersMetadataResponse	metadata_response_test.go	/^		0x00, 0x00, 0x00, 0x00}$/;"	v
+tryRefreshMetadata	client.go	/^func (client *client) tryRefreshMetadata(topics []string, attemptsRemaining int) error {$/;"	f
+unrefBrokerConsumer	consumer.go	/^func (c *consumer) unrefBrokerConsumer(brokerWorker *brokerConsumer) {$/;"	f
+unrefBrokerOffsetManager	offset_manager.go	/^func (om *offsetManager) unrefBrokerOffsetManager(bom *brokerOffsetManager) {$/;"	f
+unrefBrokerProducer	async_producer.go	/^func (p *asyncProducer) unrefBrokerProducer(broker *Broker, bp chan<- *ProducerMessage) {$/;"	f
+updateCommitted	offset_manager.go	/^func (pom *partitionOffsetManager) updateCommitted(offset int64, metadata string) {$/;"	f
+updateIncomingCommunicationMetrics	broker.go	/^func (b *Broker) updateIncomingCommunicationMetrics(bytes int, requestLatency time.Duration) {$/;"	f
+updateLeader	async_producer.go	/^func (pp *partitionProducer) updateLeader() error {$/;"	f
+updateMetadata	client.go	/^func (client *client) updateMetadata(data *MetadataResponse) (retry bool, err error) {$/;"	f
+updateOutgoingCommunicationMetrics	broker.go	/^func (b *Broker) updateOutgoingCommunicationMetrics(bytes int) {$/;"	f
+updateRequestLatencyMetrics	broker.go	/^func (b *Broker) updateRequestLatencyMetrics(requestLatency time.Duration) {$/;"	f
+updateSubscriptions	consumer.go	/^func (bc *brokerConsumer) updateSubscriptions(newSubscriptions []*partitionConsumer) {$/;"	f
+validID	config.go	/^var validID = regexp.MustCompile(`\\A[A-Za-z0-9._-]+\\z`)$/;"	v
+validateBrokerMetrics	broker_test.go	/^func validateBrokerMetrics(t *testing.T, broker *Broker, mockBrokerMetrics brokerMetrics) {$/;"	f
+validateMetrics	functional_producer_test.go	/^func validateMetrics(t *testing.T, client Client) {$/;"	f
+value	tools/kafka-console-producer/kafka-console-producer.go	/^	key         = flag.String("key", "", "The key of the message to produce. Can be empty.")$/;"	v
+verbose	examples/http_server/http_server.go	/^	brokers   = flag.String("brokers", os.Getenv("KAFKA_PEERS"), "The Kafka brokers to connect to, as a comma separated list")$/;"	v
+verbose	tools/kafka-console-consumer/kafka-console-consumer.go	/^	offset     = flag.String("offset", "newest", "The offset to start with. Can be `oldest`, `newest`")$/;"	v
+verbose	tools/kafka-console-partitionconsumer/kafka-console-partitionconsumer.go	/^	offset     = flag.String("offset", "newest", "The offset to start with. Can be `oldest`, `newest`, or an actual offset")$/;"	v
+verbose	tools/kafka-console-producer/kafka-console-producer.go	/^	partition   = flag.Int("partition", -1, "The partition to produce to.")$/;"	v
+verifyProducerConfig	sync_producer.go	/^func verifyProducerConfig(config *Config) error {$/;"	f
+verifySsl	examples/http_server/http_server.go	/^	caFile    = flag.String("ca", "", "The optional certificate authority file for TLS client authentication")$/;"	v
+version	api_versions_request.go	/^func (r *ApiVersionsRequest) version() int16 {$/;"	f
+version	api_versions_response.go	/^func (r *ApiVersionsResponse) version() int16 {$/;"	f
+version	consumer_metadata_request.go	/^func (r *ConsumerMetadataRequest) version() int16 {$/;"	f
+version	consumer_metadata_response.go	/^func (r *ConsumerMetadataResponse) version() int16 {$/;"	f
+version	describe_groups_request.go	/^func (r *DescribeGroupsRequest) version() int16 {$/;"	f
+version	describe_groups_response.go	/^func (r *DescribeGroupsResponse) version() int16 {$/;"	f
+version	fetch_request.go	/^func (r *FetchRequest) version() int16 {$/;"	f
+version	fetch_response.go	/^func (r *FetchResponse) version() int16 {$/;"	f
+version	heartbeat_request.go	/^func (r *HeartbeatRequest) version() int16 {$/;"	f
+version	heartbeat_response.go	/^func (r *HeartbeatResponse) version() int16 {$/;"	f
+version	join_group_request.go	/^func (r *JoinGroupRequest) version() int16 {$/;"	f
+version	join_group_response.go	/^func (r *JoinGroupResponse) version() int16 {$/;"	f
+version	leave_group_request.go	/^func (r *LeaveGroupRequest) version() int16 {$/;"	f
+version	leave_group_response.go	/^func (r *LeaveGroupResponse) version() int16 {$/;"	f
+version	list_groups_request.go	/^func (r *ListGroupsRequest) version() int16 {$/;"	f
+version	list_groups_response.go	/^func (r *ListGroupsResponse) version() int16 {$/;"	f
+version	metadata_request.go	/^func (r *MetadataRequest) version() int16 {$/;"	f
+version	metadata_response.go	/^func (r *MetadataResponse) version() int16 {$/;"	f
+version	offset_commit_request.go	/^func (r *OffsetCommitRequest) version() int16 {$/;"	f
+version	offset_commit_response.go	/^func (r *OffsetCommitResponse) version() int16 {$/;"	f
+version	offset_fetch_request.go	/^func (r *OffsetFetchRequest) version() int16 {$/;"	f
+version	offset_fetch_response.go	/^func (r *OffsetFetchResponse) version() int16 {$/;"	f
+version	offset_request.go	/^func (r *OffsetRequest) version() int16 {$/;"	f
+version	offset_response.go	/^func (r *OffsetResponse) version() int16 {$/;"	f
+version	produce_request.go	/^func (r *ProduceRequest) version() int16 {$/;"	f
+version	produce_response.go	/^func (r *ProduceResponse) version() int16 {$/;"	f
+version	request_test.go	/^func (s *testRequestBody) version() int16 {$/;"	f
+version	sasl_handshake_request.go	/^func (r *SaslHandshakeRequest) version() int16 {$/;"	f
+version	sasl_handshake_response.go	/^func (r *SaslHandshakeResponse) version() int16 {$/;"	f
+version	sync_group_request.go	/^func (r *SyncGroupRequest) version() int16 {$/;"	f
+version	sync_group_response.go	/^func (r *SyncGroupResponse) version() int16 {$/;"	f
+versionedDecode	encoder_decoder.go	/^func versionedDecode(buf []byte, in versionedDecoder, version int16) error {$/;"	f
+versionedDecoder	encoder_decoder.go	/^type versionedDecoder interface {$/;"	t
+waitForSpace	async_producer.go	/^func (bp *brokerProducer) waitForSpace(msg *ProducerMessage) error {$/;"	f
+withAccessLog	examples/http_server/http_server.go	/^func (s *Server) withAccessLog(next http.Handler) http.Handler {$/;"	f
+withRecover	utils.go	/^func withRecover(fn func()) {$/;"	f
+wouldOverflow	produce_set.go	/^func (ps *produceSet) wouldOverflow(msg *ProducerMessage) bool {$/;"	f
+writablePartitions	client.go	/^	allPartitions partitionType = iota$/;"	c

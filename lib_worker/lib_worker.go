@@ -503,37 +503,51 @@ func (start *Node_first) delete_node(i int) string { //找到第i个节点,中�
 	return st
 }
 func Add(req Request) string {
+
 	for i := 0; i < len(req.Vectors.Vector); i++ {
-		var min_index int
-		var Distance1 float64
-		var j int
-		for indexi := DB.Head; indexi != nil; indexi = indexi.Next_first { //对每个向量遍历所有数据库
-			if indexi == DB.Head { //初始化
-				Distance1 = Distance(indexi.Data, req.Vectors.Vector[i])
+		if DB.Head == nil {
+			var head Node_first
+			head.Data = req.Vectors.Vector[0]
+			DB.Head = &head
+			continue
+		} else if Length_first() < 3 { //10规定了一开始空库的时候add的时候聚类中心的数量
+			var newnodefirst Node_first
+			newnodefirst.Data = req.Vectors.Vector[i]
+			DB.Head.find_nodefirst(Length_first()).Next_first = &newnodefirst
+			continue
+		} else {
+			var min_index int
+			var Distance1 float64
+			var j int
+			for indexi := DB.Head; indexi != nil; indexi = indexi.Next_first { //对每个向量遍历所有数据库
+				if indexi == DB.Head { //初始化
+					Distance1 = Distance(indexi.Data, req.Vectors.Vector[i])
+					j++
+					min_index = j
+					continue
+				} else if Distance(req.Vectors.Vector[i], indexi.Data) < Distance1 {
+					Distance1 = Distance(req.Vectors.Vector[i], indexi.Data)
+					min_index = j + 1
+				}
 				j++
-				min_index = j
-				continue
-			} else if Distance(req.Vectors.Vector[i], indexi.Data) < Distance1 {
-				Distance1 = Distance(req.Vectors.Vector[i], indexi.Data)
-				min_index = j + 1
 			}
-			j++
+			var nodefirst = DB.Head.find_nodefirst(min_index)
+			var node Node
+			node.Data = req.Vectors.Vector[i]
+			node.Distance = Distance1
+			nodefirst.add(&node)
 		}
-		var nodefirst = DB.Head.find_nodefirst(min_index)
-		var node Node
-		node.Data = req.Vectors.Vector[i]
-		node.Distance = Distance1
-		nodefirst.add(&node)
+
 	}
 	var st string = "添加成功"
 	return st
 }
-func Length_first() {
+func Length_first() int {
 	var i int
 	for index := DB.Head; index != nil; index = index.Next_first {
 		i++
-		fmt.Println("第", i, "个nodefirst的长度为：", index.length())
 	}
+	return i
 }
 
 func Search(req Request) Result { //第几个分片

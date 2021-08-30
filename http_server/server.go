@@ -89,6 +89,7 @@ func strToInt(str string) []float64 {
 // 	} else if params["type"] == "add" {
 // 		var int_arr = strToInt(params["vectors"])
 // 		length := len(int_arr)
+
 // 		if length%4 != 0 {
 // 			fmt.Fprint(w, "向量长度不对")
 // 			return
@@ -189,7 +190,8 @@ func handlePostJson(writer http.ResponseWriter, request *http.Request) map[strin
 // }
 func Server_init() {
 	// Set up a connection to the server.
-	lw.DB = lw.Lib_worker_DBinit(10000, 100, 4)
+	//lw.DB = lw.Lib_worker_DBinit(10000, 100, 4)
+
 	//lw.Display_allfirst()
 	//lw.Display_DBbydistence()
 	lw.Dbinit_train()

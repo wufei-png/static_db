@@ -1,0 +1,99 @@
+package main
+
+import (
+	"fmt"
+	"math"
+	"math/rand"
+	"sync"
+
+	"gitlab.sz.sensetime.com/viper/gosdkwrapper/dsc"
+	_ "gitlab.sz.sensetime.com/viper/gosdkwrapper/dscimporter"
+)
+
+func main() {
+	builder := dsc.IndexHandlerFactory["se"]
+	err := builder.InitEnv(&dsc.SEInitEnvConfig{ProductName: "IVA-VIPER", LicensePath: "./KESTREL.lic"})
+	if err != nil {
+		fmt.Println(err)
+	}
+	h, err := builder.Build(&dsc.GeneralIndexHandlerConfig{IndexType: dsc.IndexDC})
+	if err != nil {
+		fmt.Println(err)
+	}
+	wg := sync.WaitGroup{}
+	wg.Add(1)
+	go func() {
+		err := h.BindDevice(int32(0))
+		if err != nil {
+			fmt.Println(err)
+		}
+		index, err := h.LoadIndex("index/SearchEngineIndex-DC-Face-25001-64d-INT8-ATLAS.bin")
+		if err != nil {
+			fmt.Println(err)
+		}
+		info, err := index.GetIndexInfo()
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Println(info)
+
+		fmt.Println("add feature")
+		addFeatures(index)
+		fmt.Println("end add feature")
+		err = h.UnbindDevice()
+		if err != nil {
+			fmt.Println(err)
+		}
+		wg.Done()
+	}()
+	wg.Wait()
+	err = builder.DestroyEnv()
+	if err != nil {
+		fmt.Println(err)
+	}
+}
+
+func addFeatures(index dsc.SearchIndex) {
+	var fn []float32
+	var ids []int64
+	featureNum := 32
+	dim := 256
+	startID := 1000
+	round := 2
+	// tTotal := time.Now()
+	for k := 0; k < round; k++ {
+		fn, ids = genFeatures(dim, featureNum, startID+k*featureNum)
+		// t1 = time.Now()
+		err := index.AddBatch(int64(featureNum), fn, ids)
+		fmt.Println("add err: ", err)
+		// elapsed := time.Since(t1)
+		// fmt.Println("add elapsed: ", elapsed)
+		info, err := index.GetIndexInfo()
+		fmt.Println("info:", info, "err:", err)
+	}
+}
+
+func genFeatures(dim, featureNum, startID int) ([]float32, []int64) {
+	fn := make([]float32, 0, dim*featureNum)
+	ids := make([]int64, featureNum)
+	for i := 0; i < featureNum; i++ {
+		f := genOneFeature(256)
+		fn = append(fn, f...)
+		ids[i] = int64(startID + i)
+	}
+	return fn, ids
+}
+
+func genOneFeature(dim int) []float32 {
+	raw := make([]float32, dim)
+	var norm float32
+	for i := 0; i < dim; i++ {
+		raw[i] = rand.Float32() - 0.5
+		norm += raw[i] * raw[i]
+	}
+	norm = float32(math.Sqrt(float64(norm)))
+	for i := range raw {
+		raw[i] /= norm
+	}
+	return raw
+}

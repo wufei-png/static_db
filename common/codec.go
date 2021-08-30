@@ -1,8 +1,12 @@
 package common
 
 import (
+	"bufio"
 	"encoding/base64"
 	"encoding/binary"
+	"fmt"
+	"io"
+	"io/ioutil"
 	"math"
 )
 
@@ -43,4 +47,35 @@ func DecodeFloat32(src []byte) []float32 {
 		dst[i] = math.Float32frombits(b)
 	}
 	return dst
+}
+func ReadLines(r io.Reader, delim byte) chan []byte {
+	br := bufio.NewReader(r)
+	ch := make(chan []byte, 8)
+
+	go func() {
+		defer close(ch)
+		for {
+			b, err := br.ReadBytes(delim)
+			if err != nil {
+				if err == io.EOF {
+					return
+				} else {
+					fmt.Print("failed to read: %s", err)
+				}
+			}
+			//log.Debugf("read %d bytes from file", len(b))
+			ch <- b
+		}
+	}()
+	return ch
+}
+
+// fp, err := os.Open(file)
+func ChangeTobase(path string) string {
+	srcByte, err := ioutil.ReadFile(path)
+	if err != nil {
+		fmt.Print(err)
+	}
+	res := base64.StdEncoding.EncodeToString(srcByte)
+	return res
 }
