@@ -47,7 +47,9 @@ func main() {
 		fmt.Println("生成json字符串错误")
 		return
 	}
+	//fmt.Print("post前")
 	body := tools.Post_req(url2, string(reqjson))
+	//fmt.Print("post后")
 	var params Res_wf_add
 	//fmt.Print(3)
 	// fmt.Print(string(body))
