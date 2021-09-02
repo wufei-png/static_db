@@ -2,28 +2,63 @@
 syntax = "proto3";
 
 option go_package = "./;pb";
-
+import "google/api/annotations.proto";
 
 package static_proto;
 
 // The greeting service definition.
 service Search {
   // Sends a greeting
-  rpc SearchInDB (SearchRequest) returns (SearchReply) {}
+  rpc SearchInDB (SearchRequest) returns (SearchReply) {
+  option (google.api.http) = {
+    post: "/search"
+    body: "*"
+    };
+  }
+  rpc Add (AddRequest) returns (AddReply) {
+    option (google.api.http) = {
+      post: "/add"
+      body: "*"
+      };
+    }
+    rpc Delete (DeleteRequest) returns (DeleteReply) {
+      option (google.api.http) = {
+        post: "/delete"
+        body: "*"
+        };
+      }
 }
-
+message AddRequest{
+  repeated Feature features = 1;
+}
+message AddReply{
+  string status = 1;
+}
 // The request message containing the user's name.
 message SearchRequest {
   int32 search_type = 1;
-  Vectors vectors=2;
+  repeated Feature features = 2;
   int32 topk =3;
 }
+message Feature {
+  string blob=1;
+}
+message Features{
+  repeated Feature Features =1;
+}
 message SearchReply {
-  VectorsGroup vectorsgroup = 1;
+  repeated Features featuresgroup = 1;
   Vectors distancetopk = 2;
 }
+message DeleteRequest{
+  int32 row =1;
+  int32 col= 2;
+}
+message DeleteReply{
+string status =1;
+}
 message Vector{
-  repeated double vector=1;
+  repeated float vector=1;
 }
 message Vectors{
   repeated Vector vectors=1;

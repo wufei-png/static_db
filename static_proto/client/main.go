@@ -35,7 +35,7 @@ func test() string {
 	var vector pb.Vector
 	var vectors pb.Vectors
 	for i := 0; i < 4; i++ {
-		vector.Vector = append(vector.Vector, float64(i))
+		vector.Vector = append(vector.Vector, float32(i))
 	}
 	vectors.Vectors = append(vectors.Vectors, &vector)
 	// fmt.Print("vector:", vector.Vector)

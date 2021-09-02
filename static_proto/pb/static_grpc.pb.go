@@ -20,6 +20,8 @@ const _ = grpc.SupportPackageIsVersion7
 type SearchClient interface {
 	// Sends a greeting
 	SearchInDB(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchReply, error)
+	Add(ctx context.Context, in *AddRequest, opts ...grpc.CallOption) (*AddReply, error)
+	Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*DeleteReply, error)
 }
 
 type searchClient struct {
@@ -39,12 +41,32 @@ func (c *searchClient) SearchInDB(ctx context.Context, in *SearchRequest, opts .
 	return out, nil
 }
 
+func (c *searchClient) Add(ctx context.Context, in *AddRequest, opts ...grpc.CallOption) (*AddReply, error) {
+	out := new(AddReply)
+	err := c.cc.Invoke(ctx, "/static_proto.Search/Add", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *searchClient) Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*DeleteReply, error) {
+	out := new(DeleteReply)
+	err := c.cc.Invoke(ctx, "/static_proto.Search/Delete", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SearchServer is the server API for Search service.
 // All implementations must embed UnimplementedSearchServer
 // for forward compatibility
 type SearchServer interface {
 	// Sends a greeting
 	SearchInDB(context.Context, *SearchRequest) (*SearchReply, error)
+	Add(context.Context, *AddRequest) (*AddReply, error)
+	Delete(context.Context, *DeleteRequest) (*DeleteReply, error)
 	mustEmbedUnimplementedSearchServer()
 }
 
@@ -54,6 +76,12 @@ type UnimplementedSearchServer struct {
 
 func (UnimplementedSearchServer) SearchInDB(context.Context, *SearchRequest) (*SearchReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchInDB not implemented")
+}
+func (UnimplementedSearchServer) Add(context.Context, *AddRequest) (*AddReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Add not implemented")
+}
+func (UnimplementedSearchServer) Delete(context.Context, *DeleteRequest) (*DeleteReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 func (UnimplementedSearchServer) mustEmbedUnimplementedSearchServer() {}
 
@@ -86,6 +114,42 @@ func _Search_SearchInDB_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Search_Add_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SearchServer).Add(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/static_proto.Search/Add",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SearchServer).Add(ctx, req.(*AddRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Search_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SearchServer).Delete(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/static_proto.Search/Delete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SearchServer).Delete(ctx, req.(*DeleteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Search_ServiceDesc is the grpc.ServiceDesc for Search service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -96,6 +160,14 @@ var Search_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SearchInDB",
 			Handler:    _Search_SearchInDB_Handler,
+		},
+		{
+			MethodName: "Add",
+			Handler:    _Search_Add_Handler,
+		},
+		{
+			MethodName: "Delete",
+			Handler:    _Search_Delete_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

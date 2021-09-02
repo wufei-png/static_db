@@ -5,7 +5,8 @@ import (
 )
 
 func main() {
-	server.Server_init()
+
+	server.Server_gw()
 
 }
 

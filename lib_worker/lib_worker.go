@@ -10,34 +10,46 @@ type Request struct {
 	Vectors      Vectors //向量组
 	Topk         int
 	Request_type int
-	I_delete     float64
-	J_delete     float64
+	I_delete     float32
+	J_delete     float32
 }
 type Vectors struct {
-	Vector   [][]float64 //向量
-	Distance []float64
+	Vector   [][]float32 //向量
+	Distance []float32
 }
 type Result struct {
-	TopkDistance [][]float64
-	VectorGroup  [][][]float64
+	TopkDistance [][]float32
+	VectorGroup  [][][]float32
 }
 
 type Node struct {
-	Data     []float64
+	Data     []float32
 	Next     *Node
-	Distance float64
+	Distance float32
 }
 type Node_first struct {
-	Data       []float64
+	Data       []float32
 	Next       *Node
 	Next_first *Node_first
-	Distance   float64
+	Distance   float32
 }
 type StatusDB struct {
-	Head *Node_first
+	Head           *Node_first
+	num_nodes      int
+	num_nodefirsts int
 }
 
 var DB StatusDB
+
+func (s StatusDB) NumOfNodes() int {
+	return s.num_nodes
+}
+func (s StatusDB) NumOfNodefirsts() int {
+	return s.num_nodefirsts
+}
+func (s StatusDB) NumOfAllNodes() int {
+	return s.num_nodefirsts + s.num_nodes
+}
 
 // func Newnode_zz(dimension int) Node { //带指针的
 // 	var newnode Node
@@ -50,12 +62,12 @@ var DB StatusDB
 func Newnode(dimension int, index int) Node { //带指针的
 	var newnode Node
 	for i := 0; i < dimension; i++ {
-		newnode.Data = append(newnode.Data, float64(index)+rand.Float64()) //在这里用图片的向量
+		newnode.Data = append(newnode.Data, float32(index)+rand.Float32()) //在这里用图片的向量
 	}
 
 	return newnode
 }
-func Newnode_first(dimension int, value float64) Node_first {
+func Newnode_first(dimension int, value float32) Node_first {
 	var newnode_first Node_first
 	for i := 0; i < dimension; i++ {
 		newnode_first.Data = append(newnode_first.Data, value+0.5) //在这里用图片的向量
@@ -157,7 +169,7 @@ func Display_allfirst() {
 	}
 }
 func findmin_index(start *Node_first, node *Node) *Node_first { //找到给定的一个node距离给出的nodefirst以及之后的距离他最近的nodefirst\
-	var min float64
+	var min float32
 	var index int
 	var j int
 	for start_copy := start; start_copy != nil; start_copy = start_copy.Next_first {
@@ -179,7 +191,7 @@ func findmin_index(start *Node_first, node *Node) *Node_first { //找到给定�
 	node.Distance = min
 	return start.find_nodefirst(index)
 }
-func dbinit_train(i int) bool { //终止条件聚类中心不再改变
+func dbinit_train(i int, length int) bool { //终止条件聚类中心不再改变
 	// var db
 	// nodefirst和db一样(firstnode已经变了，遍历dbnode,最近的firstnode调用add
 	// 	db.=var的.
@@ -187,7 +199,7 @@ func dbinit_train(i int) bool { //终止条件聚类中心不再改变
 	var stop bool = true
 	for index_first := DB.Head; index_first != nil; index_first = index_first.Next_first {
 
-		var sum = make([]float64, 4, 4)
+		var sum = make([]float32, length, length)
 		for i := range index_first.Data {
 			//fmt.Print(index_first.D)
 			sum[i] += index_first.Data[i]
@@ -199,9 +211,9 @@ func dbinit_train(i int) bool { //终止条件聚类中心不再改变
 			}
 		}
 		for i := range sum {
-			sum[i] = sum[i] / float64(index_first.length())
+			sum[i] = sum[i] / float32(index_first.length())
 		} //至此算出平均值
-		var min float64
+		var min float32
 		var index int
 		var index_node = index_first.Next
 		for j := 0; j < index_first.length(); j++ {
@@ -257,16 +269,17 @@ func dbinit_train(i int) bool { //终止条件聚类中心不再改变
 		}
 	}
 
-	DB.Head = db_copy.Head //更新完毕
+	DB.Head = db_copy.Head
+
 	if stop {
 		fmt.Println("迭代结束")
 	}
 	return stop
 }
-func Dbinit_train() {
+func Dbinit_train(length int) {
 	var i int = 1
 	for {
-		if dbinit_train(i) {
+		if dbinit_train(i, length) {
 			break
 		}
 		i++
@@ -275,7 +288,7 @@ func Dbinit_train() {
 func Lib_worker_DBinit(num_node int, num_nodefirst int, dimension int) StatusDB {
 	var newnodefirst Node_first
 	head_nodefirst := &newnodefirst
-	var i float64
+	var i float32
 	for ; int(i) < dimension; i++ {
 		head_nodefirst.Data = append(head_nodefirst.Data, 0.5) //在这里用图片的向量
 	}
@@ -283,7 +296,7 @@ func Lib_worker_DBinit(num_node int, num_nodefirst int, dimension int) StatusDB 
 	var index_nodefirst *Node_first
 	index_nodefirst = head_nodefirst
 	for i := 0; i < num_nodefirst-1; i++ {
-		newnode_first := Newnode_first(dimension, float64(i+1)) //按1间隔，初始0.5
+		newnode_first := Newnode_first(dimension, float32(i+1)) //按1间隔，初始0.5
 		index_nodefirst.Next_first = &newnode_first
 		index_nodefirst = &newnode_first
 	} //构建first
@@ -305,7 +318,7 @@ func Lib_worker_DBinit(num_node int, num_nodefirst int, dimension int) StatusDB 
 		// fmt.Println(i*num_nodefirst/num_node + 1)
 		index_nodefirst.add(&newnode)
 	}
-	return StatusDB{Head: head_nodefirst}
+	return StatusDB{Head: head_nodefirst, num_nodes: num_node, num_nodefirsts: num_nodefirst}
 }
 
 // func nodefirst_location(start *Node_first, end *Node_first) int {
@@ -315,16 +328,17 @@ func Lib_worker_DBinit(num_node int, num_nodefirst int, dimension int) StatusDB 
 // 	}
 // 	return i + 1
 // }
-func Distance(a []float64, b []float64) float64 { //欧式
+func Distance(a []float32, b []float32) float32 { //欧式
 	if len(a) != len(b) {
 		panic(fmt.Errorf("比较向量长度不等"))
 	}
-	var sum float64
+	var sum float32
 
 	for i := range a {
-		sum = float64(sum) + math.Pow(float64(a[i]-b[i]), 2)
+		sum = float32(sum) + float32(math.Pow(float64(a[i]-b[i]), 2))
 	}
-	sum = math.Pow(float64(sum), 0.5)
+
+	sum = sum / 2
 	return sum
 }
 func (head *Node_first) find_nodefirst(i int) *Node_first {
@@ -387,13 +401,13 @@ func (nodefirst *Node_first) add(newnode *Node) { //??这里引用改变原来�
 	}
 }
 
-// func swap(a *float64, b *float64) {
+// func swap(a *float32, b *float32) {
 // 	buf := *a
 // 	*a = *b
 // 	*b = buf
 // }
 
-func (start *Node_first) add_s(blank []bool, Distance float64, data []float64) { //??这里引用改变原来的没，在某个分片里加
+func (start *Node_first) add_s(blank []bool, Distance float32, data []float32) { //??这里引用改变原来的没，在某个分片里加
 	if blank[0] == false { //对某个first第一次调用
 		start.Distance = Distance
 		//fmt.Println("startdis添加:", start.Distance)
@@ -465,7 +479,7 @@ func (start *Node_first) add_s(blank []bool, Distance float64, data []float64) {
 // 计算平均值，找到最近的node，交换node和nodefirst的值，这个时候只剩下nodefist了，用train改变DB的排序
 func Delete(req Request) string {
 	var nodefirst = DB.Head.find_nodefirst(int(req.I_delete))
-	return nodefirst.delete_node(int(req.J_delete))
+	return nodefirst.delete_node(int(req.J_delete - 1))
 }
 func (start *Node_first) delete_node(i int) string { //找到第i个节点,中间末尾都分为上一个是first还是node，
 	if i == 0 {
@@ -479,6 +493,7 @@ func (start *Node_first) delete_node(i int) string { //找到第i个节点,中�
 				start.Next = start.Next.Next
 			}
 			//可以是nil
+			DB.num_nodes--
 			var st string = "删除成功"
 			return st
 		}
@@ -500,24 +515,30 @@ func (start *Node_first) delete_node(i int) string { //找到第i个节点,中�
 		}
 	}
 	var st string = "删除成功"
+	DB.num_nodes--
 	return st
 }
 func Add(req Request) string {
 
 	for i := 0; i < len(req.Vectors.Vector); i++ {
+
 		if DB.Head == nil {
+			//fmt.Print(1)
 			var head Node_first
 			head.Data = req.Vectors.Vector[0]
 			DB.Head = &head
+			DB.num_nodefirsts++
 			continue
-		} else if Length_first() < 3 { //10规定了一开始空库的时候add的时候聚类中心的数量
+		} else if Length_first() < 3 {
+			//fmt.Print(2) //10规定了一开始空库的时候add的时候聚类中心的数量
 			var newnodefirst Node_first
 			newnodefirst.Data = req.Vectors.Vector[i]
 			DB.Head.find_nodefirst(Length_first()).Next_first = &newnodefirst
+			DB.num_nodefirsts++
 			continue
 		} else {
 			var min_index int
-			var Distance1 float64
+			var Distance1 float32
 			var j int
 			for indexi := DB.Head; indexi != nil; indexi = indexi.Next_first { //对每个向量遍历所有数据库
 				if indexi == DB.Head { //初始化
@@ -536,10 +557,17 @@ func Add(req Request) string {
 			node.Data = req.Vectors.Vector[i]
 			node.Distance = Distance1
 			nodefirst.add(&node)
+			//fmt.Print(3)
+			DB.num_nodes++
+			fmt.Print(&DB)
 		}
-
 	}
 	var st string = "添加成功"
+	if DB.num_nodes/DB.num_nodefirsts > 3 { //当超过20训练，更严谨的话就用kmean的方法去做
+		Dbinit_train(len(DB.Head.Data))
+		st += "训练完毕"
+	}
+
 	return st
 }
 func Length_first() int {
@@ -554,7 +582,7 @@ func Search(req Request) Result { //第几个分片
 	var result Result
 	var start Node_first = result_init(req.Topk, len(req.Vectors.Vector), len(req.Vectors.Vector[0])) //创建结果
 	var start_copy = &start
-	var Distance1 float64
+	var Distance1 float32
 
 	// for index6 := start_copy; index6 != nil; index6 = index6.Next_first {
 	// 	fmt.Print(1)
@@ -568,6 +596,7 @@ func Search(req Request) Result { //第几个分片
 				start_copy.add_s(blank, Distance(req.Vectors.Vector[i], indexi.Data), indexi.Data)
 				for indexj := indexi.Next; indexj != nil; indexj = indexj.Next {
 					Distance1 = Distance(req.Vectors.Vector[i], indexj.Data)
+
 					//fmt.Print(Distance1)
 					start_copy.add_s(blank, Distance1, indexj.Data)
 				}
@@ -585,7 +614,7 @@ func Search(req Request) Result { //第几个分片
 		} else if req.Request_type == 2 { //用kmean// 	v1:对每个要找的向量，
 			//搜索最近的nodefirst,记录下index，通过根节点find找到这个first,start add所有的
 			var min_index int
-			var Distance1 float64
+			var Distance1 float32
 			var j int
 			for indexi := DB.Head; indexi != nil; indexi = indexi.Next_first { //对每个向量遍历所有数据库
 				if indexi == DB.Head { //初始化
@@ -626,9 +655,9 @@ func ResuToint(start *Node_first, result *Result) {
 		//fmt.Print(indexi.Distance)
 		//fmt.Print("一列")
 		j = 1
-		var topk_ls []float64
-		var group1 [][]float64
-		var group2 []float64
+		var topk_ls []float32
+		var group1 [][]float32
+		var group2 []float32
 		topk_ls = append(topk_ls, indexi.Distance) //first特殊处理
 		for k := 0; k < len(indexi.Data); k++ {
 			group2 = append(group2, indexi.Data[k])

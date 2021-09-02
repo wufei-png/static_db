@@ -24,7 +24,6 @@ import (
 	"fmt"
 	"net/http"
 	lw "static_db_wf/lib_worker"
-	"static_db_wf/static_proto/server"
 
 	"strconv"
 	"strings"
@@ -40,15 +39,15 @@ const (
 // vectors:1 1 1 1
 // topk 1
 // index : i,j
-func strToInt(str string) []float64 {
+func strToInt(str string) []float32 {
 	str_arr := strings.Split(str, " ")
-	var int_arr []float64
+	var int_arr []float32
 	for _, i := range str_arr {
-		j, err := strconv.ParseFloat(i, 64)
+		j, err := (strconv.ParseFloat(i, 32))
 		if err != nil {
 			panic(err)
 		}
-		int_arr = append(int_arr, j)
+		int_arr = append(int_arr, float32(j))
 	}
 	return int_arr
 }
@@ -188,19 +187,14 @@ func handlePostJson(writer http.ResponseWriter, request *http.Request) map[strin
 // func index(w http.ResponseWriter, r *http.Request) {
 // 	fmt.Fprintf(w, index2())
 // }
-func Server_init() {
-	// Set up a connection to the server.
-	//lw.DB = lw.Lib_worker_DBinit(10000, 100, 4)
+// func Server_init() {
+// 	// Set up a connection to the server.
+// 	//lw.DB = lw.Lib_worker_DBinit(10000, 100, 4)
 
-	//lw.Display_allfirst()
-	//lw.Display_DBbydistence()
-	lw.Dbinit_train()
+// 	//lw.Display_allfirst()
+// 	//lw.Display_DBbydistence()
+// 	//lw.Dbinit_train()
+// 	server_gw()
 
-	http.HandleFunc("/search", handle_search)
-	http.HandleFunc("/add", handle_add)
-	http.HandleFunc("/delete", handle_delete)
-	//http.HandleFunc("/", handle_req)
-	// 启动web服务，监听9090端口
-	go http.ListenAndServe(":9090", nil)
-	server.Server_grpc()
-}
+// 	server.Server_grpc()
+// }
